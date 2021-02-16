@@ -65,7 +65,20 @@ func ShowArray(linealizada []Lista) string {
 		cadena += element.Show()
 		cadena += "],"
 	}
-	cadena= cadena[:len(cadena)]
-	cadena+="]"
+	cadena = cadena[:len(cadena)]
+	cadena += "]"
 	return cadena
+}
+
+func (lista *Lista) Find(busqueda string) *Nodo {
+	var auxiliar *Nodo
+	auxiliar = lista.primero
+	for auxiliar != nil {
+		if auxiliar.Value() == busqueda {
+			return auxiliar
+		} else {
+			auxiliar = auxiliar.siguiente
+		}
+	}
+	return nil
 }
