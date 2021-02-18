@@ -18,6 +18,7 @@ func SetJsonData(jsonData Datos) {
 func LevantarServer() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", rutaInicial)
+	router.HandleFunc("/cargatienda", CargarJson)
 	router.HandleFunc("/getArreglo", getArreglo)
 	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica)
 	router.HandleFunc("/id", idTienda)
@@ -28,6 +29,24 @@ func LevantarServer() {
 func rutaInicial(response http.ResponseWriter, request *http.Request) {
 	response.Write([]byte("hola mundo que tal"))
 	fmt.Println(JsonData)
+}
+
+func CargarJson(response http.ResponseWriter, request *http.Request) {
+	fmt.Println("EDD primer semestre  2021")
+	data, errRead := ioutil.ReadAll(request.Body)
+	if errRead != nil {
+		response.Write([]byte("error en la carga del json"))
+	}
+	var mainJson = Datos{}
+	err := json.Unmarshal(data, &mainJson)
+	if err != nil {
+		log.Fatal("error al convertir a estructura " + err.Error())
+	}
+	JsonData = mainJson
+	fmt.Println(string(data))
+	fmt.Println(JsonData)
+	SetJsonData(JsonData)
+	MakeMatrix(JsonData)
 }
 
 func getArreglo(response http.ResponseWriter, request *http.Request) {
