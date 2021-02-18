@@ -42,6 +42,7 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 	//fmt.Println(matrix[0][0])
 	//fmt.Println(matrix[0][0][0])
 	return matrix
+	//	todo tengo que ordenar todas las listas segun ascii
 }
 
 func Linealizar(matrix [][][][]string) []Lista {

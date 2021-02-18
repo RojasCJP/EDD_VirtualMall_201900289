@@ -3,47 +3,136 @@ package reader
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-func LevantarServer(json Datos) {
-	http.HandleFunc("/", rutaInicial)
-	http.HandleFunc("/getArreglo", getArreglo)
-	http.HandleFunc("/TiendaEspecifica", tiendaEspecifica)
-	http.HandleFunc("/id", idTienda)
-	http.HandleFunc("/Eliminar", eliminarTienda)
-	http.ListenAndServe(":3000", nil)
+var JsonData = Datos{}
+
+func SetJsonData(jsonData Datos) {
+	JsonData = jsonData
+
+}
+func LevantarServer() {
+	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/", rutaInicial)
+	router.HandleFunc("/getArreglo", getArreglo)
+	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica)
+	router.HandleFunc("/id", idTienda)
+	router.HandleFunc("/Eliminar", eliminarTienda)
+	http.ListenAndServe(":3000", router)
 }
 
 func rutaInicial(response http.ResponseWriter, request *http.Request) {
-	response.Write([]byte("hello world"))
+	response.Write([]byte("hola mundo que tal"))
+	fmt.Println(JsonData)
 }
+
 func getArreglo(response http.ResponseWriter, request *http.Request) {
-	var data = []byte(`{"Datos":[{"Indice":"A","Departamentos":[{"Nombre":"Deportes","Tiendas":[{"Nombre":"Aurora","Descripcion":"Es una empresa multinacional estadounidense dedicada al diseño, desarrollo, fabricación y comercialización de equipamiento deportivo: balones, calzado, ropa, equipo, accesorios y otros artículos deportivos","Contacto":"5544-3377","Calificacion":5},{"Nombre":"Amador","Descripcion":"es una empresa alemana fabricante de accesorios, ropa y calzado deportivo, cuya sede central está en Herzogenaurach, Alemania","Contacto":"5588-9988","Calificacion":4},{"Nombre":"Armados","Descripcion":"Equipo extremo","Contacto":"8995222","Calificacion":5}]},{"Nombre":"Comida","Tiendas":[{"Nombre":"A comer todo","Descripcion":"todo lo que puedan pedir por un dollar","Contacto":"559999","Calificacion":5}]},{"Nombre":"celulares","Tiendas":[]}]},{"Indice":"B","Departamentos":[{"Nombre":"Deportes","Tiendas":[]},{"Nombre":"Comida","Tiendas":[]},{"Nombre":"Celulares","Tiendas":[{"Nombre":"Bayoneta","Descripcion":"Telefonos militares","Contacto":"bayoneta@gmail.com","Calificacion":5}]}]}]}`)
-	var mainJson = Datos{}
-	err := json.Unmarshal(data, &mainJson)
-	if err != nil {
-		log.Fatal("error al convertir estructura de datos " + err.Error())
-	}
-	matrix := MakeMatrix(mainJson)
+	matrix := MakeMatrix(JsonData)
 	linealizada := Linealizar(matrix)
 	paraEnviar := ShowArray(linealizada[:])
 	fmt.Println(paraEnviar)
-	//todo tengo que ver que onda con la linealizada por que fijo esta mal porque no puede imprimir ciertos punteros
+	//todo tengo que hacer que se mire el grapviz
 	data, err2 := json.Marshal(paraEnviar)
 	if err2 != nil {
-		log.Fatal("error al imprimir los datos" + err.Error())
+		log.Fatal("error al imprimir los datos" + err2.Error())
 	}
 	fmt.Println(data)
 	response.Write(data)
 }
+
 func tiendaEspecifica(response http.ResponseWriter, request *http.Request) {
-	response.Write([]byte("Pagina de tiendaEspecifica"))
+	data, err := ioutil.ReadAll(request.Body)
+	if err != nil {
+		response.Write([]byte("entrada no valida"))
+	}
+	var especifica Especifica
+	err2 := json.Unmarshal(data, &especifica)
+	if err2 != nil {
+		response.Write([]byte("entrada no valida"))
+	}
+	tienda := FindTienda(especifica, JsonData)
+	salida, err3 := json.Marshal(tienda)
+	if err3 != nil {
+		response.Write([]byte("error en la conversion de json"))
+	}
+	fmt.Println(data)
+	response.Write(salida)
+
 }
+
 func idTienda(response http.ResponseWriter, request *http.Request) {
 	response.Write([]byte("Pagina de idTienda"))
 }
+
 func eliminarTienda(response http.ResponseWriter, request *http.Request) {
-	response.Write([]byte("Pagina de eliminarTienda"))
+	data, err := ioutil.ReadAll(request.Body)
+	if err != nil {
+		response.Write([]byte("entrada no valida"))
+	}
+	var especifica Especifica
+	err2 := json.Unmarshal(data, &especifica)
+	if err2 != nil {
+		response.Write([]byte("entrada no valida"))
+	}
+	var mensaje = ""
+	JsonData, mensaje = DeleteTienda(especifica, JsonData)
+	salida, err3 := json.Marshal(JsonData)
+	if err3 != nil {
+		response.Write([]byte("error en la conversion de json"))
+	}
+	fmt.Println(JsonData)
+	if mensaje == "" {
+		response.Write(salida)
+	} else {
+		response.Write([]byte(mensaje))
+	}
+}
+
+func FindTienda(especifica Especifica, data Datos) Tienda {
+	auxiliar := Tienda{}
+	for i := 0; i < len(data.Datos); i++ {
+		for j := 0; j < len(data.Datos[i].Departamentos); j++ {
+			for k := 0; k < len(data.Datos[i].Departamentos[j].Tiendas); k++ {
+				tienda := data.Datos[i].Departamentos[j].Tiendas[k]
+				departamento := data.Datos[i].Departamentos[j]
+				if (tienda.Nombre == especifica.Nombre) && (tienda.Calificacion == especifica.Calificacion) && (departamento.Nombre == especifica.Departamento) {
+					auxiliar.Nombre = tienda.Nombre
+					auxiliar.Calificacion = tienda.Calificacion
+					auxiliar.Descripcion = tienda.Descripcion
+					auxiliar.Contacto = tienda.Contacto
+					return auxiliar
+				}
+			}
+		}
+	}
+
+	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", 0}
+}
+
+func DeleteTienda(especifica Especifica, data Datos) (Datos, string) {
+	//auxiliar := Tienda{}
+	for i := 0; i < len(data.Datos); i++ {
+		for j := 0; j < len(data.Datos[i].Departamentos); j++ {
+			for k := 0; k < len(data.Datos[i].Departamentos[j].Tiendas); k++ {
+				tienda := data.Datos[i].Departamentos[j].Tiendas[k]
+				departamento := data.Datos[i].Departamentos[j]
+				if (tienda.Nombre == especifica.Nombre) && (tienda.Calificacion == especifica.Calificacion) && (departamento.Nombre == especifica.Departamento) {
+					data.Datos[i].Departamentos[j].Tiendas = append(data.Datos[i].Departamentos[j].Tiendas[:k], data.Datos[i].Departamentos[j].Tiendas[k+1:]...)
+					return data, ""
+				}
+			}
+		}
+	}
+
+	return data, "no se encontro ninguna tienda con estos datos"
+}
+
+type Especifica struct {
+	Departamento string
+	Nombre       string
+	Calificacion int
 }

@@ -15,13 +15,9 @@ func main() {
 	if err != nil {
 		log.Fatal("error al convertir a estructura " + err.Error())
 	}
-	var pruebaLista reader.Lista
-	pruebaLista.Insert("hola")
-	pruebaLista.Insert("que")
-	pruebaLista.Insert("tal")
-	Nodo := pruebaLista.Find("que")
-	fmt.Println(Nodo)
+	fmt.Println(string(data))
 	fmt.Println(mainJson)
+	reader.SetJsonData(mainJson)
 	reader.MakeMatrix(mainJson)
-	reader.LevantarServer(mainJson)
+	reader.LevantarServer()
 }
