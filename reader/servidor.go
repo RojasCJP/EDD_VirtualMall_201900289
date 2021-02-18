@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -26,8 +27,17 @@ func LevantarServer() {
 	http.ListenAndServe(":3000", router)
 }
 
+type htmltemplate struct {
+	Name   string
+	Carnet int
+	Json   string
+}
+
 func rutaInicial(response http.ResponseWriter, request *http.Request) {
-	response.Write([]byte("hola mundo que tal"))
+	page := htmltemplate{"Juan Pablo Rojas Chinchilla", 201900289, "EDD 1er Semestre 2021"}
+	temp, _ := template.ParseFiles("./templates/welcome-template.html")
+	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
+	temp.Execute(response, page)
 	fmt.Println(JsonData)
 }
 
@@ -50,17 +60,22 @@ func CargarJson(response http.ResponseWriter, request *http.Request) {
 }
 
 func getArreglo(response http.ResponseWriter, request *http.Request) {
-	matrix := MakeMatrix(JsonData)
-	linealizada := Linealizar(matrix)
-	paraEnviar := ShowArray(linealizada[:])
-	fmt.Println(paraEnviar)
+	//matrix := MakeMatrix(JsonData)
+	//linealizada := Linealizar(matrix)
+	//paraEnviar := ShowArray(linealizada[:])
+	//fmt.Println(paraEnviar)
 	//todo tengo que hacer que se mire el grapviz
-	data, err2 := json.Marshal(paraEnviar)
-	if err2 != nil {
-		log.Fatal("error al imprimir los datos" + err2.Error())
-	}
-	fmt.Println(data)
-	response.Write(data)
+	//data, err2 := json.Marshal(paraEnviar)
+	//if err2 != nil {
+	//	log.Fatal("error al imprimir los datos" + err2.Error())
+	//}
+	//fmt.Println(data)
+	//response.Write(data)
+	page := htmltemplate{"Juan Pablo Rojas Chinchilla", 201900289, "EDD 1er Semestre 2021"}
+	temp, _ := template.ParseFiles("./templates/getArreglo.html")
+	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
+	temp.Execute(response, page)
+	fmt.Println(JsonData)
 }
 
 func tiendaEspecifica(response http.ResponseWriter, request *http.Request) {
