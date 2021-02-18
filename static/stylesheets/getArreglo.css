@@ -1,0 +1,9 @@
+body{
+    background-image: url("/templates/imagen.png");
+}
+div{
+    background-color: skyblue;
+}
+.hola{
+    background-color: aqua;
+}

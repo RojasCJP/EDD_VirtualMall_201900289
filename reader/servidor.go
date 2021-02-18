@@ -12,6 +12,16 @@ import (
 
 var JsonData = Datos{}
 
+type htmltemplate struct {
+	Name   string
+	Carnet int
+	Json   string
+}
+type getArregloTemplate struct {
+	Cadena    string
+	Direccion string
+}
+
 func SetJsonData(jsonData Datos) {
 	JsonData = jsonData
 
@@ -24,13 +34,17 @@ func LevantarServer() {
 	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica)
 	router.HandleFunc("/id", idTienda)
 	router.HandleFunc("/Eliminar", eliminarTienda)
+	router.HandleFunc("/imagen", imagenSubida)
+
 	http.ListenAndServe(":3000", router)
 }
 
-type htmltemplate struct {
-	Name   string
-	Carnet int
-	Json   string
+func imagenSubida(response http.ResponseWriter, request *http.Request) {
+	imagen, err := ioutil.ReadFile("templates/imagen.png")
+	if err != nil {
+		response.Write([]byte("al cargar hubo error"))
+	}
+	response.Write(imagen)
 }
 
 func rutaInicial(response http.ResponseWriter, request *http.Request) {
@@ -64,14 +78,15 @@ func getArreglo(response http.ResponseWriter, request *http.Request) {
 	//linealizada := Linealizar(matrix)
 	//paraEnviar := ShowArray(linealizada[:])
 	//fmt.Println(paraEnviar)
-	//todo tengo que hacer que se mire el grapviz
+	////todo tengo que hacer que se mire el grapviz
 	//data, err2 := json.Marshal(paraEnviar)
 	//if err2 != nil {
 	//	log.Fatal("error al imprimir los datos" + err2.Error())
 	//}
 	//fmt.Println(data)
 	//response.Write(data)
-	page := htmltemplate{"Juan Pablo Rojas Chinchilla", 201900289, "EDD 1er Semestre 2021"}
+	page := getArregloTemplate{"Pagina de Get Arreglo", "./templates/imagen.png"}
+	//http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	temp, _ := template.ParseFiles("./templates/getArreglo.html")
 	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
 	temp.Execute(response, page)

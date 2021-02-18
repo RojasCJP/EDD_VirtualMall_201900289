@@ -2,6 +2,7 @@ package main
 
 import (
 	"./reader"
+	"net/http"
 )
 
 func main() {
@@ -16,5 +17,6 @@ func main() {
 	//fmt.Println(mainJson)
 	//reader.SetJsonData(mainJson)
 	//reader.MakeMatrix(mainJson)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	reader.LevantarServer()
 }
