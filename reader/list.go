@@ -2,6 +2,7 @@ package reader
 
 type Nodo struct {
 	tienda    string
+	id        int
 	siguiente *Nodo
 	anterior  *Nodo
 }
@@ -14,8 +15,8 @@ func (lista *Lista) First() *Nodo {
 	return lista.primero
 }
 
-func (lista *Lista) Insert(value string) {
-	nodo := Nodo{value, nil, nil}
+func (lista *Lista) Insert(value string, id int) {
+	nodo := Nodo{value, id, nil, nil}
 	if lista.primero == nil {
 		lista.primero = &nodo
 		lista.ultimo = &nodo
@@ -37,6 +38,10 @@ func (nodo *Nodo) Anterior() *Nodo {
 
 func (nodo *Nodo) Value() string {
 	return nodo.tienda
+}
+
+func (nodo *Nodo) IdValue() int {
+	return nodo.id
 }
 
 func (lista *Lista) Show() string {
@@ -72,6 +77,19 @@ func (lista *Lista) Find(busqueda string) *Nodo {
 	auxiliar = lista.primero
 	for auxiliar != nil {
 		if auxiliar.Value() == busqueda {
+			return auxiliar
+		} else {
+			auxiliar = auxiliar.siguiente
+		}
+	}
+	return nil
+}
+
+func (lista *Lista) FindId(busqueda int) *Nodo {
+	var auxiliar *Nodo
+	auxiliar = lista.primero
+	for auxiliar != nil {
+		if auxiliar.IdValue() == busqueda {
 			return auxiliar
 		} else {
 			auxiliar = auxiliar.siguiente

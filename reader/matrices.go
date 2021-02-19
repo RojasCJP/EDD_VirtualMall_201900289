@@ -54,12 +54,12 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 	//fmt.Println(matrix[0][0])
 	//fmt.Println(matrix[0][0][0])
 	return matrix
-	//	todo tengo que ordenar todas las listas segun ascii
 }
 
 func Linealizar(matrix [][][][]string) []Lista {
 	var linealizada []Lista
-
+	var id int
+	id = 0
 	for i := 0; i < (len(matrix)); i++ {
 		for j := 0; j < len(matrix[i]); j++ {
 			for k := 0; k < len(matrix[i][j]); k++ {
@@ -73,13 +73,24 @@ func Linealizar(matrix [][][][]string) []Lista {
 			for k := 0; k < len(matrix[i][j]); k++ {
 				lista := Lista{}
 				for l := 0; l < len(matrix[i][j][k]); l++ {
-					lista.Insert(matrix[i][j][k][l])
+					lista.Insert(matrix[i][j][k][l], id)
+					id++
 				}
-				//todo tengo que revisar si tengo que multiplicar por la longitud o solo sumarla
 				//fmt.Println(len(matrix[i][j]))
 				linealizada[i*(len(matrix[i])*len(matrix[i][j]))+j*(len(matrix[i][j]))+k] = lista
 			}
 		}
 	}
 	return linealizada
+}
+
+func FindWithId(id int, linealizada []Lista) string {
+	var nombre string
+	for i := 0; i < len(linealizada); i++ {
+		nodo := linealizada[i].FindId(id)
+		if nodo != nil {
+			return nodo.Value()
+		}
+	}
+	return nombre
 }
