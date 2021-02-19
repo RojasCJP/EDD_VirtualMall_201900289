@@ -1,7 +1,5 @@
 package reader
 
-import "fmt"
-
 type Nodo struct {
 	tienda    string
 	siguiente *Nodo
@@ -42,31 +40,30 @@ func (nodo *Nodo) Value() string {
 }
 
 func (lista *Lista) Show() string {
-	if lista.primero == nil {
+	if lista.ultimo == nil {
 		return ""
 	}
 	var cadena string
-	nodoPibot := lista.primero
-	for nodoPibot.siguiente != nil {
-		fmt.Print(nodoPibot.tienda, ", ")
+	nodoPibot := lista.ultimo
+	for nodoPibot.anterior != nil {
+		//fmt.Print(nodoPibot.tienda, ", ")
 		cadena += nodoPibot.tienda
-		cadena += ","
-		nodoPibot = nodoPibot.siguiente
+		cadena += ";"
+		nodoPibot = nodoPibot.anterior
 	}
 	cadena += nodoPibot.tienda
-	fmt.Print(nodoPibot.tienda, ", ")
+	//fmt.Print(nodoPibot.tienda, ", ")
 	return cadena
 }
 
 func ShowArray(linealizada []Lista) string {
-	var cadena string = "["
+	var cadena string = ""
 	for _, element := range linealizada {
 		cadena += "["
 		cadena += element.Show()
 		cadena += "],"
 	}
 	cadena = cadena[:len(cadena)]
-	cadena += "]"
 	return cadena
 }
 

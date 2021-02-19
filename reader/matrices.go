@@ -1,5 +1,9 @@
 package reader
 
+import (
+	"sort"
+)
+
 func MakeMatrix(dataJson Datos) [][][][]string {
 
 	var matrix [][][][]string
@@ -33,6 +37,14 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 						matrix[i][j][l] = append(matrix[i][j][l], dataJson.Datos[i].Departamentos[j].Tiendas[k].Nombre)
 					}
 				}
+			}
+		}
+	}
+
+	for i := 0; i < len(matrix); i++ {
+		for j := 0; j < len(matrix[i]); j++ {
+			for k := 0; k < len(matrix[i][j]); k++ {
+				sort.Strings(matrix[i][j][k])
 			}
 		}
 	}

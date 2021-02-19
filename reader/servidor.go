@@ -33,7 +33,7 @@ func LevantarServer() {
 	router.HandleFunc("/getArreglo", getArreglo)
 	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica)
 	router.HandleFunc("/id", idTienda)
-	router.HandleFunc("/Eliminar", eliminarTienda)
+	router.HandleFunc("/Eliminar", eliminarTienda).Methods("DELETE")
 	router.HandleFunc("/imagen", imagenSubida)
 
 	http.ListenAndServe(":3000", router)
@@ -67,17 +67,19 @@ func CargarJson(response http.ResponseWriter, request *http.Request) {
 		log.Fatal("error al convertir a estructura " + err.Error())
 	}
 	JsonData = mainJson
-	fmt.Println(string(data))
-	fmt.Println(JsonData)
+	response.Write(data)
+	//fmt.Println(string(data))
+	//fmt.Println(JsonData)
 	SetJsonData(JsonData)
 	MakeMatrix(JsonData)
 }
 
 func getArreglo(response http.ResponseWriter, request *http.Request) {
-	//matrix := MakeMatrix(JsonData)
-	//linealizada := Linealizar(matrix)
-	//paraEnviar := ShowArray(linealizada[:])
-	//fmt.Println(paraEnviar)
+	matrix := MakeMatrix(JsonData)
+	linealizada := Linealizar(matrix)
+	paraEnviar := ShowArray(linealizada[:])
+	GraphvizMethod(paraEnviar)
+	fmt.Println(paraEnviar)
 	////todo tengo que hacer que se mire el grapviz
 	//data, err2 := json.Marshal(paraEnviar)
 	//if err2 != nil {
