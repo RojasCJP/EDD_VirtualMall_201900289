@@ -27,15 +27,17 @@ func SetJsonData(jsonData Datos) {
 	JsonData = jsonData
 
 }
+
 func LevantarServer() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/", rutaInicial)
-	router.HandleFunc("/cargatienda", CargarJson).Methods("POST")
-	router.HandleFunc("/getArreglo", getArreglo)
+	router.HandleFunc("/", rutaInicial).Methods("GET")
+	router.HandleFunc("/cargartienda", CargarJson).Methods("POST")
+	router.HandleFunc("/getArreglo", getArreglo).Methods("GET")
 	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica).Methods("POST")
-	router.HandleFunc("/id/{numero}", idTienda)
+	router.HandleFunc("/id/{numero}", idTienda).Methods("GET")
 	router.HandleFunc("/Eliminar", eliminarTienda).Methods("DELETE")
 	router.HandleFunc("/imagen", imagenSubida)
+	router.HandleFunc("/guardar", GuardarRoutes)
 
 	http.ListenAndServe(":3000", router)
 }
@@ -53,7 +55,6 @@ func rutaInicial(response http.ResponseWriter, request *http.Request) {
 	temp, _ := template.ParseFiles("./templates/welcome-template.html")
 	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
 	temp.Execute(response, page)
-	GuardarArchivo()
 	fmt.Println(JsonData)
 }
 
@@ -69,7 +70,6 @@ func CargarJson(response http.ResponseWriter, request *http.Request) {
 		log.Fatal("error al convertir a estructura " + err.Error())
 	}
 	JsonData = mainJson
-	GuardarArchivo()
 	response.Write(data)
 	//fmt.Println(string(data))
 	//fmt.Println(JsonData)
@@ -79,7 +79,7 @@ func CargarJson(response http.ResponseWriter, request *http.Request) {
 
 func getArreglo(response http.ResponseWriter, request *http.Request) {
 	matrix := MakeMatrix(JsonData)
-	linealizada := Linealizar(matrix)
+	linealizada := Linealizar(matrix, JsonData)
 	paraEnviar := ShowArray(linealizada[:])
 	GraphvizMethod(paraEnviar)
 	fmt.Println(paraEnviar)
@@ -95,7 +95,6 @@ func getArreglo(response http.ResponseWriter, request *http.Request) {
 	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
 	temp.Execute(response, page)
 	fmt.Println(JsonData)
-	GuardarArchivo()
 }
 
 func tiendaEspecifica(response http.ResponseWriter, request *http.Request) {
@@ -114,7 +113,6 @@ func tiendaEspecifica(response http.ResponseWriter, request *http.Request) {
 		response.Write([]byte("error en la conversion de json"))
 	}
 	fmt.Println(data)
-	GuardarArchivo()
 	response.Write(salida)
 
 }
@@ -126,14 +124,13 @@ func idTienda(response http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		response.Write([]byte("el id que ingreso es invalido"))
 	}
-	linealizada := Linealizar(matrix)
-	nombre := FindWithId(numero, linealizada)
-	tienda := FindTiendaWithNombre(nombre, JsonData)
+	linealizada := Linealizar(matrix, JsonData)
+	nombre := linealizada[numero-1]
+	tienda := nombre.ShowJson()
 	salida, err3 := json.Marshal(tienda)
 	if err3 != nil {
 		response.Write([]byte("error en la conversion de json"))
 	}
-	GuardarArchivo()
 	response.Write(salida)
 }
 
@@ -159,7 +156,11 @@ func eliminarTienda(response http.ResponseWriter, request *http.Request) {
 	} else {
 		response.Write([]byte(mensaje))
 	}
+}
+
+func GuardarRoutes(response http.ResponseWriter, request *http.Request) {
 	GuardarArchivo()
+	response.Write([]byte("Json guardado"))
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {
@@ -201,7 +202,7 @@ func DeleteTienda(especifica Especifica, data Datos) (Datos, string) {
 	return data, "no se encontro ninguna tienda con estos datos"
 }
 
-func FindTiendaWithNombre(nombre string, data Datos) Tienda {
+func FindTiendaWithNombre(nombre string, data Datos) Tienda { //todo me va a servir para meter los datos a la matriz
 	auxiliar := Tienda{}
 	for i := 0; i < len(data.Datos); i++ {
 		for j := 0; j < len(data.Datos[i].Departamentos); j++ {

@@ -1,7 +1,5 @@
 package reader
 
-import "fmt"
-
 type Tienda struct {
 	Nombre       string
 	Descripcion  string
@@ -21,8 +19,4 @@ type Indice struct {
 
 type Datos struct {
 	Datos []Indice
-}
-
-func Hola() {
-	fmt.Println("hola que tal como estas")
 }

@@ -56,7 +56,7 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 	return matrix
 }
 
-func Linealizar(matrix [][][][]string) []Lista {
+func Linealizar(matrix [][][][]string, dataJson Datos) []Lista {
 	var linealizada []Lista
 	var id int
 	id = 0
@@ -73,7 +73,8 @@ func Linealizar(matrix [][][][]string) []Lista {
 			for k := 0; k < len(matrix[i][j]); k++ {
 				lista := Lista{}
 				for l := 0; l < len(matrix[i][j][k]); l++ {
-					lista.Insert(matrix[i][j][k][l], id)
+					tiendaAux := FindTiendaWithNombre(matrix[i][j][k][l], dataJson)
+					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion)
 					id++
 				}
 				//fmt.Println(len(matrix[i][j]))

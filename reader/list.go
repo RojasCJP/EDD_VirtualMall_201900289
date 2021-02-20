@@ -1,10 +1,13 @@
 package reader
 
 type Nodo struct {
-	tienda    string
-	id        int
-	siguiente *Nodo
-	anterior  *Nodo
+	tienda       string
+	id           int
+	descripcion  string
+	contacto     string
+	calificacion int
+	siguiente    *Nodo
+	anterior     *Nodo
 }
 type Lista struct {
 	primero *Nodo
@@ -15,8 +18,8 @@ func (lista *Lista) First() *Nodo {
 	return lista.primero
 }
 
-func (lista *Lista) Insert(value string, id int) {
-	nodo := Nodo{value, id, nil, nil}
+func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int) {
+	nodo := Nodo{value, id, descripcion, contacto, calificacion, nil, nil}
 	if lista.primero == nil {
 		lista.primero = &nodo
 		lista.ultimo = &nodo
@@ -96,4 +99,15 @@ func (lista *Lista) FindId(busqueda int) *Nodo {
 		}
 	}
 	return nil
+}
+
+func (lista *Lista) ShowJson() []Tienda {
+	var listaDoble []Tienda
+	var auxiliar *Nodo
+	auxiliar = lista.primero
+	for auxiliar != nil {
+		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.calificacion})
+		auxiliar = auxiliar.siguiente
+	}
+	return listaDoble
 }
