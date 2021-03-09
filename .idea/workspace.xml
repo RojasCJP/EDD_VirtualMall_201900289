@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Practica1-EDD-.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cliente/Cliente.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servidor/Practica1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practica1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader/graphviz.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader/list.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader/matrices.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader/reader.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader/servidor.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/stylesheets/getArreglo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/stylesheets/welcome-template.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/datosGuardados.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/getAll.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/getArreglo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/welcome-template.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file://C:/Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pXX9HGZuJ8BePv2f4dO1UiJcRh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Servidor/main.go" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager" selected="Go Build.Golang">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="Practica1-EDD-" />
+      <working_directory value="$PROJECT_DIR$/Servidor" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/Servidor/main.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="Practica1-EDD-" />
+      <working_directory value="$PROJECT_DIR$/Servidor" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/../Practica1-EDD-|$PROJECT_DIR$/Servidor/main.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/Cliente/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.Golang" />
+      <item itemvalue="npm.Angular" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.Golang" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="" />
+      <created>1615330255840</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615330255840</updated>
+      <workItem from="1615330258087" duration="1489000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

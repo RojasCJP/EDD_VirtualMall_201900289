@@ -44,7 +44,7 @@ func hacerGraph(cadena string) int {
 			numeroTiendaLista = 0
 			numeroLista++
 			numero := strconv.Itoa(numeroLista)
-			graphviz += "Lista" + numero + "[label=\"" + numero + "\",shape=\"box\", group=" + numero + "];\n"
+			graphviz += "Lista" + numero + "[label=\"" + numero + "\",shape=\"box\"];\n"
 		} else if string(letra) == "," {
 			numero := strconv.Itoa(numeroLista)
 			numeroAnterior := strconv.Itoa(numeroLista - 1)
@@ -59,9 +59,9 @@ func hacerGraph(cadena string) int {
 				numeroTiendaAnterior := strconv.Itoa(numeroTienda - 1)
 				numeroTiendaLista++
 				if numeroTiendaLista == 1 {
-					graphviz += "elemento" + numeroTiendaStr + "[label=\"" + nombreTienda + "\",group=" + numero + "];\nLista" + numero + "->elemento" + numeroTiendaStr + ";\n elemento" + numeroTiendaStr + "->Lista" + numero + ";\n"
+					graphviz += "elemento" + numeroTiendaStr + "[label=\"" + nombreTienda + "\"];\nLista" + numero + "->elemento" + numeroTiendaStr + ";\n elemento" + numeroTiendaStr + "->Lista" + numero + ";\n"
 				} else {
-					graphviz += "elemento" + numeroTiendaStr + "[label=\"" + nombreTienda + "\",group=" + numero + "];\nelemento" + numeroTiendaAnterior + "->elemento" + numeroTiendaStr + ";\n elemento" + numeroTiendaStr + "->elemento" + numeroTiendaAnterior + ";"
+					graphviz += "elemento" + numeroTiendaStr + "[label=\"" + nombreTienda + "\",];\nelemento" + numeroTiendaAnterior + "->elemento" + numeroTiendaStr + ";\n elemento" + numeroTiendaStr + "->elemento" + numeroTiendaAnterior + ";"
 				}
 			}
 			if string(letra) == "]" {
