@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Practica1-EDD-.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Practica1-EDD-.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/models/tienda.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/models/tienda.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +71,16 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Angular">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.Golang">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,9 +126,9 @@
     </configuration>
     <list>
       <item itemvalue="Go Build.Golang" />
+      <item itemvalue="JavaScript Debug.Angular Application" />
       <item itemvalue="npm.Angular" />
       <item itemvalue="Protractor.E2E Tests (Cliente)" />
-      <item itemvalue="JavaScript Debug.Angular Application" />
     </list>
     <recent_temporary>
       <list>
@@ -145,8 +148,17 @@
       <workItem from="1615350801733" duration="85000" />
       <workItem from="1615350902819" duration="38000" />
       <workItem from="1615351165823" duration="208000" />
-      <workItem from="1615354356261" duration="3053000" />
+      <workItem from="1615354356261" duration="3236000" />
+      <workItem from="1615416709198" duration="10605000" />
     </task>
+    <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
+      <created>1615357608326</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615357608326</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,5 +175,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Añadiendo angular al proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadiendo angular al proyecto" />
   </component>
 </project>

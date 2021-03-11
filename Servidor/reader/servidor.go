@@ -3,6 +3,7 @@ package reader
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"html/template"
 	"io/ioutil"
@@ -18,6 +19,15 @@ type htmltemplate struct {
 	Carnet int
 	Json   string
 }
+
+type TiendaTransicional struct {
+	Nombre       string
+	Descripcion  string
+	Contacto     string
+	Calificacion int
+	Logo         string
+}
+
 type getArregloTemplate struct {
 	Cadena    string
 	Direccion string
@@ -30,6 +40,9 @@ func SetJsonData(jsonData Datos) {
 
 func LevantarServer() {
 	router := mux.NewRouter().StrictSlash(true)
+	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	methods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
+	origins := handlers.AllowedOrigins([]string{"*"})
 	router.HandleFunc("/", rutaInicial).Methods("GET")
 	router.HandleFunc("/cargartienda", CargarJson).Methods("POST")
 	router.HandleFunc("/getArreglo", getArreglo).Methods("GET")
@@ -38,8 +51,31 @@ func LevantarServer() {
 	router.HandleFunc("/Eliminar", eliminarTienda).Methods("DELETE")
 	router.HandleFunc("/imagen", imagenSubida)
 	router.HandleFunc("/guardar", GuardarRoutes)
+	router.HandleFunc("/todasTiendas", todasTiendas).Methods("GET")
+	//todo tengo que hacer una para todas las tiendas, ahorita la voy a hacer quemada
+	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
+}
 
-	http.ListenAndServe(":3000", router)
+func todasTiendas(response http.ResponseWriter, request *http.Request) {
+	fmt.Println("se accedio a todasTiendas")
+	page1 := TiendaTransicional{"Gerardo Weco", "Hola Gerardo", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	page2 := TiendaTransicional{"Gerardo Hueco", "Como estas", "holaquetal@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	page3 := TiendaTransicional{"Gerardo Gar", "Gerardo es gay", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	page4 := TiendaTransicional{"Gerardo Homosexual", "Le gusta Edson", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	page5 := TiendaTransicional{"Gerardo Wapo", "Gerardo weco", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	var pages []TiendaTransicional
+	pages = append(pages, page1)
+	pages = append(pages, page2)
+	pages = append(pages, page3)
+	pages = append(pages, page4)
+	pages = append(pages, page5)
+	data, err := json.Marshal(pages)
+	if err != nil {
+		response.Write([]byte("ocurrio un error"))
+	}
+	response.Write(data)
+	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
+
 }
 
 func imagenSubida(response http.ResponseWriter, request *http.Request) {
