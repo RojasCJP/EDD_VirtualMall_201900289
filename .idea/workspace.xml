@@ -6,19 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/models/tiendaEspecifica.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/models/tiendaEspecifica.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/matrices.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/matrices.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/reader.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/reader.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/datosGuardados.json" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/datosGuardados.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/getAll.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/getAll.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/imagen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/imagen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/cargar-tiendas/cargar-tiendas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/cargar-tiendas/cargar-tiendas.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-especifica/tienda-especifica.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-especifica/tienda-especifica.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -50,13 +40,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Cliente/src/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Servidor/reader/dataStructures" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,14 +68,16 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Angular">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test dataStructures">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,6 +97,15 @@
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/../Practica1-EDD-|$PROJECT_DIR$/Servidor/main.go" />
       <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test dataStructures" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Practica1-EDD-" />
+      <working_directory value="$PROJECT_DIR$/Servidor/reader/dataStructures" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/Servidor/reader/dataStructures" />
+      <filePath value="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" />
       <method v="2" />
     </configuration>
     <configuration name="E2E Tests (Cliente)" type="JavaScriptTestRunnerProtractor">
@@ -130,12 +132,14 @@
     </configuration>
     <list>
       <item itemvalue="Go Build.Golang" />
+      <item itemvalue="Go Test.go test dataStructures" />
       <item itemvalue="JavaScript Debug.Angular Application" />
       <item itemvalue="npm.Angular" />
       <item itemvalue="Protractor.E2E Tests (Cliente)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test dataStructures" />
         <item itemvalue="Go Build.Golang" />
       </list>
     </recent_temporary>
@@ -156,7 +160,8 @@
       <workItem from="1615416709198" duration="10762000" />
       <workItem from="1615517737163" duration="2327000" />
       <workItem from="1615555104945" duration="31000" />
-      <workItem from="1615579491686" duration="12483000" />
+      <workItem from="1615579491686" duration="12706000" />
+      <workItem from="1615659194220" duration="13635000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -172,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615434362765</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Terminado lo de angular, solo falta carrito y calendario">
+      <created>1615609492820</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1615609492820</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +205,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Añadiendo angular al proyecto" />
     <MESSAGE value="puedo mostrar ya todas las tiendas me falta mostrar las demas cosas" />
-    <option name="LAST_COMMIT_MESSAGE" value="puedo mostrar ya todas las tiendas me falta mostrar las demas cosas" />
+    <MESSAGE value="Terminado lo de angular, solo falta carrito y calendario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminado lo de angular, solo falta carrito y calendario" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Practica1_EDD_$TestPrueba_in_arbolAVL_test_go.out" NAME="TestPrueba in arbolAVL_test.go Coverage Results" MODIFIED="1615667074179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
