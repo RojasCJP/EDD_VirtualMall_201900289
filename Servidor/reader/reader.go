@@ -4,6 +4,7 @@ type Tienda struct {
 	Nombre       string
 	Descripcion  string
 	Contacto     string
+	Logo         string
 	Calificacion int
 }
 

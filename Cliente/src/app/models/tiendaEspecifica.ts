@@ -1,5 +1,5 @@
 export interface TiendaEspecifica {
-  nombre: string;
-  departamento: string;
-  calificacion: number;
+  Nombre: string;
+  Departamento: string;
+  Calificacion: number;
 }

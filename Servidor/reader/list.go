@@ -5,6 +5,7 @@ type Nodo struct {
 	id           int
 	descripcion  string
 	contacto     string
+	logo         string
 	calificacion int
 	siguiente    *Nodo
 	anterior     *Nodo
@@ -18,8 +19,8 @@ func (lista *Lista) First() *Nodo {
 	return lista.primero
 }
 
-func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int) {
-	nodo := Nodo{value, id, descripcion, contacto, calificacion, nil, nil}
+func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int, logo string) {
+	nodo := Nodo{value, id, descripcion, contacto, logo, calificacion, nil, nil}
 	if lista.primero == nil {
 		lista.primero = &nodo
 		lista.ultimo = &nodo
@@ -106,7 +107,7 @@ func (lista *Lista) ShowJson() []Tienda {
 	var auxiliar *Nodo
 	auxiliar = lista.primero
 	for auxiliar != nil {
-		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.calificacion})
+		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.logo, auxiliar.calificacion})
 		auxiliar = auxiliar.siguiente
 	}
 	return listaDoble

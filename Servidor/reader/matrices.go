@@ -4,12 +4,56 @@ import (
 	"sort"
 )
 
-func MakeMatrix(dataJson Datos) [][][][]string {
+type multiSorter struct {
+	changes []Tienda
+	less    []lessFunc
+}
 
-	var matrix [][][][]string
-	var sub3 [][][]string
-	var sub2 [][]string
-	var sub1 []string
+func (ms *multiSorter) Swap(i, j int) {
+	ms.changes[i], ms.changes[j] = ms.changes[j], ms.changes[i]
+}
+func (ms *multiSorter) Len() int {
+	return len(ms.changes)
+}
+func (ms *multiSorter) Sort(changes []Tienda) {
+	ms.changes = changes
+	sort.Sort(ms)
+}
+func (ms *multiSorter) Less(i, j int) bool {
+	p, q := &ms.changes[i], &ms.changes[j]
+	// Try all but the last comparison.
+	var k int
+	for k = 0; k < len(ms.less)-1; k++ {
+		less := ms.less[k]
+		switch {
+		case less(p, q):
+			// p < q, so we have a decision.
+			return true
+		case less(q, p):
+			// p > q, so we have a decision.
+			return false
+		}
+		// p == q; try the next comparison.
+	}
+	// All comparisons to here said "equal", so just return whatever
+	// the final comparison reports.
+	return ms.less[k](p, q)
+}
+
+type lessFunc func(p1, p2 *Tienda) bool
+
+func OrderedBy(less ...lessFunc) *multiSorter {
+	return &multiSorter{
+		less: less,
+	}
+}
+
+func MakeMatrix(dataJson Datos) [][][][]Tienda {
+
+	var matrix [][][][]Tienda
+	var sub3 [][][]Tienda
+	var sub2 [][]Tienda
+	var sub1 []Tienda
 
 	for i := 0; i < len(dataJson.Datos); i++ {
 		matrix = append(matrix, sub3)
@@ -34,7 +78,7 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 			for k := 0; k < len(dataJson.Datos[i].Departamentos[j].Tiendas); k++ {
 				for l := 0; l < 5; l++ {
 					if dataJson.Datos[i].Departamentos[j].Tiendas[k].Calificacion == (l + 1) {
-						matrix[i][j][l] = append(matrix[i][j][l], dataJson.Datos[i].Departamentos[j].Tiendas[k].Nombre)
+						matrix[i][j][l] = append(matrix[i][j][l], dataJson.Datos[i].Departamentos[j].Tiendas[k])
 					}
 				}
 			}
@@ -44,7 +88,10 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 	for i := 0; i < len(matrix); i++ {
 		for j := 0; j < len(matrix[i]); j++ {
 			for k := 0; k < len(matrix[i][j]); k++ {
-				sort.Strings(matrix[i][j][k])
+				nombre := func(c1, c2 *Tienda) bool {
+					return c1.Nombre < c2.Nombre
+				}
+				OrderedBy(nombre).Sort(matrix[i][j][k])
 			}
 		}
 	}
@@ -56,7 +103,7 @@ func MakeMatrix(dataJson Datos) [][][][]string {
 	return matrix
 }
 
-func Linealizar(matrix [][][][]string, dataJson Datos) []Lista {
+func Linealizar(matrix [][][][]Tienda, dataJson Datos) []Lista {
 	var linealizada []Lista
 	var id int
 	id = 0
@@ -73,8 +120,8 @@ func Linealizar(matrix [][][][]string, dataJson Datos) []Lista {
 			for k := 0; k < len(matrix[i][j]); k++ {
 				lista := Lista{}
 				for l := 0; l < len(matrix[i][j][k]); l++ {
-					tiendaAux := FindTiendaWithNombre(matrix[i][j][k][l], dataJson)
-					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion)
+					tiendaAux := matrix[i][j][k][l]
+					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion, tiendaAux.Logo)
 					id++
 				}
 				//fmt.Println(len(matrix[i][j]))

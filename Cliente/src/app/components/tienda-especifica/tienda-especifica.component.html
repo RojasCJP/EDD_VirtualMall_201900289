@@ -1,0 +1,36 @@
+<div class="col-md-4-offset-md-2">
+  <div class="card" style="margin-bottom: 20px">
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <input type="text" name="nombre" [(ngModel)]="tiendaEspecifica.Nombre" placeholder="Nombre"
+                 class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="text" name="departamento" [(ngModel)]="tiendaEspecifica.Departamento" placeholder="Departamento"
+                 class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="number" name="calificacion" [(ngModel)]="tiendaEspecifica.Calificacion"
+                 placeholder="Calificacion" class="form-control">
+        </div>
+        <div>
+          <button class="btn btn-success btn-block" (click)="consultTienda()">Consultar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card text-center align-items-center">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      {{tienda.Nombre}}
+    </div>
+    <div class="card-body">
+      <img src="{{tienda.Logo}}" height="150px" width="100%" *ngIf="tienda.Logo!=null">
+      <img src="assets/kleinDePrueba.jpg" height="150px" width="100%" *ngIf="tienda.Logo==null">
+      <p></p>
+      <p>Descripcion: {{tienda.Descripcion}}</p>
+      <p>Contacto: {{tienda.Contacto}}</p>
+      <p>Calificacion: {{tienda.Calificacion}}</p>
+    </div>
+  </div>
+</div>

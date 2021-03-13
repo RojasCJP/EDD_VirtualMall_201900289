@@ -13,6 +13,7 @@ import (
 )
 
 var JsonData = Datos{}
+var imagenPredeterminada string = "https://es.jumpseller.com/images/learn/choosing-platform/laptop.jpg"
 
 type htmltemplate struct {
 	Name   string
@@ -58,24 +59,38 @@ func LevantarServer() {
 
 func todasTiendas(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("se accedio a todasTiendas")
-	page1 := TiendaTransicional{"Gerardo Weco", "Hola Gerardo", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
-	page2 := TiendaTransicional{"Gerardo Hueco", "Como estas", "holaquetal@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
-	page3 := TiendaTransicional{"Gerardo Gar", "Gerardo es gay", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
-	page4 := TiendaTransicional{"Gerardo Homosexual", "Le gusta Edson", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
-	page5 := TiendaTransicional{"Gerardo Wapo", "Gerardo weco", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
-	var pages []TiendaTransicional
-	pages = append(pages, page1)
-	pages = append(pages, page2)
-	pages = append(pages, page3)
-	pages = append(pages, page4)
-	pages = append(pages, page5)
-	data, err := json.Marshal(pages)
+	//page1 := TiendaTransicional{"Gerardo Weco", "Hola Gerardo", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	//page2 := TiendaTransicional{"Gerardo Hueco", "Como estas", "holaquetal@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	//page3 := TiendaTransicional{"Gerardo Gar", "Gerardo es gay", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	//page4 := TiendaTransicional{"Gerardo Homosexual", "Le gusta Edson", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	//page5 := TiendaTransicional{"Gerardo Wapo", "Gerardo weco", "gerardoWeco@gmail.com", 69, "https://scontent.fgua3-2.fna.fbcdn.net/v/t1.0-9/88339887_2840382472710717_3169115093359132672_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=UJjNuNTyouoAX-SAP0G&_nc_ht=scontent.fgua3-2.fna&oh=c2ae32f06c0c7522c5cd90b60b134608&oe=606E33FF"}
+	//var pages []TiendaTransicional
+	//pages = append(pages, page1)
+	//pages = append(pages, page2)
+	//pages = append(pages, page3)
+	//pages = append(pages, page4)
+	//pages = append(pages, page5)
+	//data, err := json.Marshal(pages)
+	data, err := json.Marshal(todasLasTiendas())
 	if err != nil {
 		response.Write([]byte("ocurrio un error"))
 	}
 	response.Write(data)
 	//response.Write([]byte("Recuerda que lo primero que debes hacer es cargar tu archivo "))
 
+}
+
+func todasLasTiendas() []Tienda {
+	matrix := MakeMatrix(JsonData)
+	linealizada := Linealizar(matrix, JsonData)
+	var listaCompleta []Tienda
+	for i := 0; i < len(linealizada); i++ {
+		lista := linealizada[i].ShowJson()
+		for j := 0; j < len(lista); j++ {
+			listaCompleta = append(listaCompleta, lista[j])
+		}
+	}
+	return listaCompleta
 }
 
 func imagenSubida(response http.ResponseWriter, request *http.Request) {
@@ -211,13 +226,14 @@ func FindTienda(especifica Especifica, data Datos) Tienda {
 					auxiliar.Calificacion = tienda.Calificacion
 					auxiliar.Descripcion = tienda.Descripcion
 					auxiliar.Contacto = tienda.Contacto
+					auxiliar.Logo = tienda.Logo
 					return auxiliar
 				}
 			}
 		}
 	}
 
-	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", 0}
+	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, 0}
 }
 
 func DeleteTienda(especifica Especifica, data Datos) (Datos, string) {
@@ -249,13 +265,14 @@ func FindTiendaWithNombre(nombre string, data Datos) Tienda { //todo me va a ser
 					auxiliar.Calificacion = tienda.Calificacion
 					auxiliar.Descripcion = tienda.Descripcion
 					auxiliar.Contacto = tienda.Contacto
+					auxiliar.Logo = tienda.Logo
 					return auxiliar
 				}
 			}
 		}
 	}
 
-	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", 0}
+	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, 0}
 }
 
 func GuardarArchivo() {
