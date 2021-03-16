@@ -1,11 +1,17 @@
 package reader
 
+import (
+	"./dataStructures"
+)
+
 type Tienda struct {
 	Nombre       string
 	Descripcion  string
 	Contacto     string
 	Logo         string
+	Inventario   dataStructures.AVLtree
 	Calificacion int
+	Id           int
 }
 
 type Departamento struct {

@@ -1,17 +1,22 @@
 <div class="row">
-<div class="col-md-4 col-12" *ngFor="let tienda of tiendas" style="margin-bottom: 15px;">
-  <div class="card text-center align-items-center">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      {{tienda.Nombre}}
-    </div>
-    <div class="card-body">
-      <img src="{{tienda.Logo}}" height="150px" width="100%" *ngIf="tienda.Logo!=null">
-      <img src="assets/kleinDePrueba.jpg" height="150px" width="100%" *ngIf="tienda.Logo==null">
-      <p></p>
-      <p>Descripcion: {{tienda.Descripcion}}</p>
-      <p>Contacto: {{tienda.Contacto}}</p>
-      <p>Calificacion: {{tienda.Calificacion}}</p>
+  <div class="col-md-4 col-12" *ngFor="let tienda of tiendas" style="margin-bottom: 15px;">
+    <div class="card text-center align-items-center">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        {{tienda.Nombre}}
+      </div>
+      <div class="card-body">
+        <img src="{{tienda.Logo}}" height="150px" width="100%" *ngIf="tienda.Logo!=null">
+        <img src="assets/kleinDePrueba.jpg" height="150px" width="100%" *ngIf="tienda.Logo==null">
+        <p></p>
+        <p>Descripcion: {{tienda.Descripcion}}</p>
+        <p>Contacto: {{tienda.Contacto}}</p>
+        <p>Calificacion: {{tienda.Calificacion}}</p>
+        <p>ID: {{tienda.Id}}</p>
+        <div>
+          <a class="btn btn-success btn-block" (click)="verInventario(tienda.Id)">Ver Inventario</a>
+          <button class="btn btn-success btn-block">Añadir Inventario</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </div>

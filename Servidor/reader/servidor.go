@@ -1,6 +1,7 @@
 package reader
 
 import (
+	"./dataStructures"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/handlers"
@@ -14,6 +15,7 @@ import (
 
 var JsonData = Datos{}
 var imagenPredeterminada string = "https://es.jumpseller.com/images/learn/choosing-platform/laptop.jpg"
+var arregloListas []Lista
 
 type htmltemplate struct {
 	Name   string
@@ -49,11 +51,13 @@ func LevantarServer() {
 	router.HandleFunc("/getArreglo", getArreglo).Methods("GET")
 	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica).Methods("POST")
 	router.HandleFunc("/id/{numero}", idTienda).Methods("GET")
+	router.HandleFunc("/tiendaUnica/{numero}", findTiendaUnica).Methods("GET")
+	router.HandleFunc("/inventario/{numero}", showInventario).Methods("GET")
+	router.HandleFunc("/inventario/{numero}", meterElemento).Methods("POST")
 	router.HandleFunc("/Eliminar", eliminarTienda).Methods("DELETE")
 	router.HandleFunc("/imagen", imagenSubida)
 	router.HandleFunc("/guardar", GuardarRoutes)
 	router.HandleFunc("/todasTiendas", todasTiendas).Methods("GET")
-	//todo tengo que hacer una para todas las tiendas, ahorita la voy a hacer quemada
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -82,10 +86,12 @@ func todasTiendas(response http.ResponseWriter, request *http.Request) {
 
 func todasLasTiendas() []Tienda {
 	matrix := MakeMatrix(JsonData)
-	linealizada := Linealizar(matrix, JsonData)
+	if len(arregloListas) == 0 {
+		arregloListas = Linealizar(matrix, JsonData)
+	}
 	var listaCompleta []Tienda
-	for i := 0; i < len(linealizada); i++ {
-		lista := linealizada[i].ShowJson()
+	for i := 0; i < len(arregloListas); i++ {
+		lista := arregloListas[i].ShowJson()
 		for j := 0; j < len(lista); j++ {
 			listaCompleta = append(listaCompleta, lista[j])
 		}
@@ -130,8 +136,10 @@ func CargarJson(response http.ResponseWriter, request *http.Request) {
 
 func getArreglo(response http.ResponseWriter, request *http.Request) {
 	matrix := MakeMatrix(JsonData)
-	linealizada := Linealizar(matrix, JsonData)
-	paraEnviar := ShowArray(linealizada[:])
+	if len(arregloListas) == 0 {
+		arregloListas = Linealizar(matrix, JsonData)
+	}
+	paraEnviar := ShowArray(arregloListas[:])
 	GraphvizMethod(paraEnviar)
 	fmt.Println(paraEnviar)
 	//data, err2 := json.Marshal(paraEnviar)
@@ -175,14 +183,56 @@ func idTienda(response http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		response.Write([]byte("el id que ingreso es invalido"))
 	}
-	linealizada := Linealizar(matrix, JsonData)
-	nombre := linealizada[numero-1]
+	if len(arregloListas) == 0 {
+		arregloListas = Linealizar(matrix, JsonData)
+	}
+	nombre := arregloListas[numero-1]
 	tienda := nombre.ShowJson()
 	salida, err3 := json.Marshal(tienda)
 	if err3 != nil {
 		response.Write([]byte("error en la conversion de json"))
 	}
 	response.Write(salida)
+}
+
+func findTiendaUnica(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	numero, err := strconv.Atoi(vars["numero"])
+	if err != nil {
+		response.Write([]byte("el id que ingreso es invalido"))
+	}
+	//este es la linea que tengo que usar para cambiar datos
+	tiendaUnica := FindWithId(numero, &arregloListas)
+	//tiendaUnica.tienda = "hola"
+	salida, _ := json.Marshal(Tienda{tiendaUnica.tienda, tiendaUnica.descripcion, tiendaUnica.contacto, tiendaUnica.logo, tiendaUnica.inventario, tiendaUnica.calificacion, tiendaUnica.id})
+	response.Write(salida)
+}
+
+func showInventario(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	numero, err := strconv.Atoi(vars["numero"])
+	if err != nil {
+		response.Write([]byte("el id que ingreso es invalido"))
+	}
+	tiendaUnica := FindWithId(numero, &arregloListas)
+	tiendaUnica.inventario.MakeGraphviz(tiendaUnica.inventario.Root)
+}
+
+func meterElemento(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	numero, err := strconv.Atoi(vars["numero"])
+	if err != nil {
+		response.Write([]byte("el id que ingreso no es valido"))
+	}
+	tiendaUnica := FindWithId(numero, &arregloListas)
+	data, err1 := ioutil.ReadAll(request.Body)
+	if err1 != nil {
+		response.Write([]byte("entrada no valida"))
+	}
+	var nuevo dataStructures.Producto
+	json.Unmarshal(data, &nuevo)
+	//todo tengo que ver que las tiendas sean diferentes, de lo contrario tengo que sumar nada mas
+	tiendaUnica.inventario.Add(nuevo)
 }
 
 func eliminarTienda(response http.ResponseWriter, request *http.Request) {
@@ -233,7 +283,7 @@ func FindTienda(especifica Especifica, data Datos) Tienda {
 		}
 	}
 
-	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, 0}
+	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, dataStructures.AVLtree{}, 0, 0}
 }
 
 func DeleteTienda(especifica Especifica, data Datos) (Datos, string) {
@@ -252,27 +302,6 @@ func DeleteTienda(especifica Especifica, data Datos) (Datos, string) {
 	}
 
 	return data, "no se encontro ninguna tienda con estos datos"
-}
-
-func FindTiendaWithNombre(nombre string, data Datos) Tienda { //todo me va a servir para meter los datos a la matriz
-	auxiliar := Tienda{}
-	for i := 0; i < len(data.Datos); i++ {
-		for j := 0; j < len(data.Datos[i].Departamentos); j++ {
-			for k := 0; k < len(data.Datos[i].Departamentos[j].Tiendas); k++ {
-				tienda := data.Datos[i].Departamentos[j].Tiendas[k]
-				if tienda.Nombre == nombre {
-					auxiliar.Nombre = tienda.Nombre
-					auxiliar.Calificacion = tienda.Calificacion
-					auxiliar.Descripcion = tienda.Descripcion
-					auxiliar.Contacto = tienda.Contacto
-					auxiliar.Logo = tienda.Logo
-					return auxiliar
-				}
-			}
-		}
-	}
-
-	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, 0}
 }
 
 func GuardarArchivo() {

@@ -1,0 +1,8 @@
+digraph arbol{
+  node [shape=record]
+"23135" [label="23135|{algunNombre|123}|12.00"]
+"23136" [label="23136|{algunNombre|123}|12.00"]
+"23136"->"23135"
+"23136"->"23137"
+"23137" [label="23137|{algunNombre|123}|12.00"]
+}

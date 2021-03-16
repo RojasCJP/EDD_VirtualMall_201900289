@@ -1,5 +1,9 @@
 package reader
 
+import (
+	"./dataStructures"
+)
+
 type Nodo struct {
 	tienda       string
 	id           int
@@ -9,6 +13,7 @@ type Nodo struct {
 	calificacion int
 	siguiente    *Nodo
 	anterior     *Nodo
+	inventario   dataStructures.AVLtree
 }
 type Lista struct {
 	primero *Nodo
@@ -19,8 +24,8 @@ func (lista *Lista) First() *Nodo {
 	return lista.primero
 }
 
-func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int, logo string) {
-	nodo := Nodo{value, id, descripcion, contacto, logo, calificacion, nil, nil}
+func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int, logo string, inventario dataStructures.AVLtree) {
+	nodo := Nodo{value, id, descripcion, contacto, logo, calificacion, nil, nil, inventario}
 	if lista.primero == nil {
 		lista.primero = &nodo
 		lista.ultimo = &nodo
@@ -107,7 +112,7 @@ func (lista *Lista) ShowJson() []Tienda {
 	var auxiliar *Nodo
 	auxiliar = lista.primero
 	for auxiliar != nil {
-		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.logo, auxiliar.calificacion})
+		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.logo, auxiliar.inventario, auxiliar.calificacion, auxiliar.id})
 		auxiliar = auxiliar.siguiente
 	}
 	return listaDoble

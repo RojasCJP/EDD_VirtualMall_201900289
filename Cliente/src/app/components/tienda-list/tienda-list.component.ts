@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TiendasService} from '../../services/tiendas.service';
 import {Tienda} from '../../models/tienda';
+import {InventarioService} from '../../services/inventario.service';
 
 @Component({
   selector: 'app-tienda-list',
@@ -11,7 +12,7 @@ export class TiendaListComponent implements OnInit {
 
   tiendas: any = [];
 
-  constructor(private tiendaService: TiendasService) {
+  constructor(private tiendaService: TiendasService, private inventarioService: InventarioService) {
   }
 
   ngOnInit(): void {
@@ -23,5 +24,14 @@ export class TiendaListComponent implements OnInit {
     );
   }
 
+  verInventario(id: number): void {
+    this.inventarioService.getInventario(id).subscribe(
+      res => {
+        window.location.href = '/inventarioView';
+      },
+      error => console.log(error)
+    );
+  }
 }
+
 // todo tengo ya hecho que me muestre todas las tiendas

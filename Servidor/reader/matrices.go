@@ -121,7 +121,7 @@ func Linealizar(matrix [][][][]Tienda, dataJson Datos) []Lista {
 				lista := Lista{}
 				for l := 0; l < len(matrix[i][j][k]); l++ {
 					tiendaAux := matrix[i][j][k][l]
-					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion, tiendaAux.Logo)
+					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion, tiendaAux.Logo, tiendaAux.Inventario)
 					id++
 				}
 				//fmt.Println(len(matrix[i][j]))
@@ -132,13 +132,12 @@ func Linealizar(matrix [][][][]Tienda, dataJson Datos) []Lista {
 	return linealizada
 }
 
-func FindWithId(id int, linealizada []Lista) string {
-	var nombre string
-	for i := 0; i < len(linealizada); i++ {
-		nodo := linealizada[i].FindId(id)
+func FindWithId(id int, linealizada *[]Lista) *Nodo {
+	for i := 0; i < len(*linealizada); i++ {
+		nodo := (*linealizada)[i].FindId(id)
 		if nodo != nil {
-			return nodo.Value()
+			return nodo
 		}
 	}
-	return nombre
+	return nil
 }

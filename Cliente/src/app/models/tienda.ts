@@ -4,4 +4,5 @@ export interface Tienda {
   Contacto: string;
   Calificacion: number;
   Logo: string;
+  IdTienda: number;
 }

@@ -1,6 +1,13 @@
 package dataStructures
 
-import "strconv"
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os/exec"
+	"strconv"
+	"strings"
+)
 
 type Producto struct {
 	Nombre      string
@@ -18,11 +25,11 @@ type NodoAVL struct {
 }
 
 type AVLtree struct {
-	root *NodoAVL
+	Root *NodoAVL
 }
 
-func (tree *AVLtree) add(valor Producto) {
-	tree.root = tree._add(valor, tree.root)
+func (tree *AVLtree) Add(valor Producto) {
+	tree.Root = tree._add(valor, tree.Root)
 }
 
 func (tree AVLtree) _add(valor Producto, tmp *NodoAVL) *NodoAVL {
@@ -126,5 +133,42 @@ func (tree AVLtree) postorder(tmp *NodoAVL) {
 		tree.postorder(tmp.izquierdo)
 		tree.postorder(tmp.derecho)
 		postorder += strconv.Itoa(tmp.valor.Codigo) + " "
+	}
+}
+
+var cuerpo string
+
+func (tree AVLtree) MakeGraphviz(tmp *NodoAVL) {
+	cuerpo = "digraph arbol{\n  node [shape=record]\n"
+	tree.MakeCuerpo(tmp)
+	cuerpo += "}"
+	err := ioutil.WriteFile("../Cliente/src/assets/graphviz/inventario.dot", []byte(cuerpo), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := "dot.exe -Tpng ../Cliente/src/assets/graphviz/inventario.dot -o ../Cliente/src/assets/arboles/inventario.png"
+	args := strings.Split(s, " ")
+	cmd := exec.Command(args[0], args[1:]...)
+	err1 := cmd.Start()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+	err1 = cmd.Wait()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+}
+
+func (tree AVLtree) MakeCuerpo(tmp *NodoAVL) {
+	if tmp != nil {
+		tree.MakeCuerpo(tmp.izquierdo)
+		cuerpo += "\"" + strconv.Itoa(tmp.valor.Codigo) + "\"" + " [label=\"" + strconv.Itoa(tmp.valor.Codigo) + "|{" + tmp.valor.Nombre + "|" + strconv.Itoa(tmp.valor.Cantidad) + "}|" + fmt.Sprintf("%.2f", tmp.valor.Precio) + "\"]\n"
+		if tmp.izquierdo != nil {
+			cuerpo += "\"" + strconv.Itoa(tmp.valor.Codigo) + "\"->\"" + strconv.Itoa(tmp.izquierdo.valor.Codigo) + "\"\n"
+		}
+		if tmp.derecho != nil {
+			cuerpo += "\"" + strconv.Itoa(tmp.valor.Codigo) + "\"->\"" + strconv.Itoa(tmp.derecho.valor.Codigo) + "\"\n"
+		}
+		tree.MakeCuerpo(tmp.derecho)
 	}
 }

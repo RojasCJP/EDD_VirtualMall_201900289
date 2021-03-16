@@ -6,6 +6,7 @@ import {CalendarioComponent} from './components/calendario/calendario.component'
 import {TiendaEspecificaComponent} from './components/tienda-especifica/tienda-especifica.component';
 import {CargarTiendasComponent} from './components/cargar-tiendas/cargar-tiendas.component';
 import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tienda.component';
+import {InventarioViewComponent} from './components/inventario-view/inventario-view.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'eliminarTienda',
     component: EliminarTiendaComponent
+  },
+  {
+    path: 'inventarioView',
+    component: InventarioViewComponent
   }
 ];
 

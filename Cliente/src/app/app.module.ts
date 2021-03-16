@@ -12,6 +12,8 @@ import {CalendarioComponent} from './components/calendario/calendario.component'
 import {TiendaEspecificaComponent} from './components/tienda-especifica/tienda-especifica.component';
 import {CargarTiendasComponent} from './components/cargar-tiendas/cargar-tiendas.component';
 import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tienda.component';
+import { InventarioViewComponent } from './components/inventario-view/inventario-view.component';
+import { InventarioFormComponent } from './components/inventario-form/inventario-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tie
     CalendarioComponent,
     TiendaEspecificaComponent,
     CargarTiendasComponent,
-    EliminarTiendaComponent
+    EliminarTiendaComponent,
+    InventarioViewComponent,
+    InventarioFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,5 +37,4 @@ import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tie
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
