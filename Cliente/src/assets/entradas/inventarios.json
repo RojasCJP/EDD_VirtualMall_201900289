@@ -1,0 +1,68 @@
+{
+  "Inventarios": [{
+    "Tienda": "Aguayo Cepeda S.A.",
+    "Departamento": "Amazon Coins",
+    "Calificacion": 4,
+    "Productos": [{
+      "Nombre": "s8",
+      "Codigo": 1234,
+      "Descripcion": "El smartphone del futuro",
+      "Precio": 2500.00,
+      "Cantidad": 25,
+      "Imagen":"https://i.blogs.es/7a4489/galaxy-s8-4/450_1000.jpg"
+    },
+      {
+        "Nombre": "s9",
+        "Codigo": 1233,
+        "Descripcion": "El smartphone del futuro mejorado",
+        "Precio": 5500.00,
+        "Cantidad": 10,
+        "Imagen":"https://static.kemikcdn.com/2019/01/griss.jpg"
+      }
+    ]
+  },
+    {
+      "Tienda": "Amaya, Rolón y Chavarría Asociados",
+      "Departamento": "Amazon Coins",
+      "Calificacion": 5,
+      "Productos": [{
+        "Nombre": "P40 Pro",
+        "Codigo": 1222,
+        "Descripcion": "Sobresale en todas Sus areas",
+        "Precio": 5500.00,
+        "Cantidad": 15,
+        "Imagen":"https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/01/estos-seran-colores-camaras-huawei-p40-p40-pro-1846245.jpg?itok=SE-h-ICj"
+      },
+        {
+          "Nombre": "Mate 40 Pro",
+          "Codigo": 1232,
+          "Descripcion": "Son ahora mas eficientes energicamente",
+          "Precio": 7500.00,
+          "Cantidad": 10,
+          "Imagen":"https://files.gsmchoice.com/phones/lenovo-p90-pro/lenovo-p90-pro-17.jpg"
+        }
+      ]
+    },{
+      "Tienda": "Aguayo Cepeda S.A.",
+      "Departamento": "Sensores",
+      "Calificacion": 4,
+      "Productos": [{
+        "Nombre": "s8",
+        "Codigo": 246,
+        "Descripcion": "El smartphone del futuro",
+        "Precio": 2500.00,
+        "Cantidad": 25,
+        "Imagen":"https://i.blogs.es/7a4489/galaxy-s8-4/450_1000.jpg"
+      },
+        {
+          "Nombre": "s9",
+          "Codigo": 247,
+          "Descripcion": "El smartphone del futuro mejorado",
+          "Precio": 5500.00,
+          "Cantidad": 10,
+          "Imagen":"https://static.kemikcdn.com/2019/01/griss.jpg"
+        }
+      ]
+    }
+  ]
+}

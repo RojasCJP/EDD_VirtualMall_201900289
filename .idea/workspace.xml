@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-form/inventario-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-form/inventario-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-form/inventario-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-form/inventario-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-especifica/tienda-especifica.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-especifica/tienda-especifica.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-especifica/tienda-especifica.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-especifica/tienda-especifica.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/models/tienda.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/models/tienda.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/matrices.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/matrices.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/reader.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/reader.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/getAll.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/getAll.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/imagen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/imagen.png" afterDir="false" />
-    </list>
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,7 +164,7 @@
       <workItem from="1615864777418" duration="1465000" />
       <workItem from="1615915586526" duration="16000" />
       <workItem from="1615934898134" duration="30000" />
-      <workItem from="1615935069045" duration="12625000" />
+      <workItem from="1615935069045" duration="12798000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -223,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615866170555</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras">
+      <created>1615953883880</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615953883880</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +232,8 @@
     <MESSAGE value="Terminado lo de angular, solo falta carrito y calendario" />
     <MESSAGE value="Creado el arbol AVL" />
     <MESSAGE value="arbol y visualizacion de arbol practicamente terminada" />
-    <option name="LAST_COMMIT_MESSAGE" value="arbol y visualizacion de arbol practicamente terminada" />
+    <MESSAGE value="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
