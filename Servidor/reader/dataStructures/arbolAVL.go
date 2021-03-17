@@ -15,6 +15,7 @@ type Producto struct {
 	Descripcion string
 	Precio      float32
 	Cantidad    int
+	Imagen      string
 }
 
 type NodoAVL struct {

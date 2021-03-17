@@ -7,6 +7,7 @@ import {TiendaEspecificaComponent} from './components/tienda-especifica/tienda-e
 import {CargarTiendasComponent} from './components/cargar-tiendas/cargar-tiendas.component';
 import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tienda.component';
 import {InventarioViewComponent} from './components/inventario-view/inventario-view.component';
+import {InventarioFormComponent} from './components/inventario-form/inventario-form.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'inventarioView',
     component: InventarioViewComponent
+  },
+  {
+    path: 'inventarioAdd',
+    component: InventarioFormComponent
   }
 ];
 

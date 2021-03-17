@@ -17,7 +17,8 @@ export class TiendaEspecificaComponent implements OnInit {
     Contacto: '',
     Calificacion: 0,
     Logo: '',
-    IdTienda: 0
+    Id: 0,
+    Departamento: ''
   };
 
   tiendaEspecifica: TiendaEspecifica = {

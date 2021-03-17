@@ -14,7 +14,7 @@ func TestPreorder(t *testing.T) {
 	tree.Add(Producto{Codigo: 30, Nombre: "espero", Precio: 15, Descripcion: "espero", Cantidad: 10})
 	tree.Add(Producto{Codigo: 35, Nombre: "bien", Precio: 17.5, Descripcion: "bien", Cantidad: 5})
 	tree.preorder(tree.Root)
-	tree.MakeGraphviz(tree.Root)
+	//tree.MakeGraphviz(tree.Root)
 	if preorder != "20 10 5 15 30 25 35 " {
 		t.Error("test not passed")
 	}

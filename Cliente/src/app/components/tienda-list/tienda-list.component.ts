@@ -10,7 +10,7 @@ import {InventarioService} from '../../services/inventario.service';
 })
 export class TiendaListComponent implements OnInit {
 
-  tiendas: any = [];
+  tiendas: Tienda[] = [];
 
   constructor(private tiendaService: TiendasService, private inventarioService: InventarioService) {
   }

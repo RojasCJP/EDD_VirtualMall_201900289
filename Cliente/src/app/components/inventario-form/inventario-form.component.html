@@ -1,1 +1,15 @@
-<p>inventario-form works!</p>
+<div class="col-md-4-offset-md-2">
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <textarea type="json" nombre="cuerpo" placeholder="Cuerpo" [(ngModel)]="cuerpoString"
+                    [ngModelOptions]="{standalone: true}" class="form-control" rows="5" autofocus></textarea>
+        </div>
+        <div>
+          <button class="btn btn-success btn-block" (click)="cargarInventario()">Cargar Inventario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

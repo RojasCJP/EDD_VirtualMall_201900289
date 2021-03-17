@@ -1,8 +1,26 @@
 package reader
 
 import (
+	"./dataStructures"
 	"sort"
 )
+
+type InventariosData struct {
+	//todo tengo que ver si le van a poner inventarios o invetarios
+	Inventarios []Inventario
+}
+
+type Inventario struct {
+	Tienda       string
+	Departamento string
+	Calificacion int
+	Productos    []dataStructures.Producto
+}
+
+type DevolucionInventario struct {
+	Nodo  *Nodo
+	Lista []dataStructures.Producto
+}
 
 type multiSorter struct {
 	changes []Tienda
@@ -78,7 +96,8 @@ func MakeMatrix(dataJson Datos) [][][][]Tienda {
 			for k := 0; k < len(dataJson.Datos[i].Departamentos[j].Tiendas); k++ {
 				for l := 0; l < 5; l++ {
 					if dataJson.Datos[i].Departamentos[j].Tiendas[k].Calificacion == (l + 1) {
-						matrix[i][j][l] = append(matrix[i][j][l], dataJson.Datos[i].Departamentos[j].Tiendas[k])
+						tienda := dataJson.Datos[i].Departamentos[j].Tiendas[k]
+						matrix[i][j][l] = append(matrix[i][j][l], Tienda{tienda.Nombre, tienda.Descripcion, tienda.Contacto, tienda.Logo, tienda.Inventario, dataJson.Datos[i].Departamentos[j].Nombre, tienda.Calificacion, tienda.Id})
 					}
 				}
 			}
@@ -121,7 +140,7 @@ func Linealizar(matrix [][][][]Tienda, dataJson Datos) []Lista {
 				lista := Lista{}
 				for l := 0; l < len(matrix[i][j][k]); l++ {
 					tiendaAux := matrix[i][j][k][l]
-					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion, tiendaAux.Logo, tiendaAux.Inventario)
+					lista.Insert(tiendaAux.Nombre, id, tiendaAux.Descripcion, tiendaAux.Contacto, tiendaAux.Calificacion, tiendaAux.Logo, tiendaAux.Inventario, tiendaAux.Departamento)
 					id++
 				}
 				//fmt.Println(len(matrix[i][j]))
@@ -140,4 +159,19 @@ func FindWithId(id int, linealizada *[]Lista) *Nodo {
 		}
 	}
 	return nil
+}
+
+func FindParaInventario(data InventariosData, linealizada *[]Lista) []DevolucionInventario {
+	var tiendaBusqueda paraInventario
+	var devolucion []DevolucionInventario
+	for i := 0; i < len(data.Inventarios); i++ {
+		tiendaBusqueda = paraInventario{data.Inventarios[i].Tienda, data.Inventarios[i].Departamento, data.Inventarios[i].Calificacion}
+		for j := 0; j < len(*linealizada); j++ {
+			nodo := (*linealizada)[j].FindParaInventario(tiendaBusqueda)
+			if nodo != nil {
+				devolucion = append(devolucion, DevolucionInventario{Nodo: nodo, Lista: data.Inventarios[i].Productos})
+			}
+		}
+	}
+	return devolucion
 }

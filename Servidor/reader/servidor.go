@@ -53,7 +53,7 @@ func LevantarServer() {
 	router.HandleFunc("/id/{numero}", idTienda).Methods("GET")
 	router.HandleFunc("/tiendaUnica/{numero}", findTiendaUnica).Methods("GET")
 	router.HandleFunc("/inventario/{numero}", showInventario).Methods("GET")
-	router.HandleFunc("/inventario/{numero}", meterElemento).Methods("POST")
+	router.HandleFunc("/inventario", meterElementos).Methods("POST")
 	router.HandleFunc("/Eliminar", eliminarTienda).Methods("DELETE")
 	router.HandleFunc("/imagen", imagenSubida)
 	router.HandleFunc("/guardar", GuardarRoutes)
@@ -204,7 +204,7 @@ func findTiendaUnica(response http.ResponseWriter, request *http.Request) {
 	//este es la linea que tengo que usar para cambiar datos
 	tiendaUnica := FindWithId(numero, &arregloListas)
 	//tiendaUnica.tienda = "hola"
-	salida, _ := json.Marshal(Tienda{tiendaUnica.tienda, tiendaUnica.descripcion, tiendaUnica.contacto, tiendaUnica.logo, tiendaUnica.inventario, tiendaUnica.calificacion, tiendaUnica.id})
+	salida, _ := json.Marshal(Tienda{tiendaUnica.tienda, tiendaUnica.descripcion, tiendaUnica.contacto, tiendaUnica.logo, tiendaUnica.inventario, tiendaUnica.departamento, tiendaUnica.calificacion, tiendaUnica.id})
 	response.Write(salida)
 }
 
@@ -218,21 +218,26 @@ func showInventario(response http.ResponseWriter, request *http.Request) {
 	tiendaUnica.inventario.MakeGraphviz(tiendaUnica.inventario.Root)
 }
 
-func meterElemento(response http.ResponseWriter, request *http.Request) {
-	vars := mux.Vars(request)
-	numero, err := strconv.Atoi(vars["numero"])
-	if err != nil {
-		response.Write([]byte("el id que ingreso no es valido"))
-	}
-	tiendaUnica := FindWithId(numero, &arregloListas)
+func meterElementos(response http.ResponseWriter, request *http.Request) {
 	data, err1 := ioutil.ReadAll(request.Body)
 	if err1 != nil {
 		response.Write([]byte("entrada no valida"))
 	}
-	var nuevo dataStructures.Producto
-	json.Unmarshal(data, &nuevo)
+	var inventarioCompleto []DevolucionInventario
+	var entradaMetodo InventariosData
+	err := json.Unmarshal(data, &entradaMetodo)
+	if err != nil {
+		fmt.Println("ocurrio un error")
+	}
+	inventarioCompleto = FindParaInventario(entradaMetodo, &arregloListas)
+	for i := 0; i < len(inventarioCompleto); i++ {
+		tienda := inventarioCompleto[i].Nodo
+		inventario := inventarioCompleto[i].Lista
+		for j := 0; j < len(inventario); j++ {
+			tienda.inventario.Add(inventario[j])
+		}
+	}
 	//todo tengo que ver que las tiendas sean diferentes, de lo contrario tengo que sumar nada mas
-	tiendaUnica.inventario.Add(nuevo)
 }
 
 func eliminarTienda(response http.ResponseWriter, request *http.Request) {
@@ -283,7 +288,7 @@ func FindTienda(especifica Especifica, data Datos) Tienda {
 		}
 	}
 
-	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, dataStructures.AVLtree{}, 0, 0}
+	return Tienda{"Su tienda no se encuentra", "Ingrese una tienda valida", "Algun dato no es correcto", imagenPredeterminada, dataStructures.AVLtree{}, "", 0, 0}
 }
 
 func DeleteTienda(especifica Especifica, data Datos) (Datos, string) {

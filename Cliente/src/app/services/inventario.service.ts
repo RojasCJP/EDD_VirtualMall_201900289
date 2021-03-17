@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {InventarioEntrada} from '../models/inventarioEntrada';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class InventarioService {
 
   getInventario(id: number): Observable<any> {
     return this.http.get(`${this.API_URI}/inventario/${id}`);
+  }
+
+  addInventario(inventario: InventarioEntrada): Observable<any> {
+    return this.http.post(`${this.API_URI}/inventario`, inventario);
   }
 }

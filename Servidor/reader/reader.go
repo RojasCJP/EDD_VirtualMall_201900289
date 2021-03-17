@@ -10,6 +10,7 @@ type Tienda struct {
 	Contacto     string
 	Logo         string
 	Inventario   dataStructures.AVLtree
+	Departamento string
 	Calificacion int
 	Id           int
 }

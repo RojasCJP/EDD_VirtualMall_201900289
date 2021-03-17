@@ -14,18 +14,25 @@ type Nodo struct {
 	siguiente    *Nodo
 	anterior     *Nodo
 	inventario   dataStructures.AVLtree
+	departamento string
 }
 type Lista struct {
 	primero *Nodo
 	ultimo  *Nodo
 }
 
+type paraInventario struct {
+	Tienda       string
+	Departamento string
+	Calificacion int
+}
+
 func (lista *Lista) First() *Nodo {
 	return lista.primero
 }
 
-func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int, logo string, inventario dataStructures.AVLtree) {
-	nodo := Nodo{value, id, descripcion, contacto, logo, calificacion, nil, nil, inventario}
+func (lista *Lista) Insert(value string, id int, descripcion string, contacto string, calificacion int, logo string, inventario dataStructures.AVLtree, departamento string) {
+	nodo := Nodo{value, id, descripcion, contacto, logo, calificacion, nil, nil, inventario, departamento}
 	if lista.primero == nil {
 		lista.primero = &nodo
 		lista.ultimo = &nodo
@@ -107,12 +114,25 @@ func (lista *Lista) FindId(busqueda int) *Nodo {
 	return nil
 }
 
+func (lista *Lista) FindParaInventario(busqueda paraInventario) *Nodo {
+	var auxiliar *Nodo
+	auxiliar = lista.primero
+	for auxiliar != nil {
+		if (auxiliar.departamento == busqueda.Departamento) && (auxiliar.tienda == busqueda.Tienda) && (auxiliar.calificacion == busqueda.Calificacion) {
+			return auxiliar
+		} else {
+			auxiliar = auxiliar.siguiente
+		}
+	}
+	return nil
+}
+
 func (lista *Lista) ShowJson() []Tienda {
 	var listaDoble []Tienda
 	var auxiliar *Nodo
 	auxiliar = lista.primero
 	for auxiliar != nil {
-		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.logo, auxiliar.inventario, auxiliar.calificacion, auxiliar.id})
+		listaDoble = append(listaDoble, Tienda{auxiliar.tienda, auxiliar.descripcion, auxiliar.contacto, auxiliar.logo, auxiliar.inventario, auxiliar.departamento, auxiliar.calificacion, auxiliar.id})
 		auxiliar = auxiliar.siguiente
 	}
 	return listaDoble
