@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO">
+      <change afterPath="$PROJECT_DIR$/Cliente/src/app/models/inventarioElemento.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/matriz.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/mes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/year.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.html" afterDir="false" />
@@ -178,7 +183,7 @@
       <workItem from="1615934898134" duration="30000" />
       <workItem from="1615935069045" duration="12840000" />
       <workItem from="1616004216144" duration="6326000" />
-      <workItem from="1616025530818" duration="14331000" />
+      <workItem from="1616025530818" duration="14637000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -229,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615953996273</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO">
+      <created>1616040773307</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1616040773307</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +267,8 @@
     <MESSAGE value="arbol y visualizacion de arbol practicamente terminada" />
     <MESSAGE value="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras" />
     <MESSAGE value="añadiendo archivos de entrada para no tener que buscarlos cada vez" />
-    <option name="LAST_COMMIT_MESSAGE" value="añadiendo archivos de entrada para no tener que buscarlos cada vez" />
+    <MESSAGE value="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO" />
+    <option name="LAST_COMMIT_MESSAGE" value="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Practica1_EDD_$TestPrueba_in_arbolAVL_test_go.out" NAME="TestPrueba in arbolAVL_test.go Coverage Results" MODIFIED="1615667074179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
