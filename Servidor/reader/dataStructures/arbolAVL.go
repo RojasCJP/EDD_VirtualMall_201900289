@@ -19,7 +19,7 @@ type Producto struct {
 }
 
 type NodoAVL struct {
-	valor     Producto
+	Valor     Producto
 	izquierdo *NodoAVL
 	derecho   *NodoAVL
 	altura    int
@@ -35,20 +35,20 @@ func (tree *AVLtree) Add(valor Producto) {
 
 func (tree AVLtree) _add(valor Producto, tmp *NodoAVL) *NodoAVL {
 	if tmp == nil {
-		return &NodoAVL{valor: valor}
-	} else if valor.Codigo < tmp.valor.Codigo {
+		return &NodoAVL{Valor: valor}
+	} else if valor.Codigo < tmp.Valor.Codigo {
 		tmp.izquierdo = tree._add(valor, tmp.izquierdo)
 		if (tree.altura(tmp.izquierdo) - tree.altura(tmp.derecho)) == 2 {
-			if valor.Codigo < tmp.izquierdo.valor.Codigo {
+			if valor.Codigo < tmp.izquierdo.Valor.Codigo {
 				tmp = tree.srl(tmp)
 			} else {
 				tmp = tree.drl(tmp)
 			}
 		}
-	} else if valor.Codigo > tmp.valor.Codigo {
+	} else if valor.Codigo > tmp.Valor.Codigo {
 		tmp.derecho = tree._add(valor, tmp.derecho)
 		if tree.altura(tmp.derecho)-tree.altura(tmp.izquierdo) == 2 {
-			if valor.Codigo > tmp.derecho.valor.Codigo {
+			if valor.Codigo > tmp.derecho.Valor.Codigo {
 				tmp = tree.srr(tmp)
 			} else {
 				tmp = tree.drr(tmp)
@@ -60,6 +60,23 @@ func (tree AVLtree) _add(valor Producto, tmp *NodoAVL) *NodoAVL {
 	m := tree.maxi(d, i)
 	tmp.altura = m + 1
 	return tmp
+}
+
+func (tree AVLtree) Find(codigo int) *NodoAVL {
+	nodo := tree.Root
+	for nodo.Valor.Codigo != codigo {
+		if nodo != nil {
+			if codigo < nodo.Valor.Codigo {
+				nodo = nodo.izquierdo
+			} else {
+				nodo = nodo.derecho
+			}
+			if nodo == nil {
+				return nil
+			}
+		}
+	}
+	return nodo
 }
 
 func (tree AVLtree) srl(tmp1 *NodoAVL) *NodoAVL {
@@ -81,7 +98,6 @@ func (tree AVLtree) srr(tmp1 *NodoAVL) *NodoAVL {
 	tmp1.derecho = tmp2.izquierdo
 	tmp2.izquierdo = tmp1
 	tmp1.altura = tree.maxi(tree.altura(tmp1.izquierdo), tree.altura(tmp1.derecho)) + 1
-	// todo lo tenia diferente espino, en lugar de derecho tenia izquierdo, hay que comprobar
 	tmp2.altura = tree.maxi(tree.altura(tmp2.derecho), tmp1.altura) + 1
 	return tmp2
 }
@@ -111,7 +127,7 @@ var preorder string
 
 func (tree AVLtree) preorder(tmp *NodoAVL) {
 	if tmp != nil {
-		preorder += strconv.Itoa(tmp.valor.Codigo) + " "
+		preorder += strconv.Itoa(tmp.Valor.Codigo) + " "
 		tree.preorder(tmp.izquierdo)
 		tree.preorder(tmp.derecho)
 	}
@@ -122,7 +138,7 @@ var inorder string
 func (tree AVLtree) inorder(tmp *NodoAVL) {
 	if tmp != nil {
 		tree.inorder(tmp.izquierdo)
-		inorder += strconv.Itoa(tmp.valor.Codigo) + " "
+		inorder += strconv.Itoa(tmp.Valor.Codigo) + " "
 		tree.inorder(tmp.derecho)
 	}
 }
@@ -133,8 +149,21 @@ func (tree AVLtree) postorder(tmp *NodoAVL) {
 	if tmp != nil {
 		tree.postorder(tmp.izquierdo)
 		tree.postorder(tmp.derecho)
-		postorder += strconv.Itoa(tmp.valor.Codigo) + " "
+		postorder += strconv.Itoa(tmp.Valor.Codigo) + " "
 	}
+}
+
+var ListElements []Producto
+
+func (tree AVLtree) ListAllProducts(tmp *NodoAVL) {
+	if tmp != nil {
+		tree.ListAllProducts(tmp.izquierdo)
+		tree.ListAllProducts(tmp.derecho)
+		ListElements = append(ListElements, tmp.Valor)
+	}
+}
+func (tree AVLtree) ClearList() {
+	ListElements = nil
 }
 
 var cuerpo string
@@ -163,12 +192,12 @@ func (tree AVLtree) MakeGraphviz(tmp *NodoAVL) {
 func (tree AVLtree) MakeCuerpo(tmp *NodoAVL) {
 	if tmp != nil {
 		tree.MakeCuerpo(tmp.izquierdo)
-		cuerpo += "\"" + strconv.Itoa(tmp.valor.Codigo) + "\"" + " [label=\"" + strconv.Itoa(tmp.valor.Codigo) + "|{" + tmp.valor.Nombre + "|" + strconv.Itoa(tmp.valor.Cantidad) + "}|" + fmt.Sprintf("%.2f", tmp.valor.Precio) + "\"]\n"
+		cuerpo += "\"" + strconv.Itoa(tmp.Valor.Codigo) + "\"" + " [label=\"" + strconv.Itoa(tmp.Valor.Codigo) + "|{" + tmp.Valor.Nombre + "|" + strconv.Itoa(tmp.Valor.Cantidad) + "}|" + fmt.Sprintf("%.2f", tmp.Valor.Precio) + "\"]\n"
 		if tmp.izquierdo != nil {
-			cuerpo += "\"" + strconv.Itoa(tmp.valor.Codigo) + "\"->\"" + strconv.Itoa(tmp.izquierdo.valor.Codigo) + "\"\n"
+			cuerpo += "\"" + strconv.Itoa(tmp.Valor.Codigo) + "\"->\"" + strconv.Itoa(tmp.izquierdo.Valor.Codigo) + "\"\n"
 		}
 		if tmp.derecho != nil {
-			cuerpo += "\"" + strconv.Itoa(tmp.valor.Codigo) + "\"->\"" + strconv.Itoa(tmp.derecho.valor.Codigo) + "\"\n"
+			cuerpo += "\"" + strconv.Itoa(tmp.Valor.Codigo) + "\"->\"" + strconv.Itoa(tmp.derecho.Valor.Codigo) + "\"\n"
 		}
 		tree.MakeCuerpo(tmp.derecho)
 	}

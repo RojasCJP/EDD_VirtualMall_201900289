@@ -16,6 +16,16 @@ import (
 var JsonData = Datos{}
 var imagenPredeterminada string = "https://es.jumpseller.com/images/learn/choosing-platform/laptop.jpg"
 var arregloListas []Lista
+var Carrito []ElementoCarrito
+var Years []dataStructures.Year
+
+//todo tengo que hacer lo del calendario, armar la estructura
+//tengo que verificar si el a;o existe ya
+//tengo que ver si el mes ya existe
+//tengo que ver si en la matriz ya existe el departamento y dia
+//si existe tengo que agregar a la cola los productos
+//si no existe tengo que hacer la cola y agregar los productos
+//por ultimo tengo que graficar
 
 type htmltemplate struct {
 	Name   string
@@ -36,6 +46,12 @@ type getArregloTemplate struct {
 	Direccion string
 }
 
+type ElementoCarrito struct {
+	IdTienda       int
+	CodigoProducto int
+	Cantidad       int
+}
+
 func SetJsonData(jsonData Datos) {
 	JsonData = jsonData
 
@@ -52,12 +68,14 @@ func LevantarServer() {
 	router.HandleFunc("/TiendaEspecifica", tiendaEspecifica).Methods("POST")
 	router.HandleFunc("/id/{numero}", idTienda).Methods("GET")
 	router.HandleFunc("/tiendaUnica/{numero}", findTiendaUnica).Methods("GET")
+	router.HandleFunc("/listaInventario/{numero}", getListaInventario).Methods("GET")
 	router.HandleFunc("/inventario/{numero}", showInventario).Methods("GET")
 	router.HandleFunc("/inventario", meterElementos).Methods("POST")
 	router.HandleFunc("/Eliminar", eliminarTienda).Methods("DELETE")
 	router.HandleFunc("/imagen", imagenSubida)
 	router.HandleFunc("/guardar", GuardarRoutes)
 	router.HandleFunc("/todasTiendas", todasTiendas).Methods("GET")
+	router.HandleFunc("/addCarrito", addCarrito).Methods("POST")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -208,6 +226,19 @@ func findTiendaUnica(response http.ResponseWriter, request *http.Request) {
 	response.Write(salida)
 }
 
+func getListaInventario(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	numero, err := strconv.Atoi(vars["numero"])
+	if err != nil {
+		response.Write([]byte("el id que ingreso es invalido"))
+	}
+	tiendaUnica := FindWithId(numero, &arregloListas)
+	tiendaUnica.inventario.ClearList()
+	tiendaUnica.inventario.ListAllProducts(tiendaUnica.inventario.Root)
+	salida, _ := json.Marshal(dataStructures.ListElements)
+	response.Write(salida)
+}
+
 func showInventario(response http.ResponseWriter, request *http.Request) {
 	vars := mux.Vars(request)
 	numero, err := strconv.Atoi(vars["numero"])
@@ -234,10 +265,17 @@ func meterElementos(response http.ResponseWriter, request *http.Request) {
 		tienda := inventarioCompleto[i].Nodo
 		inventario := inventarioCompleto[i].Lista
 		for j := 0; j < len(inventario); j++ {
-			tienda.inventario.Add(inventario[j])
+			var nodoAIngresar *dataStructures.NodoAVL
+			if tienda.inventario.Root != nil {
+				nodoAIngresar = tienda.inventario.Find(inventario[j].Codigo)
+			}
+			if nodoAIngresar == nil {
+				tienda.inventario.Add(inventario[j])
+			} else {
+				nodoAIngresar.Valor.Cantidad += inventario[j].Cantidad
+			}
 		}
 	}
-	//todo tengo que ver que las tiendas sean diferentes, de lo contrario tengo que sumar nada mas
 }
 
 func eliminarTienda(response http.ResponseWriter, request *http.Request) {
@@ -267,6 +305,10 @@ func eliminarTienda(response http.ResponseWriter, request *http.Request) {
 func GuardarRoutes(response http.ResponseWriter, request *http.Request) {
 	GuardarArchivo()
 	response.Write([]byte("Json guardado"))
+}
+
+func addCarrito(response http.ResponseWriter, request *http.Request) {
+	//todo tengo que hacer que este metodo jale los datos para guardarlos en el carrito
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

@@ -40,7 +40,7 @@ const routes: Routes = [
     component: EliminarTiendaComponent
   },
   {
-    path: 'inventarioView',
+    path: 'inventarioView/:id',
     component: InventarioViewComponent
   },
   {

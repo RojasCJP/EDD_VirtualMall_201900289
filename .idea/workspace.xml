@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="" />
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/reader.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/reader.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
         <option value="TypeScript File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -64,7 +76,7 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.Golang">
+  <component name="RunManager" selected="Go Test.go test dataStructures">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -133,8 +145,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.Golang" />
         <item itemvalue="Go Test.go test dataStructures" />
+        <item itemvalue="Go Build.Golang" />
       </list>
     </recent_temporary>
   </component>
@@ -164,7 +176,9 @@
       <workItem from="1615864777418" duration="1465000" />
       <workItem from="1615915586526" duration="16000" />
       <workItem from="1615934898134" duration="30000" />
-      <workItem from="1615935069045" duration="12798000" />
+      <workItem from="1615935069045" duration="12840000" />
+      <workItem from="1616004216144" duration="6326000" />
+      <workItem from="1616025530818" duration="14331000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -208,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615953883880</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="añadiendo archivos de entrada para no tener que buscarlos cada vez">
+      <created>1615953996273</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1615953996273</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,28 +254,8 @@
     <MESSAGE value="Creado el arbol AVL" />
     <MESSAGE value="arbol y visualizacion de arbol practicamente terminada" />
     <MESSAGE value="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras" />
-    <option name="LAST_COMMIT_MESSAGE" value="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/Servidor/reader/servidor.go</url>
-          <line>231</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/Servidor/reader/matrices.go</url>
-          <line>164</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="GoApplicationRunConfiguration">
-        <watch expression="arregloListas" language="go" />
-      </configuration>
-    </watches-manager>
+    <MESSAGE value="añadiendo archivos de entrada para no tener que buscarlos cada vez" />
+    <option name="LAST_COMMIT_MESSAGE" value="añadiendo archivos de entrada para no tener que buscarlos cada vez" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Practica1_EDD_$TestPrueba_in_arbolAVL_test_go.out" NAME="TestPrueba in arbolAVL_test.go Coverage Results" MODIFIED="1615667074179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

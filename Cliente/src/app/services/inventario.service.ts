@@ -19,4 +19,8 @@ export class InventarioService {
   addInventario(inventario: InventarioEntrada): Observable<any> {
     return this.http.post(`${this.API_URI}/inventario`, inventario);
   }
+
+  getList(id: number): Observable<any> {
+    return this.http.get(`${this.API_URI}/listaInventario/${id}`);
+  }
 }

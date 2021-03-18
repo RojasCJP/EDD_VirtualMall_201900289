@@ -27,11 +27,10 @@ export class TiendaListComponent implements OnInit {
   verInventario(id: number): void {
     this.inventarioService.getInventario(id).subscribe(
       res => {
-        window.location.href = '/inventarioView';
+        window.location.href = '/inventarioView/' + id;
       },
       error => console.log(error)
     );
   }
 }
 
-// todo tengo ya hecho que me muestre todas las tiendas
