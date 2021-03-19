@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ElementoCarrito} from '../../models/elementoCarrito';
+import {InventarioService} from '../../services/inventario.service';
 
 @Component({
   selector: 'app-carrito-list',
@@ -6,10 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carrito-list.component.css']
 })
 export class CarritoListComponent implements OnInit {
+  carrito: ElementoCarrito[];
+  total = 0;
 
-  constructor() { }
+  constructor(private inventarioService: InventarioService) {
+  }
 
   ngOnInit(): void {
+    this.inventarioService.verCarrito().subscribe(
+      res => {
+        this.carrito = res;
+        for (const producto of this.carrito) {
+          this.total += (producto.PrecioProducto * producto.Cantidad);
+        }
+      },
+      error => console.log(error)
+    );
+  }
+
+  comprar(): void {
+    this.inventarioService.comprar().subscribe(
+      res => console.log(res),
+      error => console.log(error)
+    );
+  }
+
+  deleteElement(tienda: number, producto: number): void {
+    this.inventarioService.deleteProduct(tienda, producto).subscribe(
+      res => console.log(res),
+      error => console.log(error)
+    );
   }
 
 }

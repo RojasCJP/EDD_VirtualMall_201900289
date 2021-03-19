@@ -17,7 +17,7 @@
         <p>Precio: {{elemento.Precio}}</p>
         <p>Cantidad: {{elemento.Cantidad}}</p>
         <div>
-          <a class="btn btn-success btn-block">Añadir a Carrito</a>
+          <a class="btn btn-success btn-block" (click)="addCarrito(elemento.Codigo)">Añadir a Carrito</a>
           <!--          <a class="btn btn-success btn-block" href="/inventarioAdd">Añadir Inventario</a>-->
         </div>
       </div>

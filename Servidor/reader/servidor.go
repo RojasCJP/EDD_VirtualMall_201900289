@@ -27,6 +27,7 @@ var Years []dataStructures.Year
 //si no existe tengo que hacer la cola y agregar los productos
 //por ultimo tengo que graficar
 
+//todo tengo que ver si quito los elementos de una vez cuando los piden o si hasta que los compran
 type htmltemplate struct {
 	Name   string
 	Carnet int
@@ -49,7 +50,32 @@ type getArregloTemplate struct {
 type ElementoCarrito struct {
 	IdTienda       int
 	CodigoProducto int
+	NombreProducto string
+	PrecioProducto float32
 	Cantidad       int
+}
+
+func FindInCarrito(carrito []ElementoCarrito, tienda int, producto int) *ElementoCarrito {
+	for i := 0; i < len(carrito); i++ {
+		if tienda == carrito[i].IdTienda && producto == carrito[i].CodigoProducto {
+			return &carrito[i]
+		}
+	}
+	return nil
+}
+
+func indexCarrito(carrito []ElementoCarrito, tienda int, producto int) int {
+	for i := 0; i < len(carrito); i++ {
+		if tienda == carrito[i].IdTienda && producto == carrito[i].CodigoProducto {
+			return i
+		}
+	}
+	return 0
+}
+
+func remove(s []ElementoCarrito, i int) []ElementoCarrito {
+	s[len(s)-1], s[i] = s[i], s[len(s)-1]
+	return s[:len(s)-1]
 }
 
 func SetJsonData(jsonData Datos) {
@@ -75,7 +101,10 @@ func LevantarServer() {
 	router.HandleFunc("/imagen", imagenSubida)
 	router.HandleFunc("/guardar", GuardarRoutes)
 	router.HandleFunc("/todasTiendas", todasTiendas).Methods("GET")
-	router.HandleFunc("/addCarrito", addCarrito).Methods("POST")
+	router.HandleFunc("/addCarrito/{tienda}/{producto}", addCarrito).Methods("GET")
+	router.HandleFunc("/deleteCarrito/{tienda}/{producto}", deleteCarrito).Methods("GET")
+	router.HandleFunc("/verCarrito", verCarrito).Methods("GET")
+	router.HandleFunc("/comprar", comprar).Methods("GET")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -308,7 +337,45 @@ func GuardarRoutes(response http.ResponseWriter, request *http.Request) {
 }
 
 func addCarrito(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	tienda, _ := strconv.Atoi(vars["tienda"])
+	producto, _ := strconv.Atoi(vars["producto"])
+	elemento := FindInCarrito(Carrito, tienda, producto)
+	punteroTienda := FindWithId(tienda, &arregloListas)
+	precioProducto := punteroTienda.inventario.Find(producto).Valor.Precio
+	nombreProducto := punteroTienda.inventario.Find(producto).Valor.Nombre
+	if elemento == nil {
+		Carrito = append(Carrito, ElementoCarrito{tienda, producto, nombreProducto, precioProducto, 1})
+	} else {
+		elemento.Cantidad++
+	}
+
 	//todo tengo que hacer que este metodo jale los datos para guardarlos en el carrito
+}
+
+func deleteCarrito(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	tienda, _ := strconv.Atoi(vars["tienda"])
+	producto, _ := strconv.Atoi(vars["producto"])
+	index := indexCarrito(Carrito, tienda, producto)
+	Carrito = remove(Carrito, index)
+}
+
+func verCarrito(response http.ResponseWriter, request *http.Request) {
+	salida, _ := json.Marshal(Carrito)
+	response.Write(salida)
+}
+
+func comprar(response http.ResponseWriter, request *http.Request) {
+	for i := 0; i < len(Carrito); i++ {
+		tienda := Carrito[i].IdTienda
+		producto := Carrito[i].CodigoProducto
+		cantidad := Carrito[i].Cantidad
+		tiendaCambiar := FindWithId(tienda, &arregloListas)
+		inventarioTienda := tiendaCambiar.inventario.Find(producto)
+		inventarioTienda.Valor.Cantidad -= cantidad
+	}
+	Carrito = make([]ElementoCarrito, 0)
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

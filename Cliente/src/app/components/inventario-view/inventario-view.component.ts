@@ -64,4 +64,13 @@ export class InventarioViewComponent implements OnInit {
       },
       error => console.log(error));
   }
+
+  addCarrito(producto: number): void {
+    const params = this.activatedRoute.snapshot.params;
+    const tienda = params.id;
+    this.inventarioService.agregarCarrito(tienda, producto).subscribe(
+      res => console.log(res),
+      error => console.log(error)
+    );
+  }
 }

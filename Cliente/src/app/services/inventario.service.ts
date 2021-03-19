@@ -23,4 +23,20 @@ export class InventarioService {
   getList(id: number): Observable<any> {
     return this.http.get(`${this.API_URI}/listaInventario/${id}`);
   }
+
+  verCarrito(): Observable<any> {
+    return this.http.get(`${this.API_URI}/verCarrito`);
+  }
+
+  agregarCarrito(tienda: number, producto: number): Observable<any> {
+    return this.http.get(`${this.API_URI}/addCarrito/${tienda}/${producto}`);
+  }
+
+  comprar(): Observable<any> {
+    return this.http.get(`${this.API_URI}/comprar`);
+  }
+
+  deleteProduct(tienda: number, producto: number): Observable<any> {
+    return this.http.get(`${this.API_URI}/deleteCarrito/${tienda}/${producto}`);
+  }
 }
