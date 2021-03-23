@@ -62,21 +62,17 @@ func (tree AVLtree) _add(valor Producto, tmp *NodoAVL) *NodoAVL {
 	return tmp
 }
 
-func (tree AVLtree) Find(codigo int) *NodoAVL {
-	nodo := tree.Root
-	for nodo.Valor.Codigo != codigo {
-		if nodo != nil {
-			if codigo < nodo.Valor.Codigo {
-				nodo = nodo.izquierdo
-			} else {
-				nodo = nodo.derecho
-			}
-			if nodo == nil {
-				return nil
-			}
+func (tree AVLtree) Find(codigo int, tmp *NodoAVL) *NodoAVL {
+	if tmp != nil {
+		if codigo < tmp.Valor.Codigo {
+			return tree.Find(codigo, tmp.izquierdo)
+		} else if codigo > tmp.Valor.Codigo {
+			return tree.Find(codigo, tmp.derecho)
+		} else if codigo == tmp.Valor.Codigo {
+			return tmp
 		}
 	}
-	return nodo
+	return tmp
 }
 
 func (tree AVLtree) srl(tmp1 *NodoAVL) *NodoAVL {

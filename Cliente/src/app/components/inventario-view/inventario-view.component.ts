@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {InventarioElemento} from '../../models/inventarioElemento';
 import {InventarioService} from '../../services/inventario.service';
 import {ActivatedRoute} from '@angular/router';
@@ -8,8 +8,9 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './inventario-view.component.html',
   styleUrls: ['./inventario-view.component.css']
 })
-export class InventarioViewComponent implements OnInit {
+export class InventarioViewComponent implements OnInit, OnDestroy {
 
+  imagen;
   inventario: InventarioElemento[] =
     [
       {
@@ -51,10 +52,17 @@ export class InventarioViewComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
+    this.imagen = sessionStorage.getItem('imagen');
     if (params.id) {
+      if (this.imagen !== params.id) {
+        this.inventarioService.getInventario(params.id).subscribe(
+          res => console.log(res),
+          error => console.log(error)
+        );
+        sessionStorage.setItem('imagen', params.id);
+      }
       this.getListInventarios(params.id);
     }
-    console.log(params);
   }
 
   getListInventarios(id: number): void {
@@ -63,6 +71,12 @@ export class InventarioViewComponent implements OnInit {
         this.inventario = res;
       },
       error => console.log(error));
+    // this.inventarioService.getInventario(id).subscribe(
+    //   res => {
+    //     window.location.href = '/inventarioView/' + id;
+    //   },
+    //   error => console.log(error)
+    // );
   }
 
   addCarrito(producto: number): void {
@@ -73,4 +87,10 @@ export class InventarioViewComponent implements OnInit {
       error => console.log(error)
     );
   }
+
+  ngOnDestroy(): void {
+    const params = this.activatedRoute.snapshot.params;
+    this.imagen = sessionStorage.setItem('imagen', params.id);
+  }
 }
+

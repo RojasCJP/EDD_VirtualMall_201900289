@@ -1,0 +1,60 @@
+{
+  "Pedidos": [
+    {
+      "Fecha": "07-04-2021",
+      "Tienda": "Aguayo Cepeda S.A.",
+      "Departamento": "Amazon Coins",
+      "Calificacion": 4,
+      "Productos": [
+        {
+          "Codigo": 1233
+        },
+        {
+          "Codigo": 1234
+        }
+      ]
+    },
+    {
+      "Fecha": "07-04-2021",
+      "Tienda": "Amaya, Rolón y Chavarría Asociados",
+      "Departamento": "Amazon Coins",
+      "Calificacion": 4,
+      "Productos": [
+        {
+          "Codigo": 1232
+        },
+        {
+          "Codigo": 1222
+        }
+      ]
+    },
+    {
+      "Fecha": "07-04-2020",
+      "Tienda": "Aguayo Cepeda S.A.",
+      "Departamento": "Amazon Coins",
+      "Calificacion": 4,
+      "Productos": [
+        {
+          "Codigo": 1233
+        },
+        {
+          "Codigo": 1234
+        }
+      ]
+    },
+    {
+      "Fecha": "07-04-2020",
+      "Tienda": "Amaya, Rolón y Chavarría Asociados",
+      "Departamento": "Amazon Coins",
+      "Calificacion": 4,
+      "Productos": [
+        {
+          "Codigo": 1232
+        },
+        {
+          "Codigo": 1222
+        }
+      ]
+    }
+  ]
+}

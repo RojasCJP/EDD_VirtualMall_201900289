@@ -14,6 +14,7 @@ import {CargarTiendasComponent} from './components/cargar-tiendas/cargar-tiendas
 import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tienda.component';
 import { InventarioViewComponent } from './components/inventario-view/inventario-view.component';
 import { InventarioFormComponent } from './components/inventario-form/inventario-form.component';
+import {TreeviewModule} from 'ngx-treeview';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,13 @@ import { InventarioFormComponent } from './components/inventario-form/inventario
     InventarioViewComponent,
     InventarioFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        TreeviewModule.forRoot()
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

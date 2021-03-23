@@ -55,6 +55,60 @@ type ElementoCarrito struct {
 	Cantidad       int
 }
 
+func InYear(year int) bool {
+	for i := 0; i < len(Years); i++ {
+		if year == Years[i].Year {
+			return true
+		}
+	}
+	return false
+}
+
+func GetYear(year int) *dataStructures.Year {
+	for i := 0; i < len(Years); i++ {
+		if year == Years[i].Year {
+			return &Years[i]
+		}
+	}
+	return nil
+}
+
+func GetYearIndex(year int) int {
+	for i := 0; i < len(Years); i++ {
+		if year == Years[i].Year {
+			return i
+		}
+	}
+	return 0
+}
+
+func InMeses(mes int, year int) bool {
+	for i := 0; i < len(Years[year].Meses); i++ {
+		if mes == Years[year].Meses[i].Number {
+			return true
+		}
+	}
+	return false
+}
+
+func GetMesIndex(mes int, year int) int {
+	for i := 0; i < len(Years[year].Meses); i++ {
+		if mes == Years[year].Meses[i].Number {
+			return i
+		}
+	}
+	return 0
+}
+
+func GetMes(mes int, year *dataStructures.Year) *dataStructures.Mes {
+	for i := 0; i < len(year.Meses); i++ {
+		if mes == year.Meses[i].Number {
+			return &year.Meses[i]
+		}
+	}
+	return nil
+}
+
 func FindInCarrito(carrito []ElementoCarrito, tienda int, producto int) *ElementoCarrito {
 	for i := 0; i < len(carrito); i++ {
 		if tienda == carrito[i].IdTienda && producto == carrito[i].CodigoProducto {
@@ -105,6 +159,11 @@ func LevantarServer() {
 	router.HandleFunc("/deleteCarrito/{tienda}/{producto}", deleteCarrito).Methods("GET")
 	router.HandleFunc("/verCarrito", verCarrito).Methods("GET")
 	router.HandleFunc("/comprar", comprar).Methods("GET")
+	router.HandleFunc("/calendario", addCalendario).Methods("POST")
+	router.HandleFunc("/calendario", verYears).Methods("GET")
+	router.HandleFunc("/calendario/{year}", verMeses).Methods("GET")
+	router.HandleFunc("/calendario/{year}/{mes}", verCalendario).Methods("GET")
+	router.HandleFunc("/calendario/{year}/{mes}/{dia}/{departamento}", verProductos).Methods("GET")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -296,7 +355,7 @@ func meterElementos(response http.ResponseWriter, request *http.Request) {
 		for j := 0; j < len(inventario); j++ {
 			var nodoAIngresar *dataStructures.NodoAVL
 			if tienda.inventario.Root != nil {
-				nodoAIngresar = tienda.inventario.Find(inventario[j].Codigo)
+				nodoAIngresar = tienda.inventario.Find(inventario[j].Codigo, tienda.inventario.Root)
 			}
 			if nodoAIngresar == nil {
 				tienda.inventario.Add(inventario[j])
@@ -342,15 +401,13 @@ func addCarrito(response http.ResponseWriter, request *http.Request) {
 	producto, _ := strconv.Atoi(vars["producto"])
 	elemento := FindInCarrito(Carrito, tienda, producto)
 	punteroTienda := FindWithId(tienda, &arregloListas)
-	precioProducto := punteroTienda.inventario.Find(producto).Valor.Precio
-	nombreProducto := punteroTienda.inventario.Find(producto).Valor.Nombre
+	precioProducto := punteroTienda.inventario.Find(producto, punteroTienda.inventario.Root).Valor.Precio
+	nombreProducto := punteroTienda.inventario.Find(producto, punteroTienda.inventario.Root).Valor.Nombre
 	if elemento == nil {
 		Carrito = append(Carrito, ElementoCarrito{tienda, producto, nombreProducto, precioProducto, 1})
 	} else {
 		elemento.Cantidad++
 	}
-
-	//todo tengo que hacer que este metodo jale los datos para guardarlos en el carrito
 }
 
 func deleteCarrito(response http.ResponseWriter, request *http.Request) {
@@ -372,10 +429,95 @@ func comprar(response http.ResponseWriter, request *http.Request) {
 		producto := Carrito[i].CodigoProducto
 		cantidad := Carrito[i].Cantidad
 		tiendaCambiar := FindWithId(tienda, &arregloListas)
-		inventarioTienda := tiendaCambiar.inventario.Find(producto)
+		inventarioTienda := tiendaCambiar.inventario.Find(producto, tiendaCambiar.inventario.Root)
 		inventarioTienda.Valor.Cantidad -= cantidad
 	}
 	Carrito = make([]ElementoCarrito, 0)
+}
+
+func addCalendario(response http.ResponseWriter, request *http.Request) {
+	data, errRead := ioutil.ReadAll(request.Body)
+	if errRead != nil {
+		response.Write([]byte("error en la carga del json"))
+	}
+	var calendario = dataStructures.Pedidos{}
+	err := json.Unmarshal(data, &calendario)
+	if err != nil {
+		log.Fatal("error al convertir a estructura " + err.Error())
+	}
+	for j := 0; j < len(calendario.Pedidos); j++ {
+		year := calendario.Pedidos[j].Year()
+		mes := calendario.Pedidos[j].Mes()
+		dia := calendario.Pedidos[j].Dia()
+		departamento := calendario.Pedidos[j].Departamento
+		//var tienda *Nodo
+		//for k := 0; k < len(arregloListas); k++ {
+		//	tienda = arregloListas[k].FindParaInventario(paraInventario{calendario.Pedidos[j].Tienda, departamento, calendario.Pedidos[j].Calificacion})
+		//}
+		if !InYear(year) {
+			var meses []dataStructures.Mes
+			Years = append(Years, dataStructures.Year{year, meses})
+		}
+		if !InMeses(mes, GetYearIndex(year)) {
+			yearUse := GetYear(year)
+			matriz := dataStructures.Matriz{}
+			matriz.Init()
+			yearUse.Meses = append(yearUse.Meses, dataStructures.Mes{Number: mes, Matriz: matriz})
+		}
+		yearComprobation := GetYear(year)
+		mesComprobation := GetMes(mes, yearComprobation)
+		if mesComprobation.Matriz.Find(dia, departamento) == nil {
+			mesComprobation.Matriz.Add(departamento, dia, dataStructures.Cola{Len: 0})
+		}
+		pedidoEspecifico := calendario.Pedidos[j]
+
+		mesComprobation.Matriz.Find(dia, departamento).Valor.Add(dataStructures.NodoCola{Valor: dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos}})
+	}
+}
+
+func verYears(response http.ResponseWriter, request *http.Request) {
+	var allYears []int
+	for i := 0; i < len(Years); i++ {
+		allYears = append(allYears, Years[i].Year)
+	}
+	data, _ := json.Marshal(allYears)
+	response.Write(data)
+}
+
+func verMeses(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	year, _ := strconv.Atoi(vars["year"])
+	yearIndex := GetYearIndex(year)
+	var allMonths []int
+	for i := 0; i < len(Years[yearIndex].Meses); i++ {
+		allMonths = append(allMonths, Years[yearIndex].Meses[i].Number)
+	}
+	data, _ := json.Marshal(allMonths)
+	response.Write(data)
+}
+
+func verCalendario(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	year, _ := strconv.Atoi(vars["year"])
+	month, _ := strconv.Atoi(vars["mes"])
+	yearUse := GetYear(year)
+	monthUse := GetMes(month, yearUse)
+	data, _ := json.Marshal(monthUse.Matriz.ReturnListNodes())
+	response.Write(data)
+}
+
+func verProductos(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	year, _ := strconv.Atoi(vars["year"])
+	month, _ := strconv.Atoi(vars["mes"])
+	dia, _ := strconv.Atoi(vars["dia"])
+	departamento := vars["departamento"]
+	yearUse := GetYear(year)
+	monthUse := GetMes(month, yearUse)
+	cola := monthUse.Matriz.Find(dia, departamento).Valor
+	respuesta := cola.AllProducts()
+	data, _ := json.Marshal(respuesta)
+	response.Write(data)
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

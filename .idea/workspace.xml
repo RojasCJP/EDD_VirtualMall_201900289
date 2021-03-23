@@ -6,14 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/calendario/calendario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/calendario/calendario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/calendario/calendario.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/calendario/calendario.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/inventario-view/inventario-view.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/matriz.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/matriz.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/templates/getAll.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/getAll.dot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +47,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Servidor/reader/servidor.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1pXX9HGZuJ8BePv2f4dO1UiJcRh" />
   <component name="ProjectViewState">
@@ -75,19 +86,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Build.Golang">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
@@ -179,7 +177,13 @@
       <workItem from="1615935069045" duration="12840000" />
       <workItem from="1616004216144" duration="6326000" />
       <workItem from="1616025530818" duration="14707000" />
-      <workItem from="1616093632436" duration="9669000" />
+      <workItem from="1616093632436" duration="9720000" />
+      <workItem from="1616121437078" duration="712000" />
+      <workItem from="1616122175921" duration="343000" />
+      <workItem from="1616173673273" duration="15829000" />
+      <workItem from="1616274161893" duration="643000" />
+      <workItem from="1616355612206" duration="4291000" />
+      <workItem from="1616436684976" duration="13675000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -244,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616040802340</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="carrito terminado">
+      <created>1616118164656</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616118164656</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +282,15 @@
     <MESSAGE value="ya se pueden añadir inventarios desde angular, falta la matriz y el carrito de compras" />
     <MESSAGE value="añadiendo archivos de entrada para no tener que buscarlos cada vez" />
     <MESSAGE value="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO" />
-    <option name="LAST_COMMIT_MESSAGE" value="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO" />
+    <MESSAGE value="carrito terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="carrito terminado" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="Years" language="go" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Practica1_EDD_$TestPrueba_in_arbolAVL_test_go.out" NAME="TestPrueba in arbolAVL_test.go Coverage Results" MODIFIED="1615667074179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
