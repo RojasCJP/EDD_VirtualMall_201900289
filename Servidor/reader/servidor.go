@@ -10,7 +10,9 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os/exec"
 	"strconv"
+	"strings"
 )
 
 var JsonData = Datos{}
@@ -164,6 +166,10 @@ func LevantarServer() {
 	router.HandleFunc("/calendario/{year}", verMeses).Methods("GET")
 	router.HandleFunc("/calendario/{year}/{mes}", verCalendario).Methods("GET")
 	router.HandleFunc("/calendario/{year}/{mes}/{dia}/{departamento}", verProductos).Methods("GET")
+	router.HandleFunc("/calendarioImage", YearsImage).Methods("GET")
+	router.HandleFunc("/calendarioImage/{year}", MonthsImage).Methods("GET")
+	router.HandleFunc("/calendarioImage/{year}/{mes}", CalendarioImage).Methods("GET")
+	router.HandleFunc("/calendarioImage/{year}/{mes}/{dia}/{departamento}", ProductosImage).Methods("GET")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -518,6 +524,120 @@ func verProductos(response http.ResponseWriter, request *http.Request) {
 	respuesta := cola.AllProducts()
 	data, _ := json.Marshal(respuesta)
 	response.Write(data)
+}
+
+func YearsImage(response http.ResponseWriter, request *http.Request) {
+	cuerpo := "digraph matriz{\n    rankdir = \"LR\"\n"
+	for i := 0; i < len(Years); i++ {
+		if len(Years) == 1 {
+			cuerpo += strconv.Itoa(Years[i].Year) + "\n"
+		}
+		if i < len(Years)-1 {
+			cuerpo += strconv.Itoa(Years[i].Year) + "->" + strconv.Itoa(Years[i+1].Year) + "\n"
+		}
+		if i > 0 {
+			cuerpo += strconv.Itoa(Years[i].Year) + "->" + strconv.Itoa(Years[i-1].Year) + "\n"
+		}
+	}
+	cuerpo += "}"
+	err := ioutil.WriteFile("../Cliente/src/assets/graphviz/matriz.dot", []byte(cuerpo), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := "dot.exe -Tpng ../Cliente/src/assets/graphviz/matriz.dot -o ../Cliente/src/assets/arboles/matriz.png"
+	args := strings.Split(s, " ")
+	cmd := exec.Command(args[0], args[1:]...)
+	err1 := cmd.Start()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+	err1 = cmd.Wait()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+}
+
+func MonthsImage(response http.ResponseWriter, request *http.Request) {
+	cuerpo := "digraph matriz{\n    rankdir = \"LR\"\n"
+	vars := mux.Vars(request)
+	year, _ := strconv.Atoi(vars["year"])
+	yearIndex := GetYearIndex(year)
+	for i := 0; i < len(Years[yearIndex].Meses); i++ {
+		if len(Years[yearIndex].Meses) == 1 {
+			cuerpo += strconv.Itoa(Years[yearIndex].Meses[i].Number) + "\n"
+		}
+		if i < len(Years[yearIndex].Meses)-1 {
+			cuerpo += strconv.Itoa(Years[yearIndex].Meses[i].Number) + "->" + strconv.Itoa(Years[yearIndex].Meses[i+1].Number) + "\n"
+		}
+		if i > 0 {
+			cuerpo += strconv.Itoa(Years[yearIndex].Meses[i].Number) + "->" + strconv.Itoa(Years[yearIndex].Meses[i-1].Number) + "\n"
+		}
+	}
+	cuerpo += "}"
+	err := ioutil.WriteFile("../Cliente/src/assets/graphviz/matriz.dot", []byte(cuerpo), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := "dot.exe -Tpng ../Cliente/src/assets/graphviz/matriz.dot -o ../Cliente/src/assets/arboles/matriz.png"
+	args := strings.Split(s, " ")
+	cmd := exec.Command(args[0], args[1:]...)
+	err1 := cmd.Start()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+	err1 = cmd.Wait()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+}
+
+func CalendarioImage(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	year, _ := strconv.Atoi(vars["year"])
+	month, _ := strconv.Atoi(vars["mes"])
+	yearUse := GetYear(year)
+	monthUse := GetMes(month, yearUse)
+	monthUse.Matriz.MakeGraph()
+}
+
+func ProductosImage(response http.ResponseWriter, request *http.Request) {
+	cuerpo := "digraph matriz{\n    rankdir = \"LR\"\n"
+	vars := mux.Vars(request)
+	year, _ := strconv.Atoi(vars["year"])
+	month, _ := strconv.Atoi(vars["mes"])
+	dia, _ := strconv.Atoi(vars["dia"])
+	departamento := vars["departamento"]
+	yearUse := GetYear(year)
+	monthUse := GetMes(month, yearUse)
+	cola := monthUse.Matriz.Find(dia, departamento).Valor
+	respuesta := cola.AllProducts()
+	for i := 0; i < len(respuesta); i++ {
+		if len(respuesta) == 1 {
+			cuerpo += strconv.Itoa(respuesta[i]) + "\n"
+		}
+		if i < len(respuesta)-1 {
+			cuerpo += strconv.Itoa(respuesta[i]) + "->" + strconv.Itoa(respuesta[i+1]) + "\n"
+		}
+		if i > 0 {
+			cuerpo += strconv.Itoa(respuesta[i]) + "->" + strconv.Itoa(respuesta[i-1]) + "\n"
+		}
+	}
+	cuerpo += "}"
+	err := ioutil.WriteFile("../Cliente/src/assets/graphviz/matriz.dot", []byte(cuerpo), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := "dot.exe -Tpng ../Cliente/src/assets/graphviz/matriz.dot -o ../Cliente/src/assets/arboles/matriz.png"
+	args := strings.Split(s, " ")
+	cmd := exec.Command(args[0], args[1:]...)
+	err1 := cmd.Start()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+	err1 = cmd.Wait()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

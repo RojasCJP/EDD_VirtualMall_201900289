@@ -28,6 +28,18 @@ const routes: Routes = [
     component: CalendarioComponent
   },
   {
+    path: 'calendario/:year',
+    component: CalendarioComponent
+  },
+  {
+    path: 'calendario/:year/:month',
+    component: CalendarioComponent
+  },
+  {
+    path: 'calendario/:year/:month/:day/:departament',
+    component: CalendarioComponent
+  },
+  {
     path: 'tiendaEspecifica',
     component: TiendaEspecificaComponent
   },
