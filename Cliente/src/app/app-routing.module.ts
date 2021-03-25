@@ -8,6 +8,7 @@ import {CargarTiendasComponent} from './components/cargar-tiendas/cargar-tiendas
 import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tienda.component';
 import {InventarioViewComponent} from './components/inventario-view/inventario-view.component';
 import {InventarioFormComponent} from './components/inventario-form/inventario-form.component';
+import {CargarCalendarioComponent} from "./components/cargar-calendario/cargar-calendario.component";
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'inventarioAdd',
     component: InventarioFormComponent
+  },
+  {
+    path: 'cargarCalendario',
+    component: CargarCalendarioComponent
   }
 ];
 

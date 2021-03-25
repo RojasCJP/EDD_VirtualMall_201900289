@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Calendario} from '../models/calendario';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,9 @@ export class CalendarioService {
 
   imageProducts(year: number, month: number, day: number, departament: string): Observable<any> {
     return this.http.get(`${this.API_URL}/calendarioImage/${year}/${month}/${day}/${departament}`);
+  }
+
+  cargarCalendario(cuerpo: Calendario): Observable<any> {
+    return this.http.post(`${this.API_URL}/calendario`, cuerpo);
   }
 }

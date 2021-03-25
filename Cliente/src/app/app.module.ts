@@ -15,6 +15,7 @@ import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tie
 import { InventarioViewComponent } from './components/inventario-view/inventario-view.component';
 import { InventarioFormComponent } from './components/inventario-form/inventario-form.component';
 import {TreeviewModule} from 'ngx-treeview';
+import { CargarCalendarioComponent } from './components/cargar-calendario/cargar-calendario.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {TreeviewModule} from 'ngx-treeview';
     CargarTiendasComponent,
     EliminarTiendaComponent,
     InventarioViewComponent,
-    InventarioFormComponent
+    InventarioFormComponent,
+    CargarCalendarioComponent
   ],
     imports: [
         BrowserModule,
