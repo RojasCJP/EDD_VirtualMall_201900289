@@ -6,7 +6,6 @@ import (
 )
 
 type InventariosData struct {
-	//todo tengo que ver si le van a poner inventarios o invetarios
 	Inventarios []Inventario
 }
 

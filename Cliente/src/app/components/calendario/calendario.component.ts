@@ -61,7 +61,6 @@ export class CalendarioComponent implements OnInit {
   }
 
   redierctYear(year: number): void {
-    // todo preparar imagen
     this.calendarioService.imageMonths(year).subscribe(
       res => console.log(res),
       error => console.log(error)
@@ -70,7 +69,6 @@ export class CalendarioComponent implements OnInit {
   }
 
   redirectYearMonth(month: number): void {
-    // todo preparar imagen
     const params = this.activatedRoute.snapshot.params;
     const year = params.year;
     this.calendarioService.imageCalendar(year, month).subscribe(
@@ -80,7 +78,6 @@ export class CalendarioComponent implements OnInit {
   }
 
   redirectYearMonthDay(departament: string, day: number): void {
-    // todo preparar imagen
     const params = this.activatedRoute.snapshot.params
     const year = params.year;
     const month = params.month;

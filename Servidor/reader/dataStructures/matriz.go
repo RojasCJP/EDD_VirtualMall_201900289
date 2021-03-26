@@ -146,7 +146,6 @@ func (m *Matriz) Show() {
 	tmprow := m.head
 	for tmprow != nil {
 		tmpcol := m.head
-		//todo aqui recupero todos los departamentos con &tmprow
 		cuerpoGraph += "\"" + tmprow.departamento + strconv.Itoa(tmprow.dia) + "\" [label = \"" + tmprow.departamento + "\"    width = 1.5 style = filled, fillcolor = bisque1, group = 0 ];\n"
 		if tmprow.up != nil {
 			cuerpoGraph += "\"" + tmprow.departamento + strconv.Itoa(tmprow.dia) + "\"->\"" + tmprow.up.departamento + strconv.Itoa(tmprow.up.dia) + "\";\n"
@@ -165,7 +164,6 @@ func (m *Matriz) Show() {
 		tmpcol = tmprow.right
 		if tmprow.departamento == "0" {
 			for tmpcol != nil {
-				//todo aqui recupero todos los dias con &tmpcol
 				cuerpoGraph += "\"" + tmpcol.departamento + strconv.Itoa(tmpcol.dia) + "\" [label = \"" + strconv.Itoa(tmpcol.dia) + "\"    width = 1.5 style = filled, fillcolor = lightskyblue, group = " + strconv.Itoa(tmpcol.dia) + " ];\n"
 				if tmpcol.up != nil {
 					cuerpoGraph += "\"" + tmpcol.departamento + strconv.Itoa(tmpcol.dia) + "\"->\"" + tmpcol.up.departamento + strconv.Itoa(tmpcol.up.dia) + "\";\n"
@@ -185,7 +183,6 @@ func (m *Matriz) Show() {
 			}
 		} else {
 			for tmpcol != nil {
-				//todo aqui recupero todos los demas nodos
 				cuerpoGraph += "\"" + tmpcol.departamento + strconv.Itoa(tmpcol.dia) + "\" [label = \"" + tmpcol.departamento + strconv.Itoa(tmpcol.dia) + "\", width=1.5 style= filled, group=" + strconv.Itoa(tmpcol.dia) + "];\n"
 				if tmpcol.up != nil {
 					cuerpoGraph += "\"" + tmpcol.departamento + strconv.Itoa(tmpcol.dia) + "\"->\"" + tmpcol.up.departamento + strconv.Itoa(tmpcol.up.dia) + "\";\n"

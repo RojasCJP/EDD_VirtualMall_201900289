@@ -21,15 +21,6 @@ var arregloListas []Lista
 var Carrito []ElementoCarrito
 var Years []dataStructures.Year
 
-//todo tengo que hacer lo del calendario, armar la estructura
-//tengo que verificar si el a;o existe ya
-//tengo que ver si el mes ya existe
-//tengo que ver si en la matriz ya existe el departamento y dia
-//si existe tengo que agregar a la cola los productos
-//si no existe tengo que hacer la cola y agregar los productos
-//por ultimo tengo que graficar
-
-//todo tengo que ver si quito los elementos de una vez cuando los piden o si hasta que los compran
 type htmltemplate struct {
 	Name   string
 	Carnet int
