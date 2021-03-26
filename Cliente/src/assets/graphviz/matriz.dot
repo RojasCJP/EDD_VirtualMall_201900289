@@ -1,23 +1,87 @@
 digraph matriz{
-    rankdir = "LR"
-574->230
-230->323
-230->574
-323->800
-323->230
-800->562
-800->323
-562->344
-562->800
-344->45
-344->562
-45->500
-45->344
-500->297
-500->45
-297->894
-297->500
-894->110
-894->297
-110->894
+    node [shape=box]
+    /* esto no se elimina, es para evitar el posicionamiento a lo loco */
+    e0[ shape = point, width = 0 ];
+    e1[ shape = point, width = 0 ];
+"00" [label = "0"    width = 1.5 style = filled, fillcolor = bisque1, group = 0 ];
+"00"->"Comida0";
+"00"->"1";
+"1" [label = "1"    width = 1.5 style = filled, fillcolor = lightskyblue, group = 1 ];
+"1"->"Comida1";
+"1"->"00";
+"1"->"5";
+"5" [label = "5"    width = 1.5 style = filled, fillcolor = lightskyblue, group = 5 ];
+"5"->"Comida5";
+"5"->"1";
+"5"->"7";
+"7" [label = "7"    width = 1.5 style = filled, fillcolor = lightskyblue, group = 7 ];
+"7"->"Comida7";
+"7"->"5";
+"7"->"10";
+"10" [label = "10"    width = 1.5 style = filled, fillcolor = lightskyblue, group = 10 ];
+"10"->"Comida10";
+"10"->"7";
+{rank = same;"00";"1";"5";"7";"10";}
+"Comida0" [label = "Comida"    width = 1.5 style = filled, fillcolor = bisque1, group = 0 ];
+"Comida0"->"00";
+"Comida0"->"Deporte0";
+"Comida0"->"Comida1";
+"Comida1" [label = "Comida1", width=1.5 style= filled, group=1];
+"Comida1"->"1";
+"Comida1"->"Deporte1";
+"Comida1"->"Comida0";
+"Comida1"->"Comida5";
+"Comida5" [label = "Comida5", width=1.5 style= filled, group=5];
+"Comida5"->"5";
+"Comida5"->"Deporte5";
+"Comida5"->"Comida1";
+"Comida5"->"Comida7";
+"Comida7" [label = "Comida7", width=1.5 style= filled, group=7];
+"Comida7"->"7";
+"Comida7"->"Deporte7";
+"Comida7"->"Comida5";
+"Comida7"->"Comida10";
+"Comida10" [label = "Comida10", width=1.5 style= filled, group=10];
+"Comida10"->"10";
+"Comida10"->"Deporte10";
+"Comida10"->"Comida7";
+{rank = same;"Comida0";"Comida1";"Comida5";"Comida7";"Comida10";}
+"Deporte0" [label = "Deporte"    width = 1.5 style = filled, fillcolor = bisque1, group = 0 ];
+"Deporte0"->"Comida0";
+"Deporte0"->"Tecnologia0";
+"Deporte0"->"Deporte1";
+"Deporte1" [label = "Deporte1", width=1.5 style= filled, group=1];
+"Deporte1"->"Comida1";
+"Deporte1"->"Tecnologia1";
+"Deporte1"->"Deporte0";
+"Deporte1"->"Deporte5";
+"Deporte5" [label = "Deporte5", width=1.5 style= filled, group=5];
+"Deporte5"->"Comida5";
+"Deporte5"->"Deporte1";
+"Deporte5"->"Deporte7";
+"Deporte7" [label = "Deporte7", width=1.5 style= filled, group=7];
+"Deporte7"->"Comida7";
+"Deporte7"->"Tecnologia7";
+"Deporte7"->"Deporte5";
+"Deporte7"->"Deporte10";
+"Deporte10" [label = "Deporte10", width=1.5 style= filled, group=10];
+"Deporte10"->"Comida10";
+"Deporte10"->"Tecnologia10";
+"Deporte10"->"Deporte7";
+{rank = same;"Deporte0";"Deporte1";"Deporte5";"Deporte7";"Deporte10";}
+"Tecnologia0" [label = "Tecnologia"    width = 1.5 style = filled, fillcolor = bisque1, group = 0 ];
+"Tecnologia0"->"Deporte0";
+"Tecnologia0"->"Tecnologia1";
+"Tecnologia1" [label = "Tecnologia1", width=1.5 style= filled, group=1];
+"Tecnologia1"->"Deporte1";
+"Tecnologia1"->"Tecnologia0";
+"Tecnologia1"->"Tecnologia7";
+"Tecnologia7" [label = "Tecnologia7", width=1.5 style= filled, group=7];
+"Tecnologia7"->"Deporte7";
+"Tecnologia7"->"Tecnologia1";
+"Tecnologia7"->"Tecnologia10";
+"Tecnologia10" [label = "Tecnologia10", width=1.5 style= filled, group=10];
+"Tecnologia10"->"Deporte10";
+"Tecnologia10"->"Tecnologia7";
+{rank = same;"Tecnologia0";"Tecnologia1";"Tecnologia7";"Tecnologia10";}
 }

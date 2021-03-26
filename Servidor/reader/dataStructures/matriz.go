@@ -83,30 +83,30 @@ func (matriz *Matriz) addCol(col int) {
 }
 
 func (matriz *Matriz) addNode(row string, col int, valor Cola) {
-	newNode := &NodoMatriz{Valor: valor}
+	newNode := &NodoMatriz{Valor: valor, departamento: row, dia: col}
 	tmprow := matriz.head
 	tmpcol := matriz.head
-	filasBajadas := 0
-	for tmprow.down != nil {
+	for tmprow.departamento != row {
 		tmprow = tmprow.down
-		filasBajadas++
 		if tmprow.departamento == row {
-			for tmpcol.right != nil {
+			for tmprow.dia < col && tmprow.right != nil {
+				tmprow = tmprow.right
+			}
+			for tmpcol.dia != col {
 				tmpcol = tmpcol.right
-				if tmprow.right != nil {
-					tmprow = tmprow.right
-				}
 				if tmpcol.dia == col {
-					for i := 0; i < filasBajadas; i++ {
-						if tmpcol.down != nil {
-							tmpcol = tmpcol.down
-						}
+					for tmpcol.departamento < row && tmpcol.down != nil {
+						tmpcol = tmpcol.down
 					}
-					newNode.departamento = row
-					newNode.dia = col
+					if tmprow.dia > col {
+						tmprow = tmprow.left
+					}
+					if tmpcol.departamento > row {
+						tmpcol = tmpcol.up
+					}
 					newNode.left = tmprow
-					newNode.right = tmprow.right
 					newNode.up = tmpcol
+					newNode.right = tmprow.right
 					newNode.down = tmpcol.down
 					newNode.left.right = newNode
 					if newNode.right != nil {
