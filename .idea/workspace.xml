@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="terminado todo lo de los inventarios, hecha la matriz dispersa y tengo que hacer lo que me dicen los TODO">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="arbol b termiando, falta eliminar, grafos a medio camino, haciendo pruebas de dijkstra">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +188,7 @@
       <workItem from="1618017464348" duration="1234000" />
       <workItem from="1618114667348" duration="507000" />
       <workItem from="1618352922254" duration="2052000" />
-      <workItem from="1618372165888" duration="9116000" />
+      <workItem from="1618372165888" duration="10497000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -276,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616564554395</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="arbol b termiando, falta eliminar, grafos a medio camino, haciendo pruebas de dijkstra">
+      <created>1618382578125</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1618382578126</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,14 +311,15 @@
     <MESSAGE value="carrito terminado" />
     <MESSAGE value="solo falta graficar el calendario y hacer las interfaces de botones y eso, ya casi esta :)" />
     <MESSAGE value="Proyecto terminado solo falta hacer las pruebas respectivas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Proyecto terminado solo falta hacer las pruebas respectivas" />
+    <MESSAGE value="arbol b termiando, falta eliminar, grafos a medio camino, haciendo pruebas de dijkstra" />
+    <option name="LAST_COMMIT_MESSAGE" value="arbol b termiando, falta eliminar, grafos a medio camino, haciendo pruebas de dijkstra" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/main.go</url>
-          <line>26</line>
+          <line>30</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -322,24 +328,24 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/Servidor/main.go</url>
-          <line>25</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
           <line>68</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
-          <line>123</line>
+          <line>131</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
-          <line>119</line>
+          <line>127</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Servidor/main.go</url>
+          <line>29</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -228,10 +228,14 @@ func TestGrafo(t *testing.T) {
 
 func TestDijkstra(t *testing.T) {
 	grafo := Grafo{}
-	grafo.AddNode("equis", []Conexion{{Nombre: "hola", Distancia: 5}, {Nombre: "adios", Distancia: 6}})
-	grafo.AddNode("hola", []Conexion{{Nombre: "adios", Distancia: 8}})
-	grafo.AddNode("adios", []Conexion{})
-	tupla := grafo.Dijkstra("equis", "adios")
+	grafo.AddNode("s", []Conexion{{"b", 4}, {"c", 2}})
+	grafo.AddNode("b", []Conexion{{"c", 1}, {"d", 5}})
+	grafo.AddNode("c", []Conexion{{"d", 8}, {"e", 10}})
+	grafo.AddNode("d", []Conexion{{"e", 2}, {"t", 6}})
+	grafo.AddNode("e", []Conexion{{"t", 2}})
+	grafo.AddNode("t", []Conexion{})
+
+	tupla := grafo.Dijkstra("s", "t")
 	fmt.Println(tupla.Predecesor)
 	fmt.Println(tupla.Definitiva)
 	fmt.Println(tupla.Evaluar)

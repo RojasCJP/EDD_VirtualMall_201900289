@@ -95,6 +95,13 @@ func (grafo *Grafo) Dijkstra(from string, to string) TuplaCamino {
 							recorrido[i][j].Distancia = conexion.Distancia
 							recorrido[i][j].Definitiva = false
 						}
+					} else {
+						if i-1 >= 0 {
+							recorrido[i][j].Predecesor = recorrido[i-1][j].Predecesor
+							recorrido[i][j].Evaluar = true
+							recorrido[i][j].Distancia = recorrido[i-1][j].Distancia
+							recorrido[i][j].Definitiva = false
+						}
 					}
 				} else {
 					if i-1 >= 0 {
@@ -111,6 +118,7 @@ func (grafo *Grafo) Dijkstra(from string, to string) TuplaCamino {
 				}
 			}
 		}
+		tuplaUso.Distancia = math.MaxInt64
 		for j := 0; j < len(grafo.Nodos); j++ {
 			if recorrido[i][j].Distancia < tuplaUso.Distancia && recorrido[i][j].Definitiva == false {
 				tuplaUso = recorrido[i][j]
