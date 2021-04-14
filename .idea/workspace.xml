@@ -11,8 +11,6 @@
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/matriz.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/matriz.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
         <option value="TypeScript File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -64,6 +62,9 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/Cliente/node_modules/protractor" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\node_modules\typescript\lib" />
   </component>
@@ -77,23 +78,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Test.go test dataStructures">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/Servidor/main.go" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Servidor/main.go" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
@@ -101,17 +91,17 @@
       <working_directory value="$PROJECT_DIR$/Servidor" />
       <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/../Practica1-EDD-|$PROJECT_DIR$/Servidor/main.go" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/../Practica1-EDD-|$PROJECT_DIR$/Servidor/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="go test dataStructures" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor/reader/dataStructures" />
-      <framework value="gotest" />
       <kind value="DIRECTORY" />
       <directory value="$PROJECT_DIR$/Servidor/reader/dataStructures" />
       <filePath value="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="E2E Tests (Cliente)" type="JavaScriptTestRunnerProtractor">
@@ -191,7 +181,16 @@
       <workItem from="1616473724263" duration="101000" />
       <workItem from="1616539922250" duration="15019000" />
       <workItem from="1616701587541" duration="2523000" />
-      <workItem from="1616718436910" duration="5848000" />
+      <workItem from="1616718436910" duration="6057000" />
+      <workItem from="1617060670262" duration="663000" />
+      <workItem from="1617409707732" duration="613000" />
+      <workItem from="1617581221561" duration="292000" />
+      <workItem from="1617681807863" duration="224000" />
+      <workItem from="1617850966572" duration="2003000" />
+      <workItem from="1618017464348" duration="1234000" />
+      <workItem from="1618114667348" duration="507000" />
+      <workItem from="1618352922254" duration="2052000" />
+      <workItem from="1618372165888" duration="9116000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -314,7 +313,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/main.go</url>
-          <line>20</line>
+          <line>26</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -322,13 +321,28 @@
           <line>85</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Servidor/main.go</url>
+          <line>25</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
+          <line>68</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
+          <line>123</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
+          <line>119</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="GoApplicationRunConfiguration">
-        <watch expression="Years" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Practica1_EDD_$TestPrueba_in_arbolAVL_test_go.out" NAME="TestPrueba in arbolAVL_test.go Coverage Results" MODIFIED="1615667074179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
