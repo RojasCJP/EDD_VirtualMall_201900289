@@ -26,7 +26,7 @@ func TestInsert(t *testing.T) {
 }
 
 func TestArbol(t *testing.T) {
-	arbol := _BTree()
+	arbol := BTree_()
 	arbol.Insert(&Usuario{1, "juan", "juan", "asdf", "asdf"})
 	arbol.Insert(&Usuario{2, "juan", "juan", "asdf", "asdf"})
 	arbol.Insert(&Usuario{3, "juan", "juan", "asdf", "asdf"})
@@ -96,7 +96,7 @@ func TestArbol(t *testing.T) {
 }
 
 func TestFindArbol(t *testing.T) {
-	arbol := _BTree()
+	arbol := BTree_()
 	arbol.Insert(&Usuario{1, "juan", "juan", "asdf", "asdf"})
 	arbol.Insert(&Usuario{2, "juan", "juan", "asdf", "asdf"})
 	arbol.Insert(&Usuario{3, "juan", "juan", "asdf", "asdf"})
@@ -192,8 +192,23 @@ func TestFindArbol(t *testing.T) {
 	fmt.Println("prueba de que si jalaron los test")
 }
 
+func TestPetarArbol(t *testing.T) {
+	arbol := BTree_()
+	for i := 1; i < 170; i++ {
+		arbol.Insert(&Usuario{i, "juan", "juan", "asdf", "asdf"})
+	}
+	for i := 1; i < 170; i++ {
+		if arbol.Find(i, arbol.Root) == nil {
+			t.Error("Test failed")
+		}
+	}
+	if arbol.Root.User[0].Dpi != 81 {
+		t.Error("Test failed")
+	}
+}
+
 func TestGrafo(t *testing.T) {
-	grafo := Grafo{}
+	var grafo Grafo
 	grafo.AddNode("equis", []Conexion{{Nombre: "hola", Distancia: 5}, {Nombre: "adios", Distancia: 6}})
 	grafo.AddNode("hola", []Conexion{{Nombre: "adios", Distancia: 8}})
 	grafo.AddNode("adios", []Conexion{})

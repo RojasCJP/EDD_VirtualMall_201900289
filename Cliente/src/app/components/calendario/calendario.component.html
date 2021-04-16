@@ -1,39 +1,42 @@
-<div class="card text-center align-items-center">
-  <img src="/assets/arboles/matriz.png">
-</div>
-<div *ngIf="years!==undefined && months===undefined && pedidos==undefined && productos==undefined">
-  <div class="row">
-    <div *ngFor="let year of years" class="col-md-4" style="margin-bottom: 10px">
-      <div>
-        <a class="btn btn-success btn-block" (click)="redierctYear(year)">{{year}}</a>
+<app-navigation></app-navigation>
+<div class="container p-4">
+  <div class="card text-center align-items-center">
+    <img src="/assets/arboles/matriz.png">
+  </div>
+  <div *ngIf="years!==undefined && months===undefined && pedidos==undefined && productos==undefined">
+    <div class="row">
+      <div *ngFor="let year of years" class="col-md-4" style="margin-bottom: 10px">
+        <div>
+          <a class="btn btn-success btn-block" (click)="redierctYear(year)">{{year}}</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="years===undefined && months!==undefined && pedidos==undefined && productos==undefined">
-  <div class="row">
-    <div *ngFor="let month of months" class="col-md-4" style="margin-bottom: 10px">
-      <div>
-        <a class="btn btn-success btn-block" (click)="redirectYearMonth(month)">{{month}}</a>
+  <div *ngIf="years===undefined && months!==undefined && pedidos==undefined && productos==undefined">
+    <div class="row">
+      <div *ngFor="let month of months" class="col-md-4" style="margin-bottom: 10px">
+        <div>
+          <a class="btn btn-success btn-block" (click)="redirectYearMonth(month)">{{month}}</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="years===undefined && months===undefined && pedidos!==undefined && productos===undefined">
-  <div class="row">
-    <div *ngFor="let pedido of pedidos" class="col-md-4" style="margin-bottom: 10px">
-      <div>
-        <a class="btn btn-success btn-block" (click)="redirectYearMonthDay(pedido.Departamento,pedido.Dia)">Departamento: {{pedido.Departamento}}
-          Dia: {{pedido.Dia}}</a>
+  <div *ngIf="years===undefined && months===undefined && pedidos!==undefined && productos===undefined">
+    <div class="row">
+      <div *ngFor="let pedido of pedidos" class="col-md-4" style="margin-bottom: 10px">
+        <div>
+          <a class="btn btn-success btn-block" (click)="redirectYearMonthDay(pedido.Departamento,pedido.Dia)">Departamento: {{pedido.Departamento}}
+            Dia: {{pedido.Dia}}</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="years===undefined && months===undefined && pedidos===undefined && productos!==undefined">
-  <div class="row">
-    <div *ngFor="let producto of productos" class="col-md-4" style="margin-bottom: 10px">
-      <div>
-        <a class="btn btn-success btn-block">{{producto}}</a>
+  <div *ngIf="years===undefined && months===undefined && pedidos===undefined && productos!==undefined">
+    <div class="row">
+      <div *ngFor="let producto of productos" class="col-md-4" style="margin-bottom: 10px">
+        <div>
+          <a class="btn btn-success btn-block">{{producto}}</a>
+        </div>
       </div>
     </div>
   </div>

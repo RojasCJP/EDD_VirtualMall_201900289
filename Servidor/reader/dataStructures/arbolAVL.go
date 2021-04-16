@@ -10,12 +10,13 @@ import (
 )
 
 type Producto struct {
-	Nombre      string
-	Codigo      int
-	Descripcion string
-	Precio      float32
-	Cantidad    int
-	Imagen      string
+	Nombre         string
+	Codigo         int
+	Descripcion    string
+	Precio         float32
+	Cantidad       int
+	Imagen         string
+	Almacenamiento string
 }
 
 type NodoAVL struct {

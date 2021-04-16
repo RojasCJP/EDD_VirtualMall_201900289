@@ -47,6 +47,7 @@ func TestPreorder(t *testing.T) {
 		t.Error("test not passed")
 	}
 }
+
 func TestPostorder(t *testing.T) {
 	tree := AVLtree{}
 	tree.Add(Producto{Codigo: 5})
@@ -61,6 +62,7 @@ func TestPostorder(t *testing.T) {
 		t.Error("test not passed")
 	}
 }
+
 func TestInorder(t *testing.T) {
 	tree := AVLtree{}
 	tree.Add(Producto{Codigo: 5})

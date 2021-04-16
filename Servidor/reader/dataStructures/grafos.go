@@ -54,6 +54,7 @@ func (grafo *Grafo) Conection(from string, to string) Conexion {
 }
 
 func (grafo *Grafo) Dijkstra(from string, to string) TuplaCamino {
+	//todo este me tiene que regresar todos los nodos en una lista
 	var recorrido [][]TuplaCamino
 	nodoInvalido := Conexion{}
 	nodoUso := from

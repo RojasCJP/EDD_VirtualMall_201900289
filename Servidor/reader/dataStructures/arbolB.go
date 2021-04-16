@@ -24,7 +24,7 @@ func _Nodo(Parent *NodoB) *NodoB {
 	return &NodoB{Parent: Parent, leaf: true, n: 0}
 }
 
-func _BTree() *BTree {
+func BTree_() *BTree {
 	return &BTree{Root: _Nodo(nil)}
 }
 

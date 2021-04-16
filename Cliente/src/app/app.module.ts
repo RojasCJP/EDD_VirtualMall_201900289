@@ -16,6 +16,8 @@ import { InventarioViewComponent } from './components/inventario-view/inventario
 import { InventarioFormComponent } from './components/inventario-form/inventario-form.component';
 import {TreeviewModule} from 'ngx-treeview';
 import { CargarCalendarioComponent } from './components/cargar-calendario/cargar-calendario.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroUsariosComponent } from './components/registro-usarios/registro-usarios.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { CargarCalendarioComponent } from './components/cargar-calendario/cargar
     EliminarTiendaComponent,
     InventarioViewComponent,
     InventarioFormComponent,
-    CargarCalendarioComponent
+    CargarCalendarioComponent,
+    LoginComponent,
+    RegistroUsariosComponent
   ],
     imports: [
         BrowserModule,

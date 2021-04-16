@@ -20,6 +20,8 @@ var imagenPredeterminada string = "https://es.jumpseller.com/images/learn/choosi
 var arregloListas []Lista
 var Carrito []ElementoCarrito
 var Years []dataStructures.Year
+var Btree *dataStructures.BTree
+var Grafos dataStructures.Grafo
 
 type htmltemplate struct {
 	Name   string
@@ -131,6 +133,8 @@ func SetJsonData(jsonData Datos) {
 }
 
 func LevantarServer() {
+	Btree = dataStructures.BTree_()
+	//a;adir datos solo en este btree
 	router := mux.NewRouter().StrictSlash(true)
 	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
@@ -161,6 +165,12 @@ func LevantarServer() {
 	router.HandleFunc("/calendarioImage/{year}", MonthsImage).Methods("GET")
 	router.HandleFunc("/calendarioImage/{year}/{mes}", CalendarioImage).Methods("GET")
 	router.HandleFunc("/calendarioImage/{year}/{mes}/{dia}/{departamento}", ProductosImage).Methods("GET")
+	router.HandleFunc("/usuarios/cargar", CargarUsuario).Methods("POST")
+	router.HandleFunc("/usuarios/consultar", ConsultarUsuario).Methods("POST")
+	router.HandleFunc("/usuarios/graficar", GrafoUsuario).Methods("POST")
+	router.HandleFunc("/grafo/cargar", CargarGrafo).Methods("POST")
+	router.HandleFunc("/grafo/dijkstra", DijkstraGrafo).Methods("POST")
+	router.HandleFunc("/grafo/graficar", GrafoGraficar).Methods("POST")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -629,6 +639,30 @@ func ProductosImage(response http.ResponseWriter, request *http.Request) {
 	if err1 != nil {
 		log.Printf("Command finishes with error: %v", err1)
 	}
+}
+
+func CargarUsuario(response http.ResponseWriter, request *http.Request) {
+	// todo hacer la carga para usuarios, solo es un for
+}
+
+func ConsultarUsuario(response http.ResponseWriter, request *http.Request) {
+	// todo solo se hace con el find
+}
+
+func CargarGrafo(response http.ResponseWriter, request *http.Request) {
+	// todo cargar el grafo, creo que tambien solo es un for
+}
+
+func GrafoUsuario(response http.ResponseWriter, request *http.Request) {
+	// todo hacer el mtodo del arbol en la clase del arbol para llamarlo solo aqui
+}
+
+func DijkstraGrafo(response http.ResponseWriter, request *http.Request) {
+	// todo tengo que mandar esa onda desde el frontend
+}
+
+func GrafoGraficar(response http.ResponseWriter, request *http.Request) {
+	// todo graficar el grafo
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

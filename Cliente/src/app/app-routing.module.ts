@@ -8,13 +8,15 @@ import {CargarTiendasComponent} from './components/cargar-tiendas/cargar-tiendas
 import {EliminarTiendaComponent} from './components/eliminar-tienda/eliminar-tienda.component';
 import {InventarioViewComponent} from './components/inventario-view/inventario-view.component';
 import {InventarioFormComponent} from './components/inventario-form/inventario-form.component';
-import {CargarCalendarioComponent} from "./components/cargar-calendario/cargar-calendario.component";
+import {CargarCalendarioComponent} from './components/cargar-calendario/cargar-calendario.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegistroUsariosComponent} from './components/registro-usarios/registro-usarios.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/',
-    pathMatch: 'full'
+    redirectTo: '/login',
+    pathMatch: 'full',
   },
   {
     path: 'tiendas',
@@ -63,6 +65,14 @@ const routes: Routes = [
   {
     path: 'cargarCalendario',
     component: CargarCalendarioComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'registro',
+    component: RegistroUsariosComponent
   }
 ];
 

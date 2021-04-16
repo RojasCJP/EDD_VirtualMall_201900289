@@ -1,24 +1,27 @@
-<div class="card text-center align-items-center">
-  <img src="/assets/arboles/inventario.png">
-</div>
-<p></p>
-<div class="row">
-  <div class="col-md-4 col-12" *ngFor="let elemento of inventario" style="margin-bottom: 15px;">
-    <div class="card text-center align-items-center">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        {{elemento.Nombre}}
-      </div>
-      <div class="card-body">
-        <img src="{{elemento.Imagen}}" height="150px" width="100%" *ngIf="elemento.Imagen!=null">
-        <img src="assets/kleinDePrueba.jpg" height="150px" width="100%" *ngIf="elemento.Imagen==null">
-        <p></p>
-        <p>Codigo: {{elemento.Codigo}}</p>
-        <p>Descripcion: {{elemento.Descripcion}}</p>
-        <p>Precio: {{elemento.Precio}}</p>
-        <p>Cantidad: {{elemento.Cantidad}}</p>
-        <div>
-          <a class="btn btn-success btn-block" (click)="addCarrito(elemento.Codigo)">Añadir a Carrito</a>
-          <!--          <a class="btn btn-success btn-block" href="/inventarioAdd">Añadir Inventario</a>-->
+<app-navigation></app-navigation>
+<div class="container p-4">
+  <div class="card text-center align-items-center">
+    <img src="/assets/arboles/inventario.png">
+  </div>
+  <p></p>
+  <div class="row">
+    <div class="col-md-4 col-12" *ngFor="let elemento of inventario" style="margin-bottom: 15px;">
+      <div class="card text-center align-items-center">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          {{elemento.Nombre}}
+        </div>
+        <div class="card-body">
+          <img src="{{elemento.Imagen}}" height="150px" width="100%" *ngIf="elemento.Imagen!=null">
+          <img src="assets/kleinDePrueba.jpg" height="150px" width="100%" *ngIf="elemento.Imagen==null">
+          <p></p>
+          <p>Codigo: {{elemento.Codigo}}</p>
+          <p>Descripcion: {{elemento.Descripcion}}</p>
+          <p>Precio: {{elemento.Precio}}</p>
+          <p>Cantidad: {{elemento.Cantidad}}</p>
+          <div>
+            <a class="btn btn-success btn-block" (click)="addCarrito(elemento.Codigo)">Añadir a Carrito</a>
+            <!--          <a class="btn btn-success btn-block" href="/inventarioAdd">Añadir Inventario</a>-->
+          </div>
         </div>
       </div>
     </div>
