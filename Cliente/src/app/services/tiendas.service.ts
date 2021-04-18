@@ -3,6 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TiendaEspecifica} from '../models/tiendaEspecifica';
 import {Observable} from 'rxjs';
 import {Cuerpo} from '../models/cuerpo';
+import {Login, Confirmacion} from '../models/login';
+import {Usuarios} from '../models/usuarios';
+import {Grafos} from '../models/grafos';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +41,18 @@ export class TiendasService {
       body: tiendaEspecifica,
     };
     return this.http.delete(`${this.API_URI}/Eliminar`, options);
+  }
+
+  login(cuenta: Login): Observable<Confirmacion> {
+    // @ts-ignore
+    return this.http.post(`${this.API_URI}/usuarios/consultar`, cuenta);
+  }
+
+  cargarUsuarios(cuerpo: Usuarios): Observable<any> {
+    return this.http.post(`${this.API_URI}/usuarios/cargar`, cuerpo);
+  }
+
+  cargarGrafos(cuerpo: Grafos): Observable<any> {
+    return this.http.post(`${this.API_URI}/grafo/cargar`, cuerpo);
   }
 }

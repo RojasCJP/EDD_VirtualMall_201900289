@@ -11,41 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class InventarioViewComponent implements OnInit, OnDestroy {
 
   imagen;
-  inventario: InventarioElemento[] =
-    [
-      {
-        Nombre: 'elemento1',
-        Codigo: 1,
-        Descripcion: 'descripcion1',
-        Precio: 1,
-        Cantidad: 1,
-        Imagen: 'https://i.blogs.es/7a4489/galaxy-s8-4/450_1000.jpg'
-      },
-      {
-        Nombre: 'elemento2',
-        Codigo: 2,
-        Descripcion: 'descripcion2',
-        Precio: 2,
-        Cantidad: 2,
-        Imagen: 'https://i.blogs.es/7a4489/galaxy-s8-4/450_1000.jpg'
-      },
-      {
-        Nombre: 'elemento2',
-        Codigo: 2,
-        Descripcion: 'descripcion2',
-        Precio: 2,
-        Cantidad: 2,
-        Imagen: 'https://i.blogs.es/7a4489/galaxy-s8-4/450_1000.jpg'
-      },
-      {
-        Nombre: 'elemento2',
-        Codigo: 2,
-        Descripcion: 'descripcion2',
-        Precio: 2,
-        Cantidad: 2,
-        Imagen: 'https://i.blogs.es/7a4489/galaxy-s8-4/450_1000.jpg'
-      }
-    ];
+  inventario: InventarioElemento[] = [];
 
   constructor(private inventarioService: InventarioService, private activatedRoute: ActivatedRoute) {
   }

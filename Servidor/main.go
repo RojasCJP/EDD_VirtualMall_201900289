@@ -2,7 +2,6 @@ package main
 
 import (
 	"./reader"
-	"./reader/dataStructures"
 	"net/http"
 )
 
@@ -19,15 +18,6 @@ func main() {
 	//matriz.Add("chola", 1, dataStructures.Cola{Len: 7})
 	//matriz.Add("chola", 3, dataStructures.Cola{Len: 9})
 	//matriz.Show()
-	grafo := dataStructures.Grafo{}
-	grafo.AddNode("a", []dataStructures.Conexion{{Nombre: "b", Distancia: 2}, {Nombre: "c", Distancia: 3}})
-	grafo.AddNode("b", []dataStructures.Conexion{{Nombre: "d", Distancia: 5}, {Nombre: "e", Distancia: 2}})
-	grafo.AddNode("c", []dataStructures.Conexion{{Nombre: "e", Distancia: 5}})
-	grafo.AddNode("d", []dataStructures.Conexion{{Nombre: "e", Distancia: 1}, {Nombre: "z", Distancia: 2}})
-	grafo.AddNode("e", []dataStructures.Conexion{{Nombre: "z", Distancia: 4}})
-	grafo.AddNode("z", []dataStructures.Conexion{})
-
-	grafo.Dijkstra("a", "c")
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	reader.LevantarServer()
 }

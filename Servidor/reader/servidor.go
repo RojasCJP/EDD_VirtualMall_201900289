@@ -21,12 +21,18 @@ var arregloListas []Lista
 var Carrito []ElementoCarrito
 var Years []dataStructures.Year
 var Btree *dataStructures.BTree
-var Grafos dataStructures.Grafo
+var Grafo dataStructures.Grafo
+
+//todo tengo que ver que onda con el carrito y con la encriptacion
 
 type htmltemplate struct {
 	Name   string
 	Carnet int
 	Json   string
+}
+
+type Usuarios struct {
+	Usuarios []dataStructures.Usuario
 }
 
 type TiendaTransicional struct {
@@ -167,9 +173,8 @@ func LevantarServer() {
 	router.HandleFunc("/calendarioImage/{year}/{mes}/{dia}/{departamento}", ProductosImage).Methods("GET")
 	router.HandleFunc("/usuarios/cargar", CargarUsuario).Methods("POST")
 	router.HandleFunc("/usuarios/consultar", ConsultarUsuario).Methods("POST")
-	router.HandleFunc("/usuarios/graficar", GrafoUsuario).Methods("POST")
+	router.HandleFunc("/usuarios/graficar", GrafoUsuario).Methods("GET")
 	router.HandleFunc("/grafo/cargar", CargarGrafo).Methods("POST")
-	router.HandleFunc("/grafo/dijkstra", DijkstraGrafo).Methods("POST")
 	router.HandleFunc("/grafo/graficar", GrafoGraficar).Methods("POST")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
@@ -642,27 +647,72 @@ func ProductosImage(response http.ResponseWriter, request *http.Request) {
 }
 
 func CargarUsuario(response http.ResponseWriter, request *http.Request) {
-	// todo hacer la carga para usuarios, solo es un for
+	data, _ := ioutil.ReadAll(request.Body)
+	usuarios := Usuarios{}
+	err := json.Unmarshal(data, &usuarios)
+	if err != nil {
+		response.Write([]byte("ocurrio un error en la carga"))
+	}
+	for i := 0; i < len(usuarios.Usuarios); i++ {
+		Btree.Insert(&dataStructures.Usuario{Dpi: usuarios.Usuarios[i].Dpi, Nombre: usuarios.Usuarios[i].Nombre,
+			Correo: usuarios.Usuarios[i].Correo, Password: usuarios.Usuarios[i].Password, Cuenta: usuarios.Usuarios[i].Cuenta})
+	}
+	response.Write([]byte("datos cargados efectivamente"))
+}
+
+type ConsultaSesion struct {
+	Dpi      int
+	Password string
+}
+type RespuestaSesion struct {
+	Consulta bool
+	Cuenta   string
 }
 
 func ConsultarUsuario(response http.ResponseWriter, request *http.Request) {
-	// todo solo se hace con el find
+	data, _ := ioutil.ReadAll(request.Body)
+	consultaSesion := ConsultaSesion{}
+	json.Unmarshal(data, &consultaSesion)
+	respuestaSesion := RespuestaSesion{Consulta: false, Cuenta: "Usuario"}
+	usuarioBusqueda := Btree.Find(consultaSesion.Dpi, Btree.Root)
+	if usuarioBusqueda.Password == consultaSesion.Password {
+		respuestaSesion.Consulta = true
+		respuestaSesion.Cuenta = usuarioBusqueda.Cuenta
+	}
+	res, _ := json.Marshal(respuestaSesion)
+	response.Write(res)
 }
 
 func CargarGrafo(response http.ResponseWriter, request *http.Request) {
-	// todo cargar el grafo, creo que tambien solo es un for
+	data, _ := ioutil.ReadAll(request.Body)
+	grafoEntrada := dataStructures.Grafo{}
+	err := json.Unmarshal(data, &grafoEntrada)
+	if err != nil {
+		response.Write([]byte("ocurrio un error en la carga"))
+	}
+	Grafo.PosicionInicialRobot = grafoEntrada.PosicionInicialRobot
+	Grafo.Entrega = grafoEntrada.Entrega
+	for i := 0; i < len(grafoEntrada.Nodos); i++ {
+		Grafo.AddNode(grafoEntrada.Nodos[i].Nombre, grafoEntrada.Nodos[i].Enlaces)
+	}
+	response.Write([]byte("datos cargados efectivamente"))
 }
 
 func GrafoUsuario(response http.ResponseWriter, request *http.Request) {
 	// todo hacer el mtodo del arbol en la clase del arbol para llamarlo solo aqui
 }
 
-func DijkstraGrafo(response http.ResponseWriter, request *http.Request) {
-	// todo tengo que mandar esa onda desde el frontend
+type GrafoCamino struct {
+	Inicio string
+	Final  string
 }
 
 func GrafoGraficar(response http.ResponseWriter, request *http.Request) {
-	// todo graficar el grafo
+	data, _ := ioutil.ReadAll(request.Body)
+	var camino []string
+	json.Unmarshal(data, &camino)
+	Grafo.MakeFileGrafo(camino)
+	response.Write([]byte("grafo generado"))
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

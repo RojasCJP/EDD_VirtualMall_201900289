@@ -18,6 +18,8 @@ import {TreeviewModule} from 'ngx-treeview';
 import { CargarCalendarioComponent } from './components/cargar-calendario/cargar-calendario.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroUsariosComponent } from './components/registro-usarios/registro-usarios.component';
+import { FormulariosComponent } from './components/formularios/formularios.component';
+import { CargarGrafoComponent } from './components/cargar-grafo/cargar-grafo.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { RegistroUsariosComponent } from './components/registro-usarios/registro
     InventarioFormComponent,
     CargarCalendarioComponent,
     LoginComponent,
-    RegistroUsariosComponent
+    RegistroUsariosComponent,
+    FormulariosComponent,
+    CargarGrafoComponent
   ],
     imports: [
         BrowserModule,

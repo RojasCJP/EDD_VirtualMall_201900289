@@ -5,4 +5,5 @@ export interface InventarioElemento {
   Precio: number;
   Cantidad: number;
   Imagen: string;
+  Almacenamiento: string;
 }

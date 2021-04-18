@@ -6,15 +6,16 @@
           <div class="form-group">
             <div class="input-group mb-3">
               <span class="input-group-text">@</span>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+              <input type="number" class="form-control" placeholder="Dpi" aria-label="Dpi" [(ngModel)]="datos.Dpi"  name="dpi">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">#</span>
-              <input type="password" class="form-control" placeholder="Password" aria-label="Password">
+              <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password"
+                     [(ngModel)]="datos.Password">
             </div>
           </div>
           <div>
-            <a class="btn btn-success btn-block" href="/tiendas">Iniciar Sesion</a>
+            <a class="btn btn-success btn-block" (click)="verificarLogin()">Iniciar Sesion</a>
             <a class="btn btn-success btn-block" href="/registro">Registro</a>
           </div>
         </form>

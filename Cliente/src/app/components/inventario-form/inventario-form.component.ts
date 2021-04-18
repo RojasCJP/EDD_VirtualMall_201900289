@@ -23,7 +23,6 @@ export class InventarioFormComponent implements OnInit {
     this.inventarioService.addInventario(this.cuerpo).subscribe(
       res => {
         console.log(res);
-        window.location.href = '/tiendas';
       },
       error => console.log(error)
     );

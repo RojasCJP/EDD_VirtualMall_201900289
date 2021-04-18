@@ -24,7 +24,6 @@ export class CargarTiendasComponent implements OnInit {
     this.tiendaService.cargarTiendas(this.cuerpo).subscribe(
       res => {
         console.log(res);
-        window.location.href = '/tiendas';
       },
       err => console.log(err)
     );

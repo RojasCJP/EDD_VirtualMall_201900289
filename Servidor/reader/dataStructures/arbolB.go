@@ -1,11 +1,13 @@
 package dataStructures
 
+import "fmt"
+
 type Usuario struct {
-	Dpi     int
-	Nombre  string
-	Correo  string
-	Passwrd string
-	Cuenta  string
+	Dpi      int
+	Nombre   string
+	Correo   string
+	Password string
+	Cuenta   string
 }
 
 type BTree struct {
@@ -98,7 +100,6 @@ func (tree *BTree) Insert_(user *Usuario, node *NodoB) *NodoB {
 				} else {
 					tree.Insert_(user, node.Parent)
 				}
-				//todo falta verificar cuando las ramas esten llenas
 			}
 			node.Parent.Child[index+1] = _Nodo(node.Parent)
 			node.Parent.Child[index+1].Child[0] = node.Child[3]
@@ -143,12 +144,29 @@ func (tree *BTree) Find(dpi int, tmp *NodoB) *Usuario {
 				break
 			}
 		}
-		return tree.Find(dpi, tmp.Child[index])
+		if tmp.Child[index] != nil {
+			return tree.Find(dpi, tmp.Child[index])
+		} else {
+			return &Usuario{Dpi: 0, Nombre: "", Correo: "", Password: "", Cuenta: ""}
+		}
 
 	} else {
 		return tmp.Find(dpi)
 	}
 
+}
+
+func (tree *BTree) AllNodes(tmp *NodoB) {
+	for i := 0; i < tmp.n; i++ {
+		if tmp.User[i] != nil {
+			fmt.Println(tmp.User[i].Dpi)
+		}
+	}
+	for i := 0; i < len(tmp.Child); i++ {
+		if tmp.Child[i] != nil {
+			tree.AllNodes(tmp.Child[i])
+		}
+	}
 }
 
 func (node *NodoB) Find(dpi int) *Usuario {

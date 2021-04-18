@@ -11,6 +11,7 @@ import {InventarioFormComponent} from './components/inventario-form/inventario-f
 import {CargarCalendarioComponent} from './components/cargar-calendario/cargar-calendario.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegistroUsariosComponent} from './components/registro-usarios/registro-usarios.component';
+import {FormulariosComponent} from './components/formularios/formularios.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegistroUsariosComponent
+  },
+  {
+    path: 'cargar',
+    component: FormulariosComponent
   }
 ];
 

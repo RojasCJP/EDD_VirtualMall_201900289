@@ -157,7 +157,7 @@ func TestFindArbol(t *testing.T) {
 	if arbol.Find(27, arbol.Root).Correo != "orozco" {
 		t.Error("test failed")
 	}
-	if arbol.Find(27, arbol.Root).Passwrd != "gaab" {
+	if arbol.Find(27, arbol.Root).Password != "gaab" {
 		t.Error("test failed")
 	}
 	if arbol.Find(27, arbol.Root).Cuenta != "gaab" {
@@ -170,7 +170,7 @@ func TestFindArbol(t *testing.T) {
 	if arbol.Find(43, arbol.Root).Correo != "rojas" {
 		t.Error("test failed")
 	}
-	if arbol.Find(43, arbol.Root).Passwrd != "kibur" {
+	if arbol.Find(43, arbol.Root).Password != "kibur" {
 		t.Error("test failed")
 	}
 	if arbol.Find(43, arbol.Root).Cuenta != "kibur" {
@@ -183,7 +183,7 @@ func TestFindArbol(t *testing.T) {
 	if arbol.Find(45, arbol.Root).Correo != "chinchilla" {
 		t.Error("test failed")
 	}
-	if arbol.Find(45, arbol.Root).Passwrd != "donnie" {
+	if arbol.Find(45, arbol.Root).Password != "donnie" {
 		t.Error("test failed")
 	}
 	if arbol.Find(45, arbol.Root).Cuenta != "donnie" {
@@ -251,8 +251,26 @@ func TestDijkstra(t *testing.T) {
 	grafo.AddNode("t", []Conexion{})
 
 	tupla := grafo.Dijkstra("s", "t")
+	camino, completo := grafo.EncontrarCamino("s", "t")
 	fmt.Println(tupla.Predecesor)
 	fmt.Println(tupla.Definitiva)
 	fmt.Println(tupla.Evaluar)
 	fmt.Println(tupla.Distancia)
+	fmt.Println(camino)
+	fmt.Println(completo)
+}
+
+func TestGrafo_EncontrarCaminoVariosNodos(t *testing.T) {
+	grafo := Grafo{}
+	grafo.AddNode("a", []Conexion{{"b", 2}, {"c", 3}})
+	grafo.AddNode("b", []Conexion{{"e", 2}, {"d", 5}})
+	grafo.AddNode("c", []Conexion{{"e", 5}})
+	grafo.AddNode("d", []Conexion{{"e", 1}, {"z", 2}})
+	grafo.AddNode("e", []Conexion{{"z", 4}})
+	grafo.AddNode("z", []Conexion{})
+
+	nodos := [...]string{"a", "c", "z"}
+	camino, completo := grafo.EncontrarCaminoVariosNodos(nodos[:])
+	fmt.Println(camino)
+	fmt.Println(completo)
 }

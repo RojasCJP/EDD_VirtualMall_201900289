@@ -63,7 +63,6 @@ func (cola *Cola) Add(nodoCola NodoCola) {
 }
 
 func (cola *Cola) Pop() {
-	//todo tengo que hacer este metodo
 }
 
 func (cola *Cola) AllProducts() []int {

@@ -1,0 +1,11 @@
+graph grafo{
+Textiles [color="red"];
+Despacho [color="green"];
+Aranceles--Despacho [label="5"];
+Textiles--Despacho [label="100"];
+Textiles--Aranceles [label="10"];
+Reparaciones--Despacho [label="6"];
+Reparaciones--Textiles [label="7"];
+Despacho--Reparaciones;
+Reparaciones--Textiles;
+}
