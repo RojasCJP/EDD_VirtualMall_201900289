@@ -64,4 +64,8 @@ export class TiendasService {
     return this.http.get(`${this.API_URI}/usuarios/graficar`);
   }
 
+  getUsuariosEncriptados(): Observable<any> {
+    return this.http.get(`${this.API_URI}/usuarios/encriptado`);
+  }
+
 }

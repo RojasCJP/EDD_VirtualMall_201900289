@@ -1,4 +1,5 @@
 digraph matriz{
     rankdir = "LR"
-1233
+2021->2020
+2020->2021
 }

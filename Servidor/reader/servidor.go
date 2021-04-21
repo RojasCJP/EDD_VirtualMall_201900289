@@ -482,8 +482,6 @@ func comprar(response http.ResponseWriter, request *http.Request) {
 	Carrito = make([]ElementoCarrito, 0)
 }
 
-//todo agregar a calendario
-
 func addCalendario(response http.ResponseWriter, request *http.Request) {
 	data, errRead := ioutil.ReadAll(request.Body)
 	if errRead != nil {
@@ -523,8 +521,6 @@ func addCalendario(response http.ResponseWriter, request *http.Request) {
 		mesComprobation.Matriz.Find(dia, departamento).Valor.Add(dataStructures.NodoCola{Valor: dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos}})
 	}
 }
-
-//todo ver como se agregan los pedidos
 
 func verYears(response http.ResponseWriter, request *http.Request) {
 	var allYears []int

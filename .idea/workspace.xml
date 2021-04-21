@@ -4,30 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="ya puedo cargar todo desde angular, tengo que hacer el carrito, encriptado y los reportes del arbol">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="practica 4 terminada hasta donde se pudo, esta practicamente todo, solo que no se muestra algunas veces como deberia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/carrito-list/carrito-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/registro-usarios/registro-usarios.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/registro-usarios/registro-usarios.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/tienda-list/tienda-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/models/elementoCarrito.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/models/elementoCarrito.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/inventario.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/reportes/reportes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/reportes/reportes.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/reportes/reportes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/reportes/reportes.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/grafo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/grafo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/lineal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/lineal.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/entradas/inventarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/entradas/inventarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuarios.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuarios.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuariosEncriptado.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuariosEncriptado.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/grafo.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/grafo.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/lineal.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/lineal.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/graphviz.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/graphviz.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuarios.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuarios.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuariosEncriptado.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuariosEncriptado.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/templates/getAll.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/getAll.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/templates/imagen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/imagen.png" afterDir="false" />
@@ -97,18 +90,7 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.Golang">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="npm.Angular">
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
@@ -230,7 +212,8 @@
       <workItem from="1618807644693" duration="1875000" />
       <workItem from="1618856096269" duration="13626000" />
       <workItem from="1618899841628" duration="245000" />
-      <workItem from="1618956458726" duration="5110000" />
+      <workItem from="1618956458726" duration="6262000" />
+      <workItem from="1619034255616" duration="1143000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -344,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618789557820</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="practica 4 terminada hasta donde se pudo, esta practicamente todo, solo que no se muestra algunas veces como deberia">
+      <created>1618966880418</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1618966880418</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,14 +368,15 @@
     <MESSAGE value="metodo de dijkstra terminado" />
     <MESSAGE value="ya esta lo visual de ingreso" />
     <MESSAGE value="ya puedo cargar todo desde angular, tengo que hacer el carrito, encriptado y los reportes del arbol" />
-    <option name="LAST_COMMIT_MESSAGE" value="ya puedo cargar todo desde angular, tengo que hacer el carrito, encriptado y los reportes del arbol" />
+    <MESSAGE value="practica 4 terminada hasta donde se pudo, esta practicamente todo, solo que no se muestra algunas veces como deberia" />
+    <option name="LAST_COMMIT_MESSAGE" value="practica 4 terminada hasta donde se pudo, esta practicamente todo, solo que no se muestra algunas veces como deberia" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/reader/servidor.go</url>
-          <line>760</line>
+          <line>756</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">

@@ -25,6 +25,12 @@ export class ReportesComponent implements OnInit {
         },
         err => console.log(err)
       );
+      this.tiendasService.getUsuariosEncriptados().subscribe(
+        res => {
+          console.log('encriptados generados');
+        },
+        err => console.log(err)
+      );
       localStorage.setItem('arreglo', 'true');
     }
   }
