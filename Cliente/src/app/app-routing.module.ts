@@ -12,6 +12,7 @@ import {CargarCalendarioComponent} from './components/cargar-calendario/cargar-c
 import {LoginComponent} from './components/login/login.component';
 import {RegistroUsariosComponent} from './components/registro-usarios/registro-usarios.component';
 import {FormulariosComponent} from './components/formularios/formularios.component';
+import {ReportesComponent} from './components/reportes/reportes.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,10 @@ const routes: Routes = [
   {
     path: 'cargar',
     component: FormulariosComponent
+  },
+  {
+    path: 'reportes',
+    component: ReportesComponent
   }
 ];
 

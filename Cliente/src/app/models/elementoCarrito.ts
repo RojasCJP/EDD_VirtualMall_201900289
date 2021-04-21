@@ -4,4 +4,5 @@ export interface ElementoCarrito {
   NombreProducto: string;
   PrecioProducto: number;
   Cantidad: number;
+  Almacenamiento: string;
 }

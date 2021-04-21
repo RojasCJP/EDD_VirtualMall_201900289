@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CalendarioService} from '../../services/calendario.service';
+import {window} from "rxjs/operators";
 
 @Component({
   selector: 'app-navigation',
@@ -21,4 +22,8 @@ export class NavigationComponent implements OnInit {
     );
   }
 
+  redirigirReportes(): void {
+    localStorage.setItem('arreglo', 'false');
+    location.href = '/reportes';
+  }
 }

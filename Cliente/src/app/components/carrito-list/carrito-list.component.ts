@@ -40,4 +40,17 @@ export class CarritoListComponent implements OnInit {
     );
   }
 
+  grafo(): void {
+    this.inventarioService.graficarGrafo().subscribe(
+      res => {
+        console.log(res);
+        localStorage.setItem('arreglo', 'false');
+        window.location.href = '/reportes';
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

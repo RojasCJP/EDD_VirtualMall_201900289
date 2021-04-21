@@ -23,7 +23,7 @@ export class RegistroUsariosComponent implements OnInit {
     console.log(this.cuerpo);
     this.usuariosServices.cargarUsuarios(this.cuerpo).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         window.location.href = 'login';
       },
       err => console.log(err)

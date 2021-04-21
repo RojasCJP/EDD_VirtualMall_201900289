@@ -55,4 +55,13 @@ export class TiendasService {
   cargarGrafos(cuerpo: Grafos): Observable<any> {
     return this.http.post(`${this.API_URI}/grafo/cargar`, cuerpo);
   }
+
+  getArreglo(): Observable<any> {
+    return this.http.get(`${this.API_URI}/getArreglo`);
+  }
+
+  getUsuariosGraph(): Observable<any> {
+    return this.http.get(`${this.API_URI}/usuarios/graficar`);
+  }
+
 }

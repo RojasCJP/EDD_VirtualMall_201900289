@@ -39,4 +39,8 @@ export class InventarioService {
   deleteProduct(tienda: number, producto: number): Observable<any> {
     return this.http.get(`${this.API_URI}/deleteCarrito/${tienda}/${producto}`);
   }
+
+  graficarGrafo(): Observable<any> {
+    return this.http.get(`${this.API_URI}/grafo/graficar`);
+  }
 }

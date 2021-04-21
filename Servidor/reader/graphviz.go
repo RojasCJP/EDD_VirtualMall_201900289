@@ -11,6 +11,29 @@ import (
 var graphviz string
 var rank string
 
+func GraphAngular(valores string) {
+	graphviz = "digraph getAll {\ngraph[splines=\"ortho\"];\n"
+	numeroListas := hacerGraph(valores)
+	rango(numeroListas)
+	graphviz += rank
+	graphviz += "}"
+	err := ioutil.WriteFile("../Cliente/src/assets/graphviz/lineal.dot", []byte(graphviz), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := "dot.exe -Tpng ../Cliente/src/assets/graphviz/lineal.dot -o ../Cliente/src/assets/arboles/lineal.png"
+	args := strings.Split(s, " ")
+	cmd := exec.Command(args[0], args[1:]...)
+	err1 := cmd.Start()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+	err1 = cmd.Wait()
+	if err1 != nil {
+		log.Printf("Command finishes with error: %v", err1)
+	}
+}
+
 func GraphvizMethod(valores string) {
 	graphviz = "digraph getAll {\ngraph[splines=\"ortho\"];\n"
 	numeroListas := hacerGraph(valores)

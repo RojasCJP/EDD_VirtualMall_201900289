@@ -1,6 +1,6 @@
 digraph arbol{
   node [shape=record]
-"766" [label="766|{Pequeño Frozen Teclado|136}|805.00"]
-"766"->"767"
-"767" [label="767|{Ergonómico Madera Queso|28}|839.00"]
+"1233" [label="1233|{s9|10}|5500.00"]
+"1234" [label="1234|{s8|25}|2500.00"]
+"1234"->"1233"
 }

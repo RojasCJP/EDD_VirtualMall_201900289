@@ -2,6 +2,7 @@ package reader
 
 import (
 	"./dataStructures"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/handlers"
@@ -23,7 +24,7 @@ var Years []dataStructures.Year
 var Btree *dataStructures.BTree
 var Grafo dataStructures.Grafo
 
-//todo tengo que ver que onda con el carrito y con la encriptacion
+//todo tengo que ver que onda con la encriptacion
 
 type htmltemplate struct {
 	Name   string
@@ -54,6 +55,7 @@ type ElementoCarrito struct {
 	NombreProducto string
 	PrecioProducto float32
 	Cantidad       int
+	Almacenamiento string
 }
 
 func InYear(year int) bool {
@@ -174,8 +176,9 @@ func LevantarServer() {
 	router.HandleFunc("/usuarios/cargar", CargarUsuario).Methods("POST")
 	router.HandleFunc("/usuarios/consultar", ConsultarUsuario).Methods("POST")
 	router.HandleFunc("/usuarios/graficar", GrafoUsuario).Methods("GET")
+	router.HandleFunc("/usuarios/encriptado", UsuariosEncriptado).Methods("GET")
 	router.HandleFunc("/grafo/cargar", CargarGrafo).Methods("POST")
-	router.HandleFunc("/grafo/graficar", GrafoGraficar).Methods("POST")
+	router.HandleFunc("/grafo/graficar", GrafoGraficar).Methods("GET")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -259,6 +262,7 @@ func getArreglo(response http.ResponseWriter, request *http.Request) {
 	}
 	paraEnviar := ShowArray(arregloListas[:])
 	GraphvizMethod(paraEnviar)
+	GraphAngular(paraEnviar)
 	fmt.Println(paraEnviar)
 	//data, err2 := json.Marshal(paraEnviar)
 	//if err2 != nil {
@@ -413,10 +417,12 @@ func addCarrito(response http.ResponseWriter, request *http.Request) {
 	producto, _ := strconv.Atoi(vars["producto"])
 	elemento := FindInCarrito(Carrito, tienda, producto)
 	punteroTienda := FindWithId(tienda, &arregloListas)
-	precioProducto := punteroTienda.inventario.Find(producto, punteroTienda.inventario.Root).Valor.Precio
-	nombreProducto := punteroTienda.inventario.Find(producto, punteroTienda.inventario.Root).Valor.Nombre
+	valor := punteroTienda.inventario.Find(producto, punteroTienda.inventario.Root).Valor
+	precioProducto := valor.Precio
+	nombreProducto := valor.Nombre
+	almacenamientoProducto := valor.Almacenamiento
 	if elemento == nil {
-		Carrito = append(Carrito, ElementoCarrito{tienda, producto, nombreProducto, precioProducto, 1})
+		Carrito = append(Carrito, ElementoCarrito{tienda, producto, nombreProducto, precioProducto, 1, almacenamientoProducto})
 	} else {
 		elemento.Cantidad++
 	}
@@ -444,8 +450,39 @@ func comprar(response http.ResponseWriter, request *http.Request) {
 		inventarioTienda := tiendaCambiar.inventario.Find(producto, tiendaCambiar.inventario.Root)
 		inventarioTienda.Valor.Cantidad -= cantidad
 	}
+	var pedidoEspecifico dataStructures.ValorCola
+	for i := 0; i < len(Carrito); i++ {
+		tienda := FindWithId(Carrito[i].IdTienda, &arregloListas)
+		nombreTienda := tienda.tienda
+		year := 2021
+		mes := 4
+		dia := 20
+		departamento := tienda.departamento
+		if !InYear(year) {
+			var meses []dataStructures.Mes
+			Years = append(Years, dataStructures.Year{year, meses})
+		}
+		if !InMeses(mes, GetYearIndex(year)) {
+			yearUse := GetYear(year)
+			matriz := dataStructures.Matriz{}
+			matriz.Init()
+			yearUse.Meses = append(yearUse.Meses, dataStructures.Mes{Number: mes, Matriz: matriz})
+		}
+		yearComprobation := GetYear(year)
+		mesComprobation := GetMes(mes, yearComprobation)
+		if mesComprobation.Matriz.Find(dia, departamento) == nil {
+			mesComprobation.Matriz.Add(departamento, dia, dataStructures.Cola{Len: 0})
+		}
+		codigo := dataStructures.Codigo{Codigo: Carrito[i].CodigoProducto}
+		var codigos []dataStructures.Codigo
+		codigos = append(codigos, codigo)
+		pedidoEspecifico = dataStructures.ValorCola{Fecha: "20-04-2021", Tienda: nombreTienda, Departamento: departamento, Calificacion: tienda.calificacion, Productos: codigos}
+		mesComprobation.Matriz.Find(dia, departamento).Valor.Add(dataStructures.NodoCola{Valor: dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos}})
+	}
 	Carrito = make([]ElementoCarrito, 0)
 }
+
+//todo agregar a calendario
 
 func addCalendario(response http.ResponseWriter, request *http.Request) {
 	data, errRead := ioutil.ReadAll(request.Body)
@@ -486,6 +523,8 @@ func addCalendario(response http.ResponseWriter, request *http.Request) {
 		mesComprobation.Matriz.Find(dia, departamento).Valor.Add(dataStructures.NodoCola{Valor: dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos}})
 	}
 }
+
+//todo ver como se agregan los pedidos
 
 func verYears(response http.ResponseWriter, request *http.Request) {
 	var allYears []int
@@ -654,10 +693,12 @@ func CargarUsuario(response http.ResponseWriter, request *http.Request) {
 		response.Write([]byte("ocurrio un error en la carga"))
 	}
 	for i := 0; i < len(usuarios.Usuarios); i++ {
-		Btree.Insert(&dataStructures.Usuario{Dpi: usuarios.Usuarios[i].Dpi, Nombre: usuarios.Usuarios[i].Nombre,
-			Correo: usuarios.Usuarios[i].Correo, Password: usuarios.Usuarios[i].Password, Cuenta: usuarios.Usuarios[i].Cuenta})
+		if Btree.Find(usuarios.Usuarios[i].Dpi, Btree.Root).Dpi == 0 {
+			Btree.Insert(&dataStructures.Usuario{Dpi: usuarios.Usuarios[i].Dpi, Nombre: usuarios.Usuarios[i].Nombre,
+				Correo: usuarios.Usuarios[i].Correo, Password: usuarios.Usuarios[i].Password, Cuenta: usuarios.Usuarios[i].Cuenta, ContraEncriptada: fmt.Sprintf("x", sha256.Sum256([]byte(usuarios.Usuarios[i].Password)))})
+		}
 	}
-	response.Write([]byte("datos cargados efectivamente"))
+	response.Write(data)
 }
 
 type ConsultaSesion struct {
@@ -695,11 +736,15 @@ func CargarGrafo(response http.ResponseWriter, request *http.Request) {
 	for i := 0; i < len(grafoEntrada.Nodos); i++ {
 		Grafo.AddNode(grafoEntrada.Nodos[i].Nombre, grafoEntrada.Nodos[i].Enlaces)
 	}
-	response.Write([]byte("datos cargados efectivamente"))
+	response.Write(data)
 }
 
 func GrafoUsuario(response http.ResponseWriter, request *http.Request) {
-	// todo hacer el mtodo del arbol en la clase del arbol para llamarlo solo aqui
+	Btree.MakeGraphviz()
+}
+
+func UsuariosEncriptado(response http.ResponseWriter, request *http.Request) {
+	Btree.MakeGraphvizEncriptado()
 }
 
 type GrafoCamino struct {
@@ -708,11 +753,13 @@ type GrafoCamino struct {
 }
 
 func GrafoGraficar(response http.ResponseWriter, request *http.Request) {
-	data, _ := ioutil.ReadAll(request.Body)
 	var camino []string
-	json.Unmarshal(data, &camino)
+	camino = append(camino, Grafo.PosicionInicialRobot)
+	for i := 0; i < len(Carrito); i++ {
+		camino = append(camino, Carrito[i].Almacenamiento)
+	}
+	camino = append(camino, Grafo.Entrega)
 	Grafo.MakeFileGrafo(camino)
-	response.Write([]byte("grafo generado"))
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

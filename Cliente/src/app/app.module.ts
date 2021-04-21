@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroUsariosComponent } from './components/registro-usarios/registro-usarios.component';
 import { FormulariosComponent } from './components/formularios/formularios.component';
 import { CargarGrafoComponent } from './components/cargar-grafo/cargar-grafo.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CargarGrafoComponent } from './components/cargar-grafo/cargar-grafo.com
     LoginComponent,
     RegistroUsariosComponent,
     FormulariosComponent,
-    CargarGrafoComponent
+    CargarGrafoComponent,
+    ReportesComponent
   ],
     imports: [
         BrowserModule,

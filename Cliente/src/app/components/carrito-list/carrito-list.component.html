@@ -7,6 +7,7 @@
           <div class="col-md-3 col-12">Nombre</div>
           <div class="col-md-3 col-12">Cantidad</div>
           <div class="col-md-3 col-12">Precio</div>
+          <div class="col-md-3 col-12">Almacenamiento</div>
         </div>
       </div>
     </div>
@@ -16,7 +17,9 @@
           <div class="col-md-3 col-12"> {{elementos.NombreProducto}}</div>
           <div class="col-md-3 col-12"> {{elementos.Cantidad}}</div>
           <div class="col-md-3 col-12"> {{elementos.PrecioProducto}}</div>
-          <div class="col-md-3 col-12">
+          <div class="col-md-3 col-12"> {{elementos.Almacenamiento}}</div>
+          <div class="col-md-4 col-12"></div>
+          <div class="col-md-4 col-12">
             <a class="btn btn-danger btn-block" (click)="deleteElement(elementos.IdTienda,elementos.CodigoProducto)"
                href="/carrito">Delete</a>
           </div>
@@ -26,6 +29,7 @@
     <div class="col-md-12 col-12">
       <div class="card text-center align-items-center">
         <p>Total: {{total}}</p>
+        <a class="btn btn-success btn-block" (click)="grafo()">Graficar</a>
       </div>
       <div class="card text-center align-items-center">
         <a class="btn btn-success btn-block" (click)="comprar()" href="/carrito">Comprar</a>

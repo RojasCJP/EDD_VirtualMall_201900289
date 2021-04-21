@@ -2,7 +2,7 @@ package dataStructures
 
 import "strconv"
 
-type codigo struct {
+type Codigo struct {
 	Codigo int
 }
 
@@ -11,7 +11,7 @@ type ValorCola struct {
 	Tienda       string
 	Departamento string
 	Calificacion int
-	Productos    []codigo
+	Productos    []Codigo
 }
 
 type Pedidos struct {
