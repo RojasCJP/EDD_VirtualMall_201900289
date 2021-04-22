@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="practica 4 terminada">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="ya no peta el arbol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +73,7 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.Golang">
+  <component name="RunManager" selected="Go Test.go test dataStructures">
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
@@ -198,7 +197,7 @@
       <workItem from="1618899841628" duration="245000" />
       <workItem from="1618956458726" duration="6262000" />
       <workItem from="1619034255616" duration="1256000" />
-      <workItem from="1619062724526" duration="3736000" />
+      <workItem from="1619062724526" duration="5560000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -326,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619035499390</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="ya no peta el arbol">
+      <created>1619067091349</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1619067091349</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +368,8 @@
     <MESSAGE value="ya puedo cargar todo desde angular, tengo que hacer el carrito, encriptado y los reportes del arbol" />
     <MESSAGE value="practica 4 terminada hasta donde se pudo, esta practicamente todo, solo que no se muestra algunas veces como deberia" />
     <MESSAGE value="practica 4 terminada" />
-    <option name="LAST_COMMIT_MESSAGE" value="practica 4 terminada" />
+    <MESSAGE value="ya no peta el arbol" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya no peta el arbol" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -384,8 +391,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/main.go</url>
-          <line>51</line>
-          <option name="timeStamp" value="30" />
+          <line>50</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

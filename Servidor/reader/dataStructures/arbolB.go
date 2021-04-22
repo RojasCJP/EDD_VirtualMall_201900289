@@ -107,10 +107,11 @@ func (tree *BTree) Insert_(user *Usuario, node *NodoB, fromparent bool) *NodoB {
 				}
 			}
 			for i := node.Parent.n; i > index+1; i-- {
+				if node.Parent.n == 5 {
+					tree.Insert_(user, node.Parent, true)
+				}
 				if node.Parent.n < 5 {
 					node.Parent.Child[i] = node.Parent.Child[i-1]
-				} else {
-					tree.Insert_(user, node.Parent, true)
 				}
 			}
 			node.Parent.Child[index+1] = _Nodo(node.Parent)
