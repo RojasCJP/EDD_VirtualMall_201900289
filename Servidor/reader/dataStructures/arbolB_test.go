@@ -279,3 +279,16 @@ func TestBTree_Graph(t *testing.T) {
 		arbol.Insert(&Usuario{i, "juan", "juan", "asdf", "asdf", "b", "a"})
 	}
 }
+
+func TestPetarArbol2(t *testing.T) {
+	arbol := BTree_()
+	for i := 0; i < 17; i++ {
+		arbol.Insert(&Usuario{i, "juan", "juan", "asdf", "asdf", "b", "a"})
+	}
+	for i := 450; i < 500; i++ {
+		arbol.Insert(&Usuario{i, "juan", "juan", "asdf", "asdf", "b", "a"})
+	}
+	for i := 18; i < 60; i++ {
+		arbol.Insert(&Usuario{i, "juan", "juan", "asdf", "asdf", "b", "a"})
+	}
+}

@@ -42,24 +42,25 @@ func BTree_() *BTree {
 }
 
 func (tree *BTree) Insert(user *Usuario) {
-	tree.Root = tree.Insert_(user, tree.Root)
+	tree.Root = tree.Insert_(user, tree.Root, false)
 }
 
-func (tree *BTree) Insert_(user *Usuario, node *NodoB) *NodoB {
-
-	if node.leaf {
-		node.Insert(user)
-	} else {
-		found := false
-		for i := 0; i < node.n-1; i++ {
-			if user.Dpi < node.User[i].Dpi {
-				found = true
-				tree.Insert_(user, node.Child[i])
-				break
+func (tree *BTree) Insert_(user *Usuario, node *NodoB, fromparent bool) *NodoB {
+	if !fromparent {
+		if node.leaf {
+			node.Insert(user)
+		} else {
+			found := false
+			for i := 0; i < node.n; i++ {
+				if user.Dpi < node.User[i].Dpi {
+					found = true
+					tree.Insert_(user, node.Child[i], false)
+					break
+				}
 			}
-		}
-		if !found {
-			tree.Insert_(user, node.Child[node.n])
+			if !found {
+				tree.Insert_(user, node.Child[node.n], false)
+			}
 		}
 	}
 	if node.n == 5 {
@@ -109,7 +110,7 @@ func (tree *BTree) Insert_(user *Usuario, node *NodoB) *NodoB {
 				if node.Parent.n < 5 {
 					node.Parent.Child[i] = node.Parent.Child[i-1]
 				} else {
-					tree.Insert_(user, node.Parent)
+					tree.Insert_(user, node.Parent, true)
 				}
 			}
 			node.Parent.Child[index+1] = _Nodo(node.Parent)
@@ -308,9 +309,12 @@ func (node *NodoB) Insert(user *Usuario) {
 			break
 		} else if node.User[i].Dpi > user.Dpi {
 			for j := node.n; j > i; j-- {
-				node.User[j] = node.User[j-1]
+				if j > 1 {
+					node.User[j-1] = node.User[j-2]
+				}
 			}
 			node.User[i] = user
+			break
 		}
 	}
 }
