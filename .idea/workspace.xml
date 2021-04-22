@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="ya no peta el arbol">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="creo que no se va a lograr terminar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/lineal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/lineal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/entradas/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/entradas/usuarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/lineal.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/lineal.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuarios.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuarios.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuariosEncriptado.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuariosEncriptado.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/templates/getAll.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/getAll.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/templates/imagen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/imagen.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +81,7 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.go test dataStructures">
+  <component name="RunManager" selected="Go Build.Golang">
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
@@ -197,7 +205,7 @@
       <workItem from="1618899841628" duration="245000" />
       <workItem from="1618956458726" duration="6262000" />
       <workItem from="1619034255616" duration="1256000" />
-      <workItem from="1619062724526" duration="5560000" />
+      <workItem from="1619062724526" duration="6725000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -332,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619067091349</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="creo que no se va a lograr terminar">
+      <created>1619068507625</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1619068507625</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,14 +384,15 @@
     <MESSAGE value="practica 4 terminada hasta donde se pudo, esta practicamente todo, solo que no se muestra algunas veces como deberia" />
     <MESSAGE value="practica 4 terminada" />
     <MESSAGE value="ya no peta el arbol" />
-    <option name="LAST_COMMIT_MESSAGE" value="ya no peta el arbol" />
+    <MESSAGE value="creo que no se va a lograr terminar" />
+    <option name="LAST_COMMIT_MESSAGE" value="creo que no se va a lograr terminar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/reader/servidor.go</url>
-          <line>756</line>
+          <line>757</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -393,6 +409,11 @@
           <url>file://$PROJECT_DIR$/Servidor/main.go</url>
           <line>50</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go</url>
+          <line>50</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -142,6 +142,7 @@ func SetJsonData(jsonData Datos) {
 
 func LevantarServer() {
 	Btree = dataStructures.BTree_()
+	//Btree.Insert(&dataStructures.Usuario{Dpi: 1234567890101,Nombre:"EDD2021",Correo: "auxiliar@edd.com",Password: "1234",Cuenta: "Admin"})
 	//a;adir datos solo en este btree
 	router := mux.NewRouter().StrictSlash(true)
 	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
