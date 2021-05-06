@@ -189,7 +189,6 @@ func TestFindArbol(t *testing.T) {
 	if arbol.Find(45, arbol.Root).Cuenta != "donnie" {
 		t.Error("test failed")
 	}
-	fmt.Println("prueba de que si jalaron los test")
 }
 
 func TestPetarArbol(t *testing.T) {
@@ -251,13 +250,9 @@ func TestDijkstra(t *testing.T) {
 	grafo.AddNode("t", []Conexion{})
 
 	tupla := grafo.Dijkstra("s", "t")
-	camino, completo := grafo.EncontrarCamino("s", "t")
-	fmt.Println(tupla.Predecesor)
-	fmt.Println(tupla.Definitiva)
-	fmt.Println(tupla.Evaluar)
-	fmt.Println(tupla.Distancia)
-	fmt.Println(camino)
-	fmt.Println(completo)
+	if tupla.Distancia > 12 {
+		t.Error("test failed")
+	}
 }
 
 func TestGrafo_EncontrarCaminoVariosNodos(t *testing.T) {
@@ -268,9 +263,13 @@ func TestGrafo_EncontrarCaminoVariosNodos(t *testing.T) {
 	grafo.AddNode("Reparaciones", []Conexion{})
 
 	nodos := [...]string{"Textiles", "Aranceles", "Reparaciones", "Despacho"}
-	camino, completo := grafo.EncontrarCaminoVariosNodos(nodos[:])
-	fmt.Println(camino)
-	fmt.Println(completo)
+	camino, _ := grafo.EncontrarCaminoVariosNodos(nodos[:])
+	elemento1 := Caminos{"Aranceles", "Textiles"}
+	if camino[0] != elemento1 {
+		fmt.Println(camino[0])
+		fmt.Println(elemento1)
+		t.Error("test failed")
+	}
 }
 
 func TestBTree_Graph(t *testing.T) {

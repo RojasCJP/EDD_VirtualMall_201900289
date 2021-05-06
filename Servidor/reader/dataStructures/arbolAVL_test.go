@@ -1,7 +1,6 @@
 package dataStructures
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -107,7 +106,6 @@ func TestFindMatrz(t *testing.T) {
 	matriz.Add("chola", 1, Cola{Len: 7})
 	matriz.Add("chola", 3, Cola{Len: 9})
 	elemento := matriz.Find(1, "ahola")
-	fmt.Println(elemento)
 	if elemento.Valor.Len != 1 {
 		t.Fail()
 	}

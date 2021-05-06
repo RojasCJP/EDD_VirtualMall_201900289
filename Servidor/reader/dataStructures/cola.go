@@ -1,6 +1,8 @@
 package dataStructures
 
-import "strconv"
+import (
+	"strconv"
+)
 
 type Codigo struct {
 	Codigo int
@@ -57,7 +59,6 @@ func (cola *Cola) Add(nodoCola NodoCola) {
 		nodoCola.siguiente = cola.first
 		cola.first.anterior = &nodoCola
 		cola.first = &nodoCola
-
 	}
 	cola.Len++
 }

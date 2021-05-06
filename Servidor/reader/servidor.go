@@ -23,8 +23,12 @@ var Carrito []ElementoCarrito
 var Years []dataStructures.Year
 var Btree *dataStructures.BTree
 var Grafo dataStructures.Grafo
+var ListCalendario []dataStructures.ValorCola
 
-//todo tengo que ver que onda con la encriptacion
+//todo tengo que hacer mekle de tiendas
+//todo tengo que hacer mekle de inventario
+//todo tengo que hacer mekle de usuarios
+//todo tengo que hacer mekle de calendario
 
 type htmltemplate struct {
 	Name   string
@@ -142,7 +146,7 @@ func SetJsonData(jsonData Datos) {
 
 func LevantarServer() {
 	Btree = dataStructures.BTree_()
-	//Btree.Insert(&dataStructures.Usuario{Dpi: 1234567890101,Nombre:"EDD2021",Correo: "auxiliar@edd.com",Password: "1234",Cuenta: "Admin"})
+	Btree.Insert(&dataStructures.Usuario{Dpi: 1234567890101, Nombre: "EDD2021", Correo: "auxiliar@edd.com", Password: "1234", Cuenta: "Admin"})
 	//a;adir datos solo en este btree
 	router := mux.NewRouter().StrictSlash(true)
 	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
@@ -180,6 +184,10 @@ func LevantarServer() {
 	router.HandleFunc("/usuarios/encriptado", UsuariosEncriptado).Methods("GET")
 	router.HandleFunc("/grafo/cargar", CargarGrafo).Methods("POST")
 	router.HandleFunc("/grafo/graficar", GrafoGraficar).Methods("GET")
+	router.HandleFunc("/merkle/tiendas", MerkleTiendas).Methods("GET")
+	router.HandleFunc("/merkle/inventario", MerkleInventario).Methods("GET")
+	router.HandleFunc("/merkle/usuarios", MerkleUsuarios).Methods("GET")
+	router.HandleFunc("/merkle/calendario", MerkleCalendario).Methods("GET")
 	http.ListenAndServe(":3000", handlers.CORS(headers, methods, origins)(router))
 }
 
@@ -757,6 +765,48 @@ func GrafoGraficar(response http.ResponseWriter, request *http.Request) {
 	}
 	camino = append(camino, Grafo.Entrega)
 	Grafo.MakeFileGrafo(camino)
+}
+
+func MerkleTiendas(response http.ResponseWriter, request *http.Request) {
+	tree := dataStructures.InitMerkle()
+	var tiendas []string
+	tiendasTiendas := todasLasTiendas()
+	for i := 0; i < len(tiendasTiendas); i++ {
+		tiendas = append(tiendas, fmt.Sprintf("%v", tiendasTiendas[i]))
+	}
+	tree.FullTree(tiendas)
+	tree.MakeGraph("merkleTiendas")
+}
+func MerkleInventario(response http.ResponseWriter, request *http.Request) {
+	tree := dataStructures.InitMerkle()
+	tiendaUnica := FindWithId(0, &arregloListas)
+	tiendaUnica.inventario.ClearList()
+	tiendaUnica.inventario.ListAllProducts(tiendaUnica.inventario.Root)
+	var inventario []string
+	for i := 0; i < len(dataStructures.ListElements); i++ {
+		inventario = append(inventario, fmt.Sprintf("%v", dataStructures.ListElements[i]))
+	}
+	tree.FullTree(inventario)
+	tree.MakeGraph("merkleInventario")
+}
+func MerkleUsuarios(response http.ResponseWriter, request *http.Request) {
+	tree := dataStructures.InitMerkle()
+	usuariosUsuarios := dataStructures.ListUsuarios
+	var usuarios []string
+	for i := 0; i < len(usuariosUsuarios); i++ {
+		usuarios = append(usuarios, fmt.Sprintf("%v", usuariosUsuarios[i]))
+	}
+	tree.FullTree(usuarios)
+	tree.MakeGraph("merkleUsuarios")
+}
+func MerkleCalendario(response http.ResponseWriter, request *http.Request) {
+	tree := dataStructures.InitMerkle()
+	var calendario []string
+	for i := 0; i < len(ListCalendario); i++ {
+		calendario = append(calendario, fmt.Sprintf("%v", ListCalendario[i]))
+	}
+	tree.FullTree(calendario)
+	tree.MakeGraph("merkleCalendario")
 }
 
 func FindTienda(especifica Especifica, data Datos) Tienda {

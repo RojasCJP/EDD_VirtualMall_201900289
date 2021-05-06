@@ -4,17 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="creo que no se va a lograr terminar">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="terminado hasta donde se pudo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/lineal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/lineal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/entradas/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/entradas/usuarios.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/lineal.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/lineal.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/grafo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/grafo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuarios.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuarios.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuariosEncriptado.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/usuariosEncriptado.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/grafo.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/grafo.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuarios.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuarios.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuariosEncriptado.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/usuariosEncriptado.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolAVL_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/cola.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/getAll.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/getAll.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/templates/imagen.png" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/templates/imagen.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
         <option value="TypeScript File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -82,6 +89,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Build.Golang">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
@@ -205,7 +223,18 @@
       <workItem from="1618899841628" duration="245000" />
       <workItem from="1618956458726" duration="6262000" />
       <workItem from="1619034255616" duration="1256000" />
-      <workItem from="1619062724526" duration="6725000" />
+      <workItem from="1619062724526" duration="6797000" />
+      <workItem from="1619473536106" duration="2701000" />
+      <workItem from="1619571923887" duration="827000" />
+      <workItem from="1619722097962" duration="528000" />
+      <workItem from="1619735188847" duration="1458000" />
+      <workItem from="1619890938653" duration="414000" />
+      <workItem from="1619891540108" duration="8556000" />
+      <workItem from="1619984827040" duration="5376000" />
+      <workItem from="1620157328205" duration="11861000" />
+      <workItem from="1620183547329" duration="1033000" />
+      <workItem from="1620185773269" duration="847000" />
+      <workItem from="1620325079719" duration="2373000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -347,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619068507625</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="terminado hasta donde se pudo">
+      <created>1619069512056</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1619069512056</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,14 +421,15 @@
     <MESSAGE value="practica 4 terminada" />
     <MESSAGE value="ya no peta el arbol" />
     <MESSAGE value="creo que no se va a lograr terminar" />
-    <option name="LAST_COMMIT_MESSAGE" value="creo que no se va a lograr terminar" />
+    <MESSAGE value="terminado hasta donde se pudo" />
+    <option name="LAST_COMMIT_MESSAGE" value="terminado hasta donde se pudo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/reader/servidor.go</url>
-          <line>757</line>
+          <line>765</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -401,19 +438,14 @@
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/grafos.go</url>
-          <line>186</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/Servidor/main.go</url>
-          <line>50</line>
-          <option name="timeStamp" value="33" />
+          <line>25</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/Servidor/reader/dataStructures/arbolB.go</url>
-          <line>50</line>
-          <option name="timeStamp" value="36" />
+          <url>file://$PROJECT_DIR$/Servidor/reader/servidor.go</url>
+          <line>776</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

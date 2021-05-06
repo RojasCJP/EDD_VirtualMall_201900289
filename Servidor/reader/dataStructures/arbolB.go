@@ -11,6 +11,8 @@ import (
 var nodosArbolB string
 var conexionesArbolB string
 
+var ListUsuarios []Usuario
+
 type Usuario struct {
 	Dpi              int
 	Nombre           string
@@ -42,6 +44,7 @@ func BTree_() *BTree {
 }
 
 func (tree *BTree) Insert(user *Usuario) {
+	ListUsuarios = append(ListUsuarios, *user)
 	tree.Root = tree.Insert_(user, tree.Root, false)
 }
 
