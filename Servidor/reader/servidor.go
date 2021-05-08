@@ -487,6 +487,7 @@ func comprar(response http.ResponseWriter, request *http.Request) {
 		codigos = append(codigos, codigo)
 		pedidoEspecifico = dataStructures.ValorCola{Fecha: "20-04-2021", Tienda: nombreTienda, Departamento: departamento, Calificacion: tienda.calificacion, Productos: codigos}
 		mesComprobation.Matriz.Find(dia, departamento).Valor.Add(dataStructures.NodoCola{Valor: dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos}})
+		ListCalendario = append(ListCalendario, dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos})
 	}
 	Carrito = make([]ElementoCarrito, 0)
 }
@@ -528,6 +529,7 @@ func addCalendario(response http.ResponseWriter, request *http.Request) {
 		pedidoEspecifico := calendario.Pedidos[j]
 
 		mesComprobation.Matriz.Find(dia, departamento).Valor.Add(dataStructures.NodoCola{Valor: dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos}})
+		ListCalendario = append(ListCalendario, dataStructures.ValorCola{pedidoEspecifico.Fecha, pedidoEspecifico.Tienda, pedidoEspecifico.Departamento, pedidoEspecifico.Calificacion, pedidoEspecifico.Productos})
 	}
 }
 

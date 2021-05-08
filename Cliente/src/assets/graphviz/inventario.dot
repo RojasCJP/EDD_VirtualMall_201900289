@@ -1,36 +1,6 @@
 digraph arbol{
   node [shape=record]
-"981" [label="981|{Inteligente Granito Teclado|286}|778.00"]
-"982" [label="982|{Refinado Frozen Presidente|472}|688.00"]
-"982"->"981"
-"983" [label="983|{Genérica Granito Zapatos|393}|281.00"]
-"983"->"982"
-"983"->"984"
-"984" [label="984|{Fantástico Metal Guantes|164}|458.00"]
-"985" [label="985|{Fantástico Acero Ensalada|282}|663.00"]
-"985"->"983"
-"985"->"991"
-"986" [label="986|{Rústico Caucho Pantalones|9}|496.00"]
-"987" [label="987|{Rústico Madera Bike|489}|926.00"]
-"987"->"986"
-"987"->"989"
-"988" [label="988|{Ergonómico Granito Embutidos|393}|12.00"]
-"989" [label="989|{Sabrosa Soft Ensalada|19}|893.00"]
-"989"->"988"
-"989"->"990"
-"990" [label="990|{Increíble Frozen Pescado|396}|759.00"]
-"991" [label="991|{Sin marca Acero Zapatos|162}|517.00"]
-"991"->"987"
-"991"->"995"
-"992" [label="992|{Gorgeous Acero Presidente|77}|821.00"]
-"993" [label="993|{Artesanal Hormigón Jabón|276}|561.00"]
-"993"->"992"
-"993"->"994"
-"994" [label="994|{Genérica Acero Auto|359}|568.00"]
-"995" [label="995|{Pequeño Fresco Pollo|370}|240.00"]
-"995"->"993"
-"995"->"997"
-"996" [label="996|{Rústico Caucho Tuna|489}|448.00"]
-"997" [label="997|{Ergonómico Fresco Ensalada|230}|952.00"]
-"997"->"996"
+"1233" [label="1233|{s9|10}|5500.00"]
+"1234" [label="1234|{s8|25}|2500.00"]
+"1234"->"1233"
 }

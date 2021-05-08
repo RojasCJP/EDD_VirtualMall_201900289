@@ -13,6 +13,7 @@ import {LoginComponent} from './components/login/login.component';
 import {RegistroUsariosComponent} from './components/registro-usarios/registro-usarios.component';
 import {FormulariosComponent} from './components/formularios/formularios.component';
 import {ReportesComponent} from './components/reportes/reportes.component';
+import {MerkleComponent} from "./components/merkle/merkle.component";
 
 const routes: Routes = [
   {
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path: 'reportes',
     component: ReportesComponent
+  },
+  {
+    path: 'merkle',
+    component: MerkleComponent
   }
 ];
 

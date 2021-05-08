@@ -26,4 +26,9 @@ export class NavigationComponent implements OnInit {
     localStorage.setItem('arreglo', 'false');
     location.href = '/reportes';
   }
+
+  redirigirMerkle(): void {
+    localStorage.setItem('merkle', 'false');
+    location.href = '/merkle';
+  }
 }

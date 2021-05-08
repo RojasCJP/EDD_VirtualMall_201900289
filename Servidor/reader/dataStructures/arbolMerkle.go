@@ -120,4 +120,5 @@ func (tree *MerkleTree) MakeGraph(name string) {
 	if err1 != nil {
 		log.Printf("Command finishes with error: %v", err1)
 	}
+	cuerpoMerkle = ""
 }

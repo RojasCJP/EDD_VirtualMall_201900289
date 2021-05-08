@@ -21,6 +21,7 @@ import { RegistroUsariosComponent } from './components/registro-usarios/registro
 import { FormulariosComponent } from './components/formularios/formularios.component';
 import { CargarGrafoComponent } from './components/cargar-grafo/cargar-grafo.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { MerkleComponent } from './components/merkle/merkle.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ReportesComponent } from './components/reportes/reportes.component';
     RegistroUsariosComponent,
     FormulariosComponent,
     CargarGrafoComponent,
-    ReportesComponent
+    ReportesComponent,
+    MerkleComponent
   ],
     imports: [
         BrowserModule,

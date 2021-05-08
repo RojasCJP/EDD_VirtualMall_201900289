@@ -68,4 +68,19 @@ export class TiendasService {
     return this.http.get(`${this.API_URI}/usuarios/encriptado`);
   }
 
+  getMerkleUsuarios(): Observable<any> {
+    return this.http.get(`${this.API_URI}/merkle/usuarios`);
+  }
+
+  getMerkleInventario(): Observable<any> {
+    return this.http.get(`${this.API_URI}/merkle/inventario`);
+  }
+
+  getMerkleCalendario(): Observable<any> {
+    return this.http.get(`${this.API_URI}/merkle/calendario`);
+  }
+
+  getMerkleTiendas(): Observable<any> {
+    return this.http.get(`${this.API_URI}/merkle/tiendas`);
+  }
 }
