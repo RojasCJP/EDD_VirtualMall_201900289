@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="hash table terminada pero no implementada">
+    <list default="true" id="9656f115-31a3-4425-8ad7-4a912a992945" name="Default Changelist" comment="se hizo lo que se pudo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/components/navigation/navigation.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/app/services/tiendas.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/inventario.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/matriz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/merkleTiendas.png" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/arboles/merkleTiendas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/inventario.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/matriz.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/merkleCalendario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/merkleInventario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/merkleTiendas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/src/assets/arboles/merkleUsuarios.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/src/assets/graphviz/merkleTiendas.dot" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/src/assets/graphviz/merkleTiendas.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolMerkle.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/dataStructures/arbolMerkle.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor/reader/servidor.go" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/reader/servidor.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +78,7 @@
       <recent name="D:\Clases\2doSemestre\Estructuras\Laboratorio\Practica1-EDD-\Cliente\src\app" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Angular">
+  <component name="RunManager" selected="Go Build.Golang">
     <configuration name="Golang" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Practica1-EDD-" />
       <working_directory value="$PROJECT_DIR$/Servidor" />
@@ -223,6 +216,10 @@
       <workItem from="1620325079719" duration="2617000" />
       <workItem from="1620333078758" duration="2826000" />
       <workItem from="1620344752873" duration="646000" />
+      <workItem from="1620515936355" duration="205000" />
+      <workItem from="1620698025280" duration="627000" />
+      <workItem from="1620699887242" duration="1237000" />
+      <workItem from="1620774211377" duration="2281000" />
     </task>
     <task id="LOCAL-00001" summary="Añadiendo angular al proyecto">
       <created>1615357608326</created>
@@ -385,7 +382,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620327711318</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="se hizo lo que se pudo">
+      <created>1620515978562</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1620515978562</updated>
+    </task>
+    <task id="LOCAL-00025" summary="se hizo lo que se pudo">
+      <created>1620516030466</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1620516030466</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +436,8 @@
     <MESSAGE value="creo que no se va a lograr terminar" />
     <MESSAGE value="terminado hasta donde se pudo" />
     <MESSAGE value="hash table terminada pero no implementada" />
-    <option name="LAST_COMMIT_MESSAGE" value="hash table terminada pero no implementada" />
+    <MESSAGE value="se hizo lo que se pudo" />
+    <option name="LAST_COMMIT_MESSAGE" value="se hizo lo que se pudo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

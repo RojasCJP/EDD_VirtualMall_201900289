@@ -71,7 +71,7 @@ func (tree *MerkleTree) SumarHijos(node *NodoMerkle) {
 		tree.SumarHijos(node.derecha)
 	}
 	if node.izquierda.valor != "" && node.derecha.valor != "" {
-		node.valor = node.izquierda.valor + node.derecha.valor
+		node.valor = fmt.Sprintf("%v", sha256.Sum256([]byte(node.izquierda.valor+node.derecha.valor)))
 	}
 }
 
